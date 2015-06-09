@@ -327,7 +327,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '''''l', '''''k', '''''j',
+      \   '+0', '+-', '+=',
       \   '''&', '''^',
       \   '''%',
       \   '''A', '''''A', 'aa',
@@ -337,13 +337,12 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''r', '''R',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
-      \   '00', '0-', '0=',
+      \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
-      \   '''=',
+      \   '''=', '0=', '''-', '0-',
       \   '''*',
       \   '''u', '''U',
-      \   '''''u', '''''U',
-      \   '''-'
+      \   '''''u', '''''U'
       \   ],
       \ 'v' : [
       \   '''H',
@@ -351,33 +350,31 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '''''l', '''''k', '''''j',
+      \   '+0', '+-', '+=',
       \   '''a',
       \   '''''s', '''''S',
       \   '''d',
       \   '''q', '''Q',
       \   '''G', '''''G',
-      \   '00', '0-', '0=',
+      \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
-      \   '''h', '--',
-      \   '''=',
+      \   '''h',
+      \   '''=', '0=', '''-', '0-',
       \   '''*',
       \   '''u', '''U',
-      \   '''''u', '''''U',
-      \   '''-'
+      \   '''''u', '''''U'
       \   ],
       \ 'o' : [
       \   '''l', '''k',
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '''''l', '''''k', '''''j',
+      \   '+0', '+-', '+=',
       \   '[[', ']]', '[]', '][',
-      \   '''=',
+      \   '''=', '0=', '''-', '0-',
       \   '''*',
       \   '''u', '''U',
-      \   '''''u', '''''U',
-      \   '''-'
+      \   '''''u', '''''U'
       \   ]
       \ }
 
@@ -1583,15 +1580,15 @@ noremap <C-Right> <C-Right>
 " #.#.# Window-based motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  ''l - to line [count] from top of window (default: first line on
+"  += - to line [count] from top of window (default: first line on
 "        the window) on the first non-blank character linewise (`H`)
-"  ''k - to line [count] from bottom of window (default: first
+"  +- - to line [count] from bottom of window (default: first
 "        line on the window) on the first non-blank character linewise (`L`)
-"  ''j - to middle line of window, on the first non-blank character
+"  +0 - to middle line of window, on the first non-blank character
 "        linewise (`M`)
-noremap <SID>3keyseq_''l H
-noremap <SID>3keyseq_''k L
-noremap <SID>3keyseq_''j M
+noremap <SID>2keyseq_+= H
+noremap <SID>2keyseq_+- L
+noremap <SID>2keyseq_+0 M
 
 "
 " #.#.# Text object motions
@@ -1621,12 +1618,10 @@ noremap <SID>2keyseq_][ ][
 " #.#.# Visual mode special mappings
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  'h, -- - Visual mode: go to the opposite end of the selection
-"           (`o` in Vim)
-"           (this use of `--` is somewhat consistent with the use of `-` to
-"           go to a mark)
+"  'h - Visual mode: go to the opposite end of the selection
+"       (`o` in Vim)
 vnoremap <SID>2keyseq_'h o
-vnoremap <script> <SID>2keyseq_-- <SID>2keyseq_'h
+" vnoremap <script> <SID>2keyseq_-- <SID>2keyseq_'h
 
 "
 " #.#.# Undo/redo
@@ -1694,10 +1689,16 @@ vnoremap <SID>key_# @:
 " #.#.# Goto
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  [count]=  - go to line number [count]
-"  [count]+  - go to line number [count] from the bottom
-"  [count]'= - go to column number [count] in the current line (see the
-"              implementation for details)
+"  [count]=  - with [count]: go to line number [count] (`gg` in Vim);
+"  =         - without [count]: go to the first non-blank character of the
+"              mark line (`'` in Vim)
+"  [count]'= - go to line number [count] from the bottom
+"  0=        - go to the last line
+"  [count]-  - with [count]: go to column number [count] in the current
+"              line
+"  -           without [count]: go to the mark (`\(backquote)` in Vim)
+"  [count]'- - go to [count] characters before the end of the line
+"  0-        - go to the end of the line
 "  *         - go to the matching parenthesis-like delimiter (like `%`) or
 "              cycle forward through matching keywords like if-then-else
 "              (like `%` with "matchit" plugin)
@@ -1706,32 +1707,21 @@ vnoremap <SID>key_# @:
 "              (like `g%` with "matchit" plugin)
 "  <C-o>, <S-Tab> - "back", go to the previous position (`<C-o>`)
 "  <C-i>, <Tab>   - return "forward", go to the next position (`<C-i>`)
-noremap <SID>key_= gg
-" Does not take [count] into account:
-noremap <SID>key_+ G
+noremap <expr> <SID>key_= (v:count?'gg':'''')
+" FIXME: make use [count] as specified
+noremap <SID>2keyseq_'= G
+noremap <SID>2keyseq_0= G
+noremap <expr> <SID>key_- (v:count?'<bar>':'`')
 
-function! s:NMapExpr_GoToColumn()
-  let l:count = v:count
-  if l:count == 0
-    return '0'
-  else
-    " NOTE: the `'@_'` part is used to cancel the count, i am not aware of
-    "   any better way
-    return '@_' . (l:count + 1) . '|'
-  endif
-endfunction
-nnoremap <expr> <SID>2keyseq_'= <SID>NMapExpr_GoToColumn()
-
-function! s:VMapExpr_GoToColumn()
-  let l:count = v:count
+function! s:VMapExpr_GoToColumn(count)
   let l:l_num = line('.')
   let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
   if (l:l_num_oppos < l:l_num) ||
         \ (l:l_num_oppos == l:l_num &&
-        \  l:c_num_oppos <= l:count)
-    let l:c_num = l:count
+        \  l:c_num_oppos <= a:count)
+    let l:c_num = a:count - 1
   else
-    let l:c_num = l:count + 1
+    let l:c_num = a:count
   endif
   if l:c_num <= 1
     return '0'
@@ -1741,10 +1731,11 @@ function! s:VMapExpr_GoToColumn()
     return '@_' . l:c_num . '|'
   endif
 endfunction
-vnoremap <expr> <SID>2keyseq_'= <SID>VMapExpr_GoToColumn()
-
-" TODO: find a consistent way to use [count]
-onoremap <SID>2keyseq_'= <bar>
+vnoremap <expr> <SID>key_- (v:count?s:VMapExpr_GoToColumn(v:count):'`')
+"
+" FIXME: make use [count] as specified
+noremap <script> <SID>2keyseq_'- <SID>key_.
+noremap <script> <SID>2keyseq_0- <SID>key_.
 
 " XXX: this uses my customized version of "matchit" plugin, see
 "   https://github.com/alexeymuranov/matchit.zip
@@ -1825,12 +1816,10 @@ omap <SID>key_M <Plug>ExtendedFtOperationModeRepeatSearchBackward
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
 "  _  - set a mark (`m`)
-"  -  - go to the mark (`\(backquote)`)
-"  '- - go to the first non-blank character of the mark line (`'`)
+"  -  - go to the mark (see "Goto" section)
+"  =  - go to the first non-blank character of the mark line (see "Goto" section)
 nnoremap <SID>key__ m
 vnoremap <SID>key__ m
-noremap <SID>key_- `
-noremap <SID>2keyseq_'- '
 
 "
 " #.#.# Find
@@ -2159,9 +2148,9 @@ vnoremap <SID>3keyseq_''G <Nop>
 "  See also the mappings of <Space>, <S-Space>, <C-Space>, and <C-S-Space>
 "  in the section about changing modes.
 "
-"  00       - scroll the current line to the middle (`zz`)
-"  0-, <S-A-Down> - scroll the current line to the top (`zt`)
-"  0=, <S-A-Up>   - scroll the current line to the bottom (`zb`)
+"  ''j       - scroll the current line to the middle (`zz`)
+"  ''k, <S-A-Down> - scroll the current line to the top (`zt`)
+"  ''l, <S-A-Up>   - scroll the current line to the bottom (`zb`)
 nnoremap <C-d> <C-d>
 vnoremap <C-d> <C-d>
 nnoremap <C-u> <C-u>
@@ -2177,14 +2166,14 @@ nnoremap <C-Down> <C-d>
 vnoremap <C-Down> <C-d>
 noremap <C-e> <C-e>
 noremap <C-y> <C-y>
-nnoremap <SID>2keyseq_00 zz
-vnoremap <SID>2keyseq_00 zz
-nnoremap <SID>2keyseq_0- zt
-vnoremap <SID>2keyseq_0- zt
-nnoremap <SID>2keyseq_0= zb
-vnoremap <SID>2keyseq_0= zb
-noremap <script> <S-A-Up>   <SID>2keyseq_0=
-noremap <script> <S-A-Down> <SID>2keyseq_0-
+nnoremap <SID>3keyseq_''j zz
+vnoremap <SID>3keyseq_''j zz
+nnoremap <SID>3keyseq_''l zt
+vnoremap <SID>3keyseq_''l zt
+nnoremap <SID>3keyseq_''k zb
+vnoremap <SID>3keyseq_''k zb
+noremap <script> <S-A-Up>   <SID>3keyseq_''l
+noremap <script> <S-A-Down> <SID>3keyseq_''k
 
 " Other interesting scroll commands
 " * scroll one line down and go to the first non-blanck character of
