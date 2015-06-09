@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2015-06-07
+" Last Change:  2015-06-09
 " Author:       Alexey Muranov
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -327,7 +327,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '+0', '+-', '+=',
+      \   '__', '_-', '_=',
+      \   '++',
       \   '''&', '''^',
       \   '''%',
       \   '''A', '''''A', 'aa',
@@ -339,7 +340,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
-      \   '''=', '0=', '''-', '0-',
+      \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''u', '''U',
       \   '''''u', '''''U'
@@ -350,7 +351,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '+0', '+-', '+=',
+      \   '__', '_-', '_=',
+      \   '++',
+      \   '''&', '''^',
       \   '''a',
       \   '''''s', '''''S',
       \   '''d',
@@ -359,7 +362,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
       \   '''h',
-      \   '''=', '0=', '''-', '0-',
+      \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''u', '''U',
       \   '''''u', '''''U'
@@ -369,9 +372,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
-      \   '+0', '+-', '+=',
+      \   '__', '_-', '_=',
       \   '[[', ']]', '[]', '][',
-      \   '''=', '0=', '''-', '0-',
+      \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''u', '''U',
       \   '''''u', '''''U'
@@ -1580,15 +1583,15 @@ noremap <C-Right> <C-Right>
 " #.#.# Window-based motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  += - to line [count] from top of window (default: first line on
+"  __ - to line [count] from top of window (default: first line on
 "        the window) on the first non-blank character linewise (`H`)
-"  +- - to line [count] from bottom of window (default: first
+"  _- - to line [count] from bottom of window (default: first
 "        line on the window) on the first non-blank character linewise (`L`)
-"  +0 - to middle line of window, on the first non-blank character
+"  _= - to middle line of window, on the first non-blank character
 "        linewise (`M`)
-noremap <SID>2keyseq_+= H
-noremap <SID>2keyseq_+- L
-noremap <SID>2keyseq_+0 M
+noremap <SID>2keyseq___ H
+noremap <SID>2keyseq__- L
+noremap <SID>2keyseq__= M
 
 "
 " #.#.# Text object motions
@@ -1689,16 +1692,16 @@ vnoremap <SID>key_# @:
 " #.#.# Goto
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  [count]=  - with [count]: go to line number [count] (`gg` in Vim);
-"  =         - without [count]: go to the first non-blank character of the
+"  [count]-  - with [count]: go to line number [count] (`gg` in Vim);
+"  -         - without [count]: go to the first non-blank character of the
 "              mark line (`'` in Vim)
-"  [count]'= - go to line number [count] from the bottom
-"  0=        - go to the last line
-"  [count]-  - with [count]: go to column number [count] in the current
+"  [count]'- - go to line number [count] from the bottom
+"  0-        - go to the last line
+"  [count]=  - with [count]: go to column number [count] in the current
 "              line
-"  -           without [count]: go to the mark (`\(backquote)` in Vim)
-"  [count]'- - go to [count] characters before the end of the line
-"  0-        - go to the end of the line
+"  =           without [count]: go to the mark (`\(backquote)` in Vim)
+"  [count]'= - go to [count] characters before the end of the line
+"  0=        - go to the end of the line
 "  *         - go to the matching parenthesis-like delimiter (like `%`) or
 "              cycle forward through matching keywords like if-then-else
 "              (like `%` with "matchit" plugin)
@@ -1707,11 +1710,11 @@ vnoremap <SID>key_# @:
 "              (like `g%` with "matchit" plugin)
 "  <C-o>, <S-Tab> - "back", go to the previous position (`<C-o>`)
 "  <C-i>, <Tab>   - return "forward", go to the next position (`<C-i>`)
-noremap <expr> <SID>key_= (v:count?'gg':'''')
+noremap <expr> <SID>key_- (v:count?'gg':'''')
 " FIXME: make use [count] as specified
-noremap <SID>2keyseq_'= G
-noremap <SID>2keyseq_0= G
-noremap <expr> <SID>key_- (v:count?'<bar>':'`')
+noremap <SID>2keyseq_'- G
+noremap <SID>2keyseq_0- G
+noremap <expr> <SID>key_= (v:count?'<bar>':'`')
 
 function! s:VMapExpr_GoToColumn(count)
   let l:l_num = line('.')
@@ -1731,11 +1734,11 @@ function! s:VMapExpr_GoToColumn(count)
     return '@_' . l:c_num . '|'
   endif
 endfunction
-vnoremap <expr> <SID>key_- (v:count?s:VMapExpr_GoToColumn(v:count):'`')
+vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 "
 " FIXME: make use [count] as specified
-noremap <script> <SID>2keyseq_'- <SID>key_.
-noremap <script> <SID>2keyseq_0- <SID>key_.
+noremap <script> <SID>2keyseq_'= <SID>key_.
+noremap <script> <SID>2keyseq_0= <SID>key_.
 
 " XXX: this uses my customized version of "matchit" plugin, see
 "   https://github.com/alexeymuranov/matchit.zip
@@ -1815,11 +1818,14 @@ omap <SID>key_M <Plug>ExtendedFtOperationModeRepeatSearchBackward
 " #.#.# Marks
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  _  - set a mark (`m`)
-"  -  - go to the mark (see "Goto" section)
-"  =  - go to the first non-blank character of the mark line (see "Goto" section)
-nnoremap <SID>key__ m
-vnoremap <SID>key__ m
+"  +  - set a mark (`m`)
+"  ++ - set the mark `\(backquote)`
+"  =  - go to the mark (see "Goto" section)
+"  -  - go to the first non-blank character of the mark line (see "Goto" section)
+nnoremap <SID>key_+ m
+vnoremap <SID>key_+ m
+nnoremap <SID>2keyseq_++ m`
+vnoremap <SID>2keyseq_++ m`
 
 "
 " #.#.# Find
