@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2015-06-09
+" Last Change:  2015-08-23
 " Author:       Alexey Muranov
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -267,14 +267,15 @@ endif
 
 let g:CrazyKeysMenuItemLayoutDescription = {
       \ 'Qwerty-US-En' : 'US\ English\ Qwerty',
-      \ 'Qwerty-Ca-Fr' : 'Canadian\ French\ Qwerty'
+      \ 'Qwerty-Ca-Fr' : 'Canadian\ French\ Qwerty',
+      \ 'Russian' : 'Russian'
       \ }
 let s:menu_item_configuration_description = {
       \ 'l' : 'left-handed',
       \ 'r' : 'right-handed'
       \ }
 
-for s:layout_key in ['Qwerty-US-En', 'Qwerty-Ca-Fr']
+for s:layout_key in ['Qwerty-US-En', 'Qwerty-Ca-Fr', 'Russian']
   for s:configuration_key in ['l', 'r']
     let s:value =
           \ g:CrazyKeysMenuItemLayoutDescription[s:layout_key] . '\ ' .
@@ -505,6 +506,88 @@ let g:CrazyKeysLayouts['Qwerty-Ca-Fr'] = {
       \ '~' : 'Ù',
       \
       \ '^' : '?'
+      \ }
+
+let g:CrazyKeysLayouts['Russian'] = {
+      \ 'q' : 'й',
+      \ 'w' : 'ц',
+      \ 'e' : 'у',
+      \ 'r' : 'к',
+      \ 't' : 'е',
+      \ 'y' : 'н',
+      \ 'u' : 'г',
+      \ 'i' : 'ш',
+      \ 'o' : 'щ',
+      \ 'p' : 'з',
+      \ '[' : 'х',
+      \ ']' : 'ъ',
+      \
+      \ 'a' : 'ф',
+      \ 's' : 'ы',
+      \ 'd' : 'в',
+      \ 'f' : 'а',
+      \ 'g' : 'п',
+      \ 'h' : 'р',
+      \ 'j' : 'о',
+      \ 'k' : 'л',
+      \ 'l' : 'д',
+      \ ';' : 'ж',
+      \
+      \ 'z' : 'я',
+      \ 'x' : 'ч',
+      \ 'c' : 'с',
+      \ 'v' : 'м',
+      \ 'b' : 'и',
+      \ 'n' : 'т',
+      \ 'm' : 'ь',
+      \ ',' : 'б',
+      \ '.' : 'ю',
+      \ '/' : '/',
+      \
+      \ '''' : 'э',
+      \ '\' : 'ё',
+      \
+      \ '`' : ']',
+      \
+      \ 'Q' : 'Й',
+      \ 'W' : 'Ц',
+      \ 'E' : 'У',
+      \ 'R' : 'К',
+      \ 'T' : 'Е',
+      \ 'Y' : 'Н',
+      \ 'U' : 'Г',
+      \ 'I' : 'Ш',
+      \ 'O' : 'Щ',
+      \ 'P' : 'З',
+      \ '{' : 'Х',
+      \ '}' : 'Ъ',
+      \
+      \ 'A' : 'Ф',
+      \ 'S' : 'Ы',
+      \ 'D' : 'В',
+      \ 'F' : 'А',
+      \ 'G' : 'П',
+      \ 'H' : 'Р',
+      \ 'J' : 'О',
+      \ 'K' : 'Л',
+      \ 'L' : 'Д',
+      \ ':' : 'Ж',
+      \
+      \ 'Z' : 'Я',
+      \ 'X' : 'Ч',
+      \ 'C' : 'С',
+      \ 'V' : 'М',
+      \ 'B' : 'И',
+      \ 'N' : 'Т',
+      \ 'M' : 'Ь',
+      \ '<' : 'Б',
+      \ '>' : 'Ю',
+      \ '?' : '?',
+      \
+      \ '"' : 'Э',
+      \ '|' : 'Ё',
+      \
+      \ '~' : '['
       \ }
 
 " Find a translation from the default "left-handed" US Qwerty to the
