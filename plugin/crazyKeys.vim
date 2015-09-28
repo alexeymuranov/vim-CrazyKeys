@@ -22,7 +22,7 @@
 " * tComment
 " * unimpaired
 " * vim-extended-ft
-" * https://github.com/alexeymuranov/matchit.zip
+" * https://github.com/benjifisher/matchit.zip
 "
 "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 "
@@ -1823,8 +1823,8 @@ vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 noremap <script> <SID>2keyseq_'= <SID>key_.
 noremap <script> <SID>2keyseq_0= <SID>key_.
 
-" XXX: this uses my customized version of "matchit" plugin, see
-"   https://github.com/alexeymuranov/matchit.zip
+" XXX: this uses an unstable version of "matchit" plugin, see
+"   https://github.com/benjifisher/matchit.zip
 nmap <SID>key_* <Plug>MatchItNormalForward
 vmap <SID>key_* <Plug>MatchItVisualForward
 omap <SID>key_* <Plug>MatchItOperationForward
