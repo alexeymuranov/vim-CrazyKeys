@@ -1392,95 +1392,90 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 " #.#.# Big motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  i         - beginning of this or previous word (`b` in Vim)
-"  J         - beginning of this or previous space-delimited word
+"  <         - beginning of this or previous word (`b` in Vim)
+"  ,         - beginning of this or previous space-delimited word
 "              (`B` in Vim)
-"  'i        - Normal mode: after the end of the previous word
-"  "J        - after the end of the previous space-delimited word
-"  o         - Normal mode: beginning of the next word (`w` in Vim)
-"  :         - Normal mode: beginning of the next space-delimited word
+"  I        - Normal mode: after the end of the previous word
+"  i         - after the end of the previous space-delimited word
+"  >         - Normal mode: beginning of the next word (`w` in Vim)
+"  .         - Normal mode: beginning of the next space-delimited word
 "              (`W` in Vim)
-"  'o        - Normal mode: after the end of this or next word
-"  ":        - Normal mode: after the end of this or next space-delimited
+"  O        - Normal mode: after the end of this or next word
+"  o        - Normal mode: after the end of this or next space-delimited
 "              word
-"  I         - duplicate of `'J`
-"  O         - duplicate of `':`
 "  L         - beginning of the first line of this or previous paragraph
 "  K         - Normal mode: beginning of the first line of the next
 "              paragraph
 "              Visual mode: beginning of the last line of this or
 "              next paragraph
-"  <S-Left>  - duplicate of `:`
-"  <S-Right> - duplicate of `J`
-"  <S-Up>    - duplicate of `L`
-"  <S-Down>  - duplicate of `K`
-"  'j        - go to the first non-blank character of the line (`^`)
-"  "I        - go to the first non-blank character of the previous line (`-`)
+"  'j        - go to the first column of the line (`0`)
+"  [count]',  - go to the first non-blank of the previous line or
+"              to the first non-blank of [count] line above (like `-`)
 "  ';        - go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
-"  "O        - Normal mode: go to the first non-blank character of the
+"  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
-"  [count],  - go to the first non-blank character of the line (`^`) if not
+"  [count]J  - go to the first non-blank character of the line (`^`) if not
 "              there already and if no count is given, otherwise act like
 "              `+` in Vim (like `"O`)
-"  [count]', - go to the first column of the line (like `0` in Vim) or to
+"  [count]"J - go to the first column of the line (like `0` in Vim) or to
 "              the first column of [count] line below
-"  x         - Operator pending mode: same as `,`
-"  [count].  - Normal mode: go after the last character of the line (`$l`),
+"  x         - Operator pending mode: duplicate of `J`
+"  [count]:  - Normal mode: go after the last character of the line (`$l`),
 "              unless already there and no [count] is given; if [count] is
 "              given, act like `$l` in Vim, otherwise go after the end of
 "              the following line;
 "              Visual mode: go to the last character of the line (like `$h`
 "              in Vim), unless already there or [count] is givent, etc.
 "              Operator pending mode: a like `$` in Vim
-"  [count]'. - go to or after the first non-blank character of the line
+"  [count]": - go to or after the first non-blank character of the line
 "              (`g_l` or `g_` in Vim) (like `'l`), unless already there or
 "              [count] is given; if [count] is given, also act abit like `g_`
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
-"  c         - Operator pending mode: same as `.`
-"  <A-Left>  - duplicate of `'j`
-"  <A-Right> - duplicate of `';`
-"  <S-A-Left>  - duplicate of `"J`
-"  <S-A-Right> - duplicate of `":`
-"  [count]<  - go to the first non-blank of the previous line or
-"              to the first non-blank of [count] line above (`-`)
+"  c         - Operator pending mode: duplicate of `:`
 "  [count]'< - go to the first column of the previous line or
 "              to the first column of [count] line above
 "              (a bit like `-0` in Vim)
-"  [count]>  - go after the end of the previous line (`-`) or
+"  [count]'i  - go after the end of the previous line (`-`) or
 "              after the end of [count] line above
 "              (a bit like `-$` in Vim)
-"  [count]'> - go after the last non-blank the previous line or
+"  [count]"I - go after the last non-blank of the previous line or
 "              after the last non-blank of [count] line above
 "              (a bit like `-g_` in Vim)
 "  <C-Left>  - move one word left (like the default, or like in Emacs)
 "  <C-Right> - move one word right (like the default, or like in Emacs)
-nnoremap <SID>key_i b
-vmap <SID>key_i <Plug>(CrazyKeys-ToEndOfWordBackward)
-omap <SID>key_i <Plug>(CrazyKeys-ToEndOfWordBackward)
-map <SID>key_I <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
-nmap <SID>2keyseq_'i <Plug>(CrazyKeys-ToEndOfWordBackward)
-vnoremap <SID>2keyseq_'i b
-onoremap <SID>2keyseq_'i b
-nnoremap <SID>key_o w
-vnoremap <SID>key_o @=" w\<lt>BS>"<CR>
-onoremap <SID>key_o w
-nnoremap <SID>key_O @="\<lt>BS>E "<CR>
-vnoremap <SID>key_O @=" W\<lt>BS>"<CR>
-onoremap <SID>key_O W
-nmap <SID>2keyseq_'o <Plug>(CrazyKeys-ToEndOfWordForward)
-vnoremap <SID>2keyseq_'o e
-omap <SID>2keyseq_'o <Plug>(CrazyKeys-ToEndOfWordForward)
-noremap <script> <SID>2keyseq_'K <SID>key_I
-noremap <script> <SID>2keyseq_': <SID>key_O
-noremap <script> <S-Left>  <SID>key_J
-noremap <script> <S-Right> <SID>key_:
+"  <S-Left>  - duplicate of `:`
+"  <S-Right> - duplicate of `J`
+"  <S-Up>    - duplicate of `L`
+"  <S-Down>  - duplicate of `K`
+"  <A-Left>  - duplicate of `'j`
+"  <A-Right> - duplicate of `';`
+"  <S-A-Left>  - duplicate of `"J`
+"  <S-A-Right> - duplicate of `":`
+nnoremap <SID>key_< b
+vmap <SID>key_< <Plug>(CrazyKeys-ToEndOfWordBackward)
+omap <SID>key_< <Plug>(CrazyKeys-ToEndOfWordBackward)
+map <SID>key_i <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
+nmap <SID>key_I <Plug>(CrazyKeys-ToEndOfWordBackward)
+vnoremap <SID>key_I b
+onoremap <SID>key_I b
+nnoremap <SID>key_> w
+vnoremap <SID>key_> @=" w\<lt>BS>"<CR>
+onoremap <SID>key_> w
+nnoremap <SID>key_o @="\<lt>BS>E "<CR>
+vnoremap <SID>key_o @=" W\<lt>BS>"<CR>
+onoremap <SID>key_o W
+nmap <SID>key_O <Plug>(CrazyKeys-ToEndOfWordForward)
+vnoremap <SID>key_O e
+omap <SID>key_O <Plug>(CrazyKeys-ToEndOfWordForward)
+noremap <script> <S-Left>  <SID>key_,
+noremap <script> <S-Right> <SID>key_.
 
-noremap  <SID>key_J B
-nnoremap <SID>key_: W
-vnoremap <SID>key_: E
-omap <SID>key_: <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
+noremap  <SID>key_, B
+nnoremap <SID>key_. W
+vnoremap <SID>key_. E
+omap <SID>key_. <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
 
 noremap  <SID>key_L @="k{ ^"<CR>
 onoremap <SID>key_L {
@@ -1491,9 +1486,9 @@ onoremap <SID>key_K }
 noremap <script> <S-Up>   <SID>key_L
 noremap <script> <S-Down> <SID>key_K
 
-noremap <SID>2keyseq_'j ^
-noremap  <SID>2keyseq_'I -
-onoremap <SID>2keyseq_'I v-
+noremap <SID>2keyseq_'j 0
+noremap  <SID>2keyseq_', -
+onoremap <SID>2keyseq_', v-
 
 nnoremap <SID>2keyseq_'; g_l
 " FIXME: include the last non-blank character when moving from the left,
@@ -1501,13 +1496,13 @@ nnoremap <SID>2keyseq_'; g_l
 vnoremap <SID>2keyseq_'; g_
 " FIXME: same
 onoremap <SID>2keyseq_'; g_
-noremap  <SID>2keyseq_'O +
-onoremap <SID>2keyseq_'O v+
+noremap  <SID>2keyseq_'. +
+onoremap <SID>2keyseq_'. v+
 
-map <SID>key_, <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
-onoremap <script> <SID>key_x <SID>key_,
+map <SID>key_J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+onoremap <script> <SID>key_x <SID>key_J
 
-map <SID>2keyseq_', <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
+map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 
 " function! s:NMapExpr_ToEndOfThisOrNextLine()
 "   if v:count
@@ -1561,13 +1556,13 @@ map <SID>2keyseq_', <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 "     endif
 "   endif
 " endfunction
-" nnoremap <expr> <SID>key_. <SID>NMapExpr_ToEndOfThisOrNextLine()
-" vnoremap <expr> <SID>key_. <SID>VMapExpr_ToEndOfThisOrNextLine()
-" onoremap <SID>key_. $
-nmap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
-vmap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLineVisual)
-omap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
-onoremap <script> <SID>key_c <SID>key_.
+" nnoremap <expr> <SID>key_: <SID>NMapExpr_ToEndOfThisOrNextLine()
+" vnoremap <expr> <SID>key_: <SID>VMapExpr_ToEndOfThisOrNextLine()
+" onoremap <SID>key_: $
+nmap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
+vmap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLineVisual)
+omap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
+onoremap <script> <SID>key_c <SID>key_:
 
 noremap <script> <A-Left>   <SID>2keyseq_'j
 noremap <script> <S-A-Left> <SID>2keyseq_'J
@@ -1643,25 +1638,22 @@ function! s:OMapExpr_ToLastNonblankOfThisOrNextLine()
     endif
   endif
 endfunction
-nnoremap <expr> <SID>2keyseq_'. <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
-vnoremap <expr> <SID>2keyseq_'. <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
-onoremap <expr> <SID>2keyseq_'. <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
+nnoremap <expr> <SID>2keyseq_': <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
+vnoremap <expr> <SID>2keyseq_': <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
+onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
 
-nnoremap <SID>key_< -
-vnoremap <SID>key_< -
-onoremap <SID>key_< -
 nnoremap <SID>2keyseq_'< -0
 vnoremap <SID>2keyseq_'< -0
 " FIXME: implement
 onoremap <SID>2keyseq_'< <Nop>
-nnoremap <SID>key_> -$l
-vnoremap <SID>key_> -$h
+nnoremap <SID>2keyseq_'i -$l
+vnoremap <SID>2keyseq_'i -$h
 " FIXME: implement
-onoremap <SID>key_> <Nop>
-nnoremap <SID>2keyseq_'> -g_l
-vnoremap <SID>2keyseq_'> -g_
+onoremap <SID>2keyseq_'i <Nop>
+nnoremap <SID>2keyseq_'I -g_l
+vnoremap <SID>2keyseq_'I -g_
 " FIXME: implement
-onoremap <SID>2keyseq_'> <Nop>
+onoremap <SID>2keyseq_'I <Nop>
 
 noremap <C-Left>  <C-Left>
 noremap <C-Right> <C-Right>
@@ -1824,8 +1816,8 @@ endfunction
 vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 "
 " FIXME: make use [count] as specified
-noremap <script> <SID>2keyseq_'= <SID>key_.
-noremap <script> <SID>2keyseq_0= <SID>key_.
+noremap <script> <SID>2keyseq_'= <SID>key_:
+noremap <script> <SID>2keyseq_0= <SID>key_:
 
 " XXX: this uses an unstable version of "matchit" plugin, see
 "   https://github.com/benjifisher/matchit.zip
