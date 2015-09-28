@@ -1395,7 +1395,7 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  i         - beginning of this or previous word (`b` in Vim)
 "  J         - beginning of this or previous space-delimited word
 "              (`B` in Vim)
-"  'ii        - Normal mode: after the end of the previous word
+"  'i        - Normal mode: after the end of the previous word
 "  "J        - after the end of the previous space-delimited word
 "  o         - Normal mode: beginning of the next word (`w` in Vim)
 "  :         - Normal mode: beginning of the next space-delimited word
