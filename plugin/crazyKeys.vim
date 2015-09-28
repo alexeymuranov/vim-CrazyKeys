@@ -1414,12 +1414,11 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <S-Right> - duplicate of `J`
 "  <S-Up>    - duplicate of `L`
 "  <S-Down>  - duplicate of `K`
-"  'j, <A-Left> - go to the first non-blank character of the line (`^`)
-"  "I, <S-A-Left> - go to the first non-blank character of the previous line
-"              (`-`)
-"  ';, <A-Right> - go to or after the last non-blank character of the
-"              line (`g_` or `g_l`)
-"  "O, <S-A-Right> - Normal mode: go to the first non-blank character of the
+"  'j        - go to the first non-blank character of the line (`^`)
+"  "I        - go to the first non-blank character of the previous line (`-`)
+"  ';        - go to or after the last non-blank character of the line
+"              (`g_` or `g_l`)
+"  "O        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
 "  [count],  - go to the first non-blank character of the line (`^`) if not
 "              there already and if no count is given, otherwise act like
@@ -1440,6 +1439,10 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
 "  c         - Operator pending mode: same as `.`
+"  <A-Left>  - duplicate of `'j`
+"  <A-Right> - duplicate of `';`
+"  <S-A-Left>  - duplicate of `"J`
+"  <S-A-Right> - duplicate of `":`
 "  [count]<  - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (`-`)
 "  [count]'< - go to the first column of the previous line or
@@ -1491,8 +1494,6 @@ noremap <script> <S-Down> <SID>key_K
 noremap <SID>2keyseq_'j ^
 noremap  <SID>2keyseq_'I -
 onoremap <SID>2keyseq_'I v-
-noremap <script> <A-Left>   <SID>2keyseq_'j
-noremap <script> <S-A-Left> <SID>2keyseq_'I
 
 nnoremap <SID>2keyseq_'; g_l
 " FIXME: include the last non-blank character when moving from the left,
@@ -1502,8 +1503,6 @@ vnoremap <SID>2keyseq_'; g_
 onoremap <SID>2keyseq_'; g_
 noremap  <SID>2keyseq_'O +
 onoremap <SID>2keyseq_'O v+
-noremap <script> <A-Right>   <SID>2keyseq_';
-noremap <script> <S-A-Right> <SID>2keyseq_'O
 
 map <SID>key_, <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 onoremap <script> <SID>key_x <SID>key_,
@@ -1569,6 +1568,11 @@ nmap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
 vmap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLineVisual)
 omap <SID>key_. <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
 onoremap <script> <SID>key_c <SID>key_.
+
+noremap <script> <A-Left>   <SID>2keyseq_'j
+noremap <script> <S-A-Left> <SID>2keyseq_'J
+noremap <script> <A-Right>   <SID>2keyseq_';
+noremap <script> <S-A-Right> <SID>2keyseq_':
 
 function! s:NMapExpr_ToLastNonblankOfThisOrNextLine()
   if v:count
