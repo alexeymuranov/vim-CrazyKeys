@@ -118,6 +118,7 @@
 "   less commonly used multi-key mappings.
 "   Maybe all key pairs starting with `<p>` can be considered as "prefixes",
 "   each one for a specialized set of mappings.
+"   Maybe the prefix `pp` can be used for less common motions.
 "
 " * Mostly define functions for printable character keys and character keys
 "   with `<Shift>` in normal and visual modes.
