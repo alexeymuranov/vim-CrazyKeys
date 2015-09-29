@@ -348,7 +348,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''''u', '''''U'
       \   ],
       \ 'v' : [
-      \   '''H',
+      \   '''h',
       \   '''l', '''k',
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
@@ -363,7 +363,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''G', '''''G',
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
-      \   '''h',
+      \   '00',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''u', '''U',
@@ -1199,7 +1199,7 @@ noremap <SID>key_<bar> <Nop>
 "  H  - without count, start line-wise visual mode (`V`); with count, start
 "       line-wise visual mode and select [count] lines
 "  'h - Normal mode: last selection (`gv`)
-"  'H - Visual mode: last selection (`gv`)
+"  'h - Visual mode: last selection (`gv`)
 "  <Space>   - from Normal mode to Insert mode (`i`),
 "              unless in 'readonly' mode;
 "              in Normal 'readonly' mode: scroll as <PageDown>
@@ -1259,7 +1259,7 @@ vmap <SID>key_h <Plug>(CrazyKeys-SwitchVisualModesCB)
 vmap <SID>key_H <Plug>(CrazyKeys-SwitchVisualModesCL)
 
 nnoremap <SID>2keyseq_'h gv
-vnoremap <SID>2keyseq_'H gv
+vnoremap <SID>2keyseq_'h gv
 
 noremap  <script> <C-l> <SID>key_<Esc>
 inoremap <script> <C-l> <SID>key_<Esc>
@@ -1701,9 +1701,9 @@ noremap <SID>2keyseq_][ ][
 " #.#.# Visual mode special mappings
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  'h - Visual mode: go to the opposite end of the selection
+"  00 - Visual mode: go to the opposite end of the selection
 "       (`o` in Vim)
-vnoremap <SID>2keyseq_'h o
+vnoremap <SID>2keyseq_00 o
 " vnoremap <script> <SID>2keyseq_-- <SID>2keyseq_'h
 
 "
