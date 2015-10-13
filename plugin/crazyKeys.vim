@@ -23,6 +23,7 @@
 " * unimpaired
 " * vim-extended-ft
 " * https://github.com/benjifisher/matchit.zip
+" * unite
 "
 "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 "
