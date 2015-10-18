@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2015-10-12
+" Last Change:  2015-10-18
 " Author:       Alexey Muranov
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -24,6 +24,7 @@
 " * vim-extended-ft
 " * https://github.com/benjifisher/matchit.zip
 " * unite
+" * vimFiler
 "
 "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 "
@@ -771,17 +772,23 @@ endfunction
 
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
-  nnoremap <leader>n :<C-u>NERDTree<CR>
-  nnoremap <leader>m :<C-u>TagbarToggle<CR>
+  nnoremap <leader>fe :<C-u>VimFilerCurrentDir -explorer -split -horizontal
+        \ -direction=botright<CR>
+  nnoremap <leader>te :<C-u>TagbarToggle<CR>
   " nnoremap <leader>o :<C-u>CtrlP<CR>
   " NOTE: 'file_rec//async' requires a properly built Vimproc
-  nnoremap <leader>o :<C-u>Unite -no-split -auto-preview -start-insert file_rec/async<CR>
+  nnoremap <leader>fr :<C-u>Unite -no-split -auto-preview -start-insert
+        \ file_rec/async<CR>
   " nnoremap <leader>l :<C-u>CtrlPMRU<CR>
-  nnoremap <leader>l :<C-u>Unite -no-split -start-insert file_mru<CR>
+  nnoremap <leader>fu :<C-u>Unite -no-split -start-insert file_mru<CR>
+  nmap <leader>F <leader>fu
   " nnoremap <leader>k :<C-u>CtrlPBuffer<CR>
-  nnoremap <leader>k :<C-u>Unite -no-split -auto-preview -no-start-insert buffer<CR>
+  nnoremap <leader>b :<C-u>Unite -no-split -auto-preview -no-start-insert
+        \ buffer<CR>
   nnoremap <leader>y :<C-u>Unite -no-start-insert history/yank<CR>
   nnoremap <leader>u :<C-u>Unite -no-start-insert outline<CR>
+  nnoremap <leader>tl :<C-u>Unite -direction=botright -no-start-insert
+        \ tag/include<CR>
   " FIXME: make this work (or at least find out what it is supposed to do)
   " nnoremap <leader>i :<C-u>Unite -no-start-insert tag/include<CR>
   " Open a scratch buffer
