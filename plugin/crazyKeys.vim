@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2015-10-18
+" Last Change:  2015-10-19
 " Author:       Alexey Muranov
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -774,14 +774,13 @@ function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
   nnoremap <leader>fe :<C-u>VimFilerCurrentDir -explorer -split -horizontal
         \ -direction=botright<CR>
-  nnoremap <leader>te :<C-u>TagbarToggle<CR>
+  nnoremap <leader>tb :<C-u>TagbarToggle<CR>
   " nnoremap <leader>o :<C-u>CtrlP<CR>
   " NOTE: 'file_rec//async' requires a properly built Vimproc
   nnoremap <leader>fr :<C-u>Unite -no-split -auto-preview -start-insert
         \ file_rec/async<CR>
   " nnoremap <leader>l :<C-u>CtrlPMRU<CR>
-  nnoremap <leader>fu :<C-u>Unite -no-split -start-insert file_mru<CR>
-  nmap <leader>F <leader>fu
+  nnoremap <leader>F :<C-u>Unite -no-split -start-insert file_mru<CR>
   " nnoremap <leader>k :<C-u>CtrlPBuffer<CR>
   nnoremap <leader>b :<C-u>Unite -no-split -auto-preview -no-start-insert
         \ buffer<CR>
