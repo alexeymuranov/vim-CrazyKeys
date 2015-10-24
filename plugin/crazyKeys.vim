@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2015-10-19
+" Last Change:  2015-10-25
 " Author:       Alexey Muranov
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -180,6 +180,20 @@
 "   This may be confusing, especially with long 'timeout'.
 "   A possible exception: screen scrolling.
 "
+" * Use a command (`:rec`?) to start recording macros, thus liberating one
+"   more key for common editing functions.  Users who use macros a lot
+"   shall be able to assign one of the "user keys" to this splendid
+"   function.  However, using, for example, a `<Ctrl>`-key combination to
+"   start recording a macro also seems like a good idea.
+"
+" * Think about assigning simple keys for `q"` and `@"` -- recording and
+"   running a macro in the unnamed register.
+"   It seems that it is possible to synchronize `@@` with `@"` (either they
+"   are already the same, or the command `:let @@=@"` can be used).
+"   In this case, it is better to assign a key to `@@` than to `@"`.
+"   However, note the above idea about using a command to start recording a
+"   macro.
+"
 " * Consider assigning some well-positioned keys to less common functions,
 "   so that the user could remap them if desired.
 "   This is in addition to the reserved user keys and user prefixes.
@@ -209,12 +223,6 @@
 " * Consider using the key that repeats the last "go to symbol" command to
 "   repeat any motion command that requires more than one key
 "   (or one key with `<Shift>`).
-"
-" * Think about assigning simple keys for `q"` and `@"` -- recording and
-"   running a macro in the unnamed register.
-"   It seems that it is possible to synchronize `@@` with `@"` (either they
-"   are already the same, or the command `:let @@=@"` can be used).
-"   In this case, it is better to assign a key to `@@` than to `@"`.
 "
 " * Think about a command that copies the unnamed register to a given
 "   register (like `:let @a=@"`).
