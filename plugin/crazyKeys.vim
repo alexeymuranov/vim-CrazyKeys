@@ -780,6 +780,7 @@ endfunction
 
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
+  " TODO: convert most of these mappings into menus (with mappings)
   nnoremap <leader>fe :<C-u>VimFilerCurrentDir -explorer -split -horizontal
         \ -direction=botright<CR>
   " NOTE: 'file_rec//async' requires a properly built Vimproc
