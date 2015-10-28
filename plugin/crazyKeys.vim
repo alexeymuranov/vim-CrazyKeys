@@ -781,25 +781,40 @@ endfunction
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
   " TODO: convert most of these mappings into menus (with mappings)
-  nnoremap <leader>fe :<C-u>VimFilerCurrentDir -explorer -split -horizontal
-        \ -direction=botright<CR>
+  nnoremap <silent> <leader>fe :<C-u>VimFilerCurrentDir
+        \ -explorer -split -horizontal -direction=botright<CR>
   " NOTE: 'file_rec//async' requires a properly built Vimproc
-  nnoremap <leader>fr :<C-u>Unite -no-split -auto-preview -start-insert
+  nnoremap <silent> <leader>fr :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
         \ file_rec/async<CR>
-  nnoremap <leader>fu :<C-u>Unite -no-split -start-insert file_mru<CR>
+  nnoremap <silent> <leader>fu :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -start-insert
+        \ file_mru<CR>
   nmap <leader>F <leader>fu
-  nnoremap <leader>b :<C-u>Unite -no-split -auto-preview -no-start-insert
+  nnoremap <silent> <leader>b :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -no-start-insert
         \ buffer<CR>
   nmap <leader>B <leader>b
-  nnoremap <leader>y :<C-u>Unite -no-start-insert history/yank<CR>
-  nnoremap <leader>u :<C-u>Unite -no-start-insert outline<CR>
-  nnoremap <leader>tb :<C-u>TagbarToggle<CR>
+  nnoremap <silent> <leader>y :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -no-start-insert
+        \ history/yank<CR>
+  nnoremap <silent> <leader>u :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -no-start-insert
+        \ outline<CR>
+  nnoremap <silent> <leader>tb :<C-u>TagbarToggle<CR>
   " FIXME: make this work (or at least find out what it is supposed to do)
-  " nnoremap <leader>tl :<C-u>Unite -direction=botright -no-start-insert
-  "       \ tag/include<CR>
+  " nnoremap <silent> <leader>tl :<C-u>Unite
+  "       \ -direction=botright -prompt-direction=below
+  "       \ -no-start-insert tag/include<CR>
   nmap <leader>T <leader>tb
   " Open a scratch buffer
-  nnoremap <leader>s :new<CR>:setlocal buftype=nofile<CR>:setlocal bufhidden=hide<CR>:setlocal noswapfile<CR>
+  nnoremap <silent> <leader>s :new<CR>:setlocal buftype=nofile<CR>
+        \:setlocal bufhidden=hide<CR>:setlocal noswapfile<CR>
 endfunction
 
 "
