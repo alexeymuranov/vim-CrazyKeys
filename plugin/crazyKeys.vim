@@ -2353,15 +2353,46 @@ noremap <SID>key_Y <Nop>
 " #.# Insert mode mappings
 " -------------------------------------------------------------------------
 "
-" <C-Enter> or <C-Return> inserts a line break AFTER the cursor:
-inoremap <C-CR> <CR><Esc>kA
+" NOTE: try to follow *Readline* conventions when possible
+"
+" <C-b> go one character left
+" <C-f> go one character right
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
+" <S-Enter> or <S-Return> inserts a line break AFTER the cursor:
+inoremap <S-CR> <CR><Esc>kA
+
+" XXX:experiment
+" <C-m> inserts a line break
+" <C-j> inserts a line break AFTER the cursor:
+" XXX:  This line is commented out because there is some strange bug:
+"   with this mapping in a startup script, newlines get inserted twice.
+"   This seem to be caused by some extensions or configurations (not
+"   reproducible when .vim directory is removed).
+" inoremap <C-m> <C-m>
+inoremap <C-j> <CR><Esc>kA
 
 " <C-BS> deletes the previous word:
 inoremap <C-BS> <C-w>
 
-" Try to map <S-CR> and <S-BS>:
-inoremap <S-CR> <CR><Esc>kA
+" <S-BS> delete the character after the cursor
 inoremap <S-BS> <Del>
+
+" <C-d> delete the character after the cursor
+" NOTE: the default Vim function of removing one shiftwidth of indent at the
+"   start from the current line was also moderately useful
+inoremap <C-d> <Del>
+
+" <C-t> Insert the character which is below the cursor (`<C-e>` in Vim)
+" NOTE: the default Vim function of adding one shiftwidth of indent at the
+"   start from the current line was also moderately useful
+inoremap <C-t> <C-e>
+
+" <C-a> go to the beginning of the line
+" <C-e> go to the end of the line
+inoremap <C-a> <C-o>^
+inoremap <C-e> <End>
 
 " NOTE: these are not as useful as i thought before:
 " inoremap <C-Left>  <Esc><C-Left>
