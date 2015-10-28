@@ -781,18 +781,45 @@ endfunction
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
   " TODO: convert most of these mappings into menus (with mappings)
-  nnoremap <silent> <leader>fe :<C-u>VimFilerCurrentDir
-        \ -explorer -split -horizontal -direction=botright<CR>
-  " NOTE: 'file_rec//async' requires a properly built Vimproc
-  nnoremap <silent> <leader>fr :<C-u>Unite
-        \ -direction=botright -prompt-direction=below
-        \ -auto-resize -auto-preview -start-insert
-        \ file_rec/async<CR>
-  nnoremap <silent> <leader>fu :<C-u>Unite
+  " source $VIMRUNTIME/menu.vim
+  " set wildmenu
+  " set cpo-=<
+  " set wcm=<C-z>
+  " noremap <F4> :emenu <C-z>
+  noremenu <silent> File.&Jump\ To.&Recent\.\.\.
+        \ :<C-u>Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -start-insert
         \ file_mru<CR>
-  nmap <leader>F <leader>fu
+  noremenu <silent> File.&Jump\ To.In\ &Working\ Directory\.\.\.
+        \ :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file<CR>
+  noremenu <silent> File.&Jump\ To.&Under\ Working\ Directory\.\.\.
+        \ :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file_rec/async<CR>
+  noremenu <silent> File.&Explore\.\.\.
+        \ :<C-u>VimFilerCurrentDir
+        \ -explorer -split -horizontal -direction=botright<CR>
+  nnoremap <silent> <leader>fr :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -start-insert
+        \ file_mru<CR>
+  nnoremap <silent> <leader>fw :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file<CR>
+  " NOTE: 'file_rec/async' requires a properly built Vimproc
+  nnoremap <silent> <leader>fu :<C-u>Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file_rec/async<CR>
+  nnoremap <silent> <leader>fe :<C-u>VimFilerCurrentDir
+        \ -explorer -split -horizontal -direction=botright<CR>
+  nmap <leader>F <leader>fr
   nnoremap <silent> <leader>b :<C-u>Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -auto-preview -no-start-insert
