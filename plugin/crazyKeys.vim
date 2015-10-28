@@ -184,7 +184,8 @@
 "   more key for common editing functions.  Users who use macros a lot
 "   shall be able to assign one of the "user keys" to this splendid
 "   function.  However, using, for example, a `<Ctrl>`-key combination to
-"   start recording a macro also seems like a good idea.
+"   start recording a macro also seems like a good idea.  How about
+"   `<Ctrl-m>`?
 "
 " * Think about assigning simple keys for `q"` and `@"` -- recording and
 "   running a macro in the unnamed register.
