@@ -354,8 +354,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '[[', ']]', '[]', '][',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
-      \   '''u', '''U',
-      \   '''''u', '''''U'
+      \   '''/', '''?',
+      \   '''''/', '''''?'
       \   ],
       \ 'v' : [
       \   '''h',
@@ -376,8 +376,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '00',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
-      \   '''u', '''U',
-      \   '''''u', '''''U'
+      \   '''/', '''?',
+      \   '''''/', '''''?'
       \   ],
       \ 'o' : [
       \   '''l', '''k',
@@ -388,8 +388,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '[[', ']]', '[]', '][',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
-      \   '''u', '''U',
-      \   '''''u', '''''U'
+      \   '''/', '''?',
+      \   '''''/', '''''?'
       \   ]
       \ }
 
@@ -1853,23 +1853,23 @@ noremap <Tab>   <C-i>
 " #.#.# Go to a character
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  u  - in Normal mode: go to a character forward (like `f` in Vim)
-"  u  - in Visual and Operator modes: go to a character forward
+"  /  - in Normal mode: go to a character forward (like `f` in Vim)
+"  /  - in Visual and Operator modes: go to a character forward
 "       (like `f` in Vim)
-"  'u - in Normal mode: go to a character forward and stop just after it
-"  'u - in Visual and Operator modes: go to a character forward and stop
+"  '/ - in Normal mode: go to a character forward and stop just after it
+"  '/ - in Visual and Operator modes: go to a character forward and stop
 "       just before it (like `t` in Vim)
-"  U  - in Normal mode: go to a character back (like `F` in Vim)
-"  U  - in Visual and Operator modes: go to a character back
+"  ?  - in Normal mode: go to a character back (like `F` in Vim)
+"  ?  - in Visual and Operator modes: go to a character back
 "       (like `F` in Vim)
-"  "U - in Normal mode: go to a character back and stop just after it
+"  "? - in Normal mode: go to a character back and stop just after it
 "       (like `T` in Vim)
-"  "U - in Visual and Operator modes: go to a character back and stop just
+"  "? - in Visual and Operator modes: go to a character back and stop just
 "       after it (like `T` in Vim)
-"  ''u - go to the matching parenthesis-like delimiter (like `%`) or
+"  ''/ - go to the matching parenthesis-like delimiter (like `%`) or
 "        cycle forward through matching keywords like if-then-else
 "        (like `%` with "matchit" plugin), synonym of `*`
-"  ""U - go to the matching parenthesis-like delimiter (like `%`) or
+"  ""? - go to the matching parenthesis-like delimiter (like `%`) or
 "        cycle backward through matching keywords like if-then-else
 "        (like `g%` with "matchit" plugin), synonym of `'*`
 "  m  - repeat in the same direction (roughly `;` in Vim)
@@ -1883,24 +1883,24 @@ noremap <Tab>   <C-i>
 " XXX: this uses "vim-extended-ft" plugin
 " FIXME: this does not work correctly in Visual mode
 " TODO: rewrite without using the buggy "vim-extended-ft"
-nmap <SID>key_u <Plug>ExtendedFtSearchFForward
-vmap <SID>key_u <Plug>ExtendedFtVisualModeSearchFForward
-omap <SID>key_u <Plug>ExtendedFtOperationModeSearchFForward
-nmap <SID>key_U <Plug>ExtendedFtSearchFBackward
-vmap <SID>key_U <Plug>ExtendedFtVisualModeSearchFBackward
-omap <SID>key_U <Plug>ExtendedFtOperationModeSearchFBackward
+nmap <SID>key_/ <Plug>ExtendedFtSearchFForward
+vmap <SID>key_/ <Plug>ExtendedFtVisualModeSearchFForward
+omap <SID>key_/ <Plug>ExtendedFtOperationModeSearchFForward
+nmap <SID>key_? <Plug>ExtendedFtSearchFBackward
+vmap <SID>key_? <Plug>ExtendedFtVisualModeSearchFBackward
+omap <SID>key_? <Plug>ExtendedFtOperationModeSearchFBackward
 " FIXME: make it go just *after* the character
 " NOTE: it is probably necessary to copy-paste and edit definitions from
 "   "vim-extended-ft"
-nmap <SID>2keyseq_'u <Plug>ExtendedFtSearchFForward
-vmap <SID>2keyseq_'u <Plug>ExtendedFtVisualModeSearchTForward
-omap <SID>2keyseq_'u <Plug>ExtendedFtOperationModeSearchTForward
-nmap <SID>2keyseq_'U <Plug>ExtendedFtSearchTBackward
-vmap <SID>2keyseq_'U <Plug>ExtendedFtVisualModeSearchTBackward
-omap <SID>2keyseq_'U <Plug>ExtendedFtOperationModeSearchTBackward
+nmap <SID>2keyseq_'/ <Plug>ExtendedFtSearchFForward
+vmap <SID>2keyseq_'/ <Plug>ExtendedFtVisualModeSearchTForward
+omap <SID>2keyseq_'/ <Plug>ExtendedFtOperationModeSearchTForward
+nmap <SID>2keyseq_'? <Plug>ExtendedFtSearchTBackward
+vmap <SID>2keyseq_'? <Plug>ExtendedFtVisualModeSearchTBackward
+omap <SID>2keyseq_'? <Plug>ExtendedFtOperationModeSearchTBackward
 
-noremap <script> <SID>3keyseq_''u <SID>key_*
-noremap <script> <SID>3keyseq_''U <SID>2keyseq_'*
+noremap <script> <SID>3keyseq_''/ <SID>key_*
+noremap <script> <SID>3keyseq_''? <SID>2keyseq_'*
 
 nmap <SID>key_m <Plug>ExtendedFtRepeatSearchForward
 vmap <SID>key_m <Plug>ExtendedFtVisualModeRepeatSearchForward
@@ -1926,8 +1926,8 @@ vnoremap <SID>2keyseq_++ m`
 " #.#.# Find
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  /   - find forward (`/`)
-"  ?   - find backward (`?`)
+"  u   - find forward (`/`)
+"  U   - find backward (`?`)
 "  &   - find next occurrence of the current word (`*`)
 "  ^   - find previous occurrence of the current word (`#`)
 "  '&  - find next occurrence of the current word as a part of a word
@@ -1938,8 +1938,8 @@ vnoremap <SID>2keyseq_++ m`
 "  N   - repeat last find in the opposite direction (`N`)
 " NOTE: `'n` and `'N` may be used to repeat the last "go to symbol" command
 "   in the same or opposite direction.
-noremap <SID>key_/ /
-noremap <SID>key_? ?
+noremap <SID>key_u /
+noremap <SID>key_U ?
 noremap <SID>key_& *
 noremap <SID>2keyseq_'& g*
 noremap <SID>key_^ #
