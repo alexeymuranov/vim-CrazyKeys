@@ -2403,6 +2403,18 @@ inoremap <C-e> <End>
 " inoremap <C-Up>    <Esc><C-Up>
 " inoremap <C-Down>  <Esc><C-Down>
 
+"
+" #.# Comand-line mode mappings
+" -------------------------------------------------------------------------
+"
+" XXX:experimental
+cnoremap <C-x> <C-a>
+
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
 
 "
 " #.# Experiments
