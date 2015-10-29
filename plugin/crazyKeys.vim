@@ -1764,6 +1764,8 @@ noremap <SID>2keyseq_][ ][
 "
 "  00 - Visual mode: go to the opposite end of the selection
 "       (`o` in Vim)
+" TODO:  Think how to map `--` and `==` to this or something similar.
+"   Note the mappings for `-` and `=`.
 vnoremap <SID>2keyseq_00 o
 " vnoremap <script> <SID>2keyseq_-- <SID>2keyseq_'h
 
