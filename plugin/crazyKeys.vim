@@ -180,6 +180,9 @@
 "   This may be confusing, especially with long 'timeout'.
 "   A possible exception: screen scrolling.
 "
+" * In Cmdline and Insert modes, try to use some standard key bindings for
+"   `<Ctrl>`-key combinations (like those of *tcsh* or of *Readline*).
+"
 " * Use a command (`:rec`?) to start recording macros, thus liberating one
 "   more key for common editing functions.  Users who use macros a lot
 "   shall be able to assign one of the "user keys" to this splendid
