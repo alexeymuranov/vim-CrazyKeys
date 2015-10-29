@@ -172,7 +172,7 @@
 "   common in which mode.  When doing so, consider mapping `<Ctrl-key>` to
 "   an action similar to the "usual" action of `<key>` for these keys.
 "
-" * Use `<Enter>` key in a regular buffer to enter to enter Command mode,
+" * Use `<Enter>` key in a regular buffer to enter Command mode,
 "   at least from Normal mode.  In other modes and window/buffer kinds it
 "   should also have important roles.
 "
