@@ -2406,7 +2406,7 @@ inoremap <C-e> <End>
 " inoremap <C-Down>  <Esc><C-Down>
 
 "
-" #.# Comand-line mode mappings
+" #.# Command-line mode mappings
 " -------------------------------------------------------------------------
 "
 " XXX:experimental
