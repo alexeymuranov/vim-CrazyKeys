@@ -2356,7 +2356,7 @@ noremap <SID>key_Y <Nop>
 " #.# Insert mode mappings
 " -------------------------------------------------------------------------
 "
-" NOTE: try to follow *Readline* conventions when possible
+" NOTE: try to follow *Readline* or *tcsh* conventions when possible
 "
 " <C-b> go one character left
 " <C-f> go one character right
