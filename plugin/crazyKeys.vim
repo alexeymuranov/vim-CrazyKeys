@@ -2410,12 +2410,16 @@ inoremap <C-e> <End>
 "
 " XXX:experimental
 cnoremap <C-x> <C-a>
+cnoremap <C-Tab> <C-d>
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-d> <Del>
+" TODO: make `<C-d>` behave like in *tcsh*: delete a letter after the cursor
+"   unless at the and of line, otherwise list all possible completions (like
+"   `<C-d>` in Vim)
+" cnoremap <expr> <C-d> (col('.')==col('$')?'<C-d>':'<Del>')
 
 "
 " #.# Experiments
