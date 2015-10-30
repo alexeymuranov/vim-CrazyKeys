@@ -2621,6 +2621,7 @@ onoremap <SID>key_E <Nop>
 "
 "  * Consider using `<w>` and `<e>` in operator pending mode as modifiers.
 "
+"
 " #.# To think about
 " -------------------------------------------------------------------------
 "
