@@ -783,6 +783,10 @@ endfunction
 
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
+  command MRU Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -start-insert
+        \ file_mru
   " TODO: convert most of these mappings into menus (with mappings)
   " source $VIMRUNTIME/menu.vim
   " set wildmenu
