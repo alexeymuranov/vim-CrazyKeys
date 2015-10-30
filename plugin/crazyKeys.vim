@@ -121,6 +121,13 @@
 "   Maybe all key pairs starting with `<p>` can be considered as "prefixes",
 "   each one for a specialized set of mappings.
 "   Maybe the prefix `pp` can be used for less common motions.
+"   The keys following the prefix should not depend on the choice of left-
+"   or right-handed layout and should be chosen based on some mnemonics.
+"   Candidat operations to be accessibly through such prefix:
+"   - folding/unfolding,
+"   - indenting/unindenting (especially if this is accessible through
+"     something like `<C-A-Left>`/`<C-A-Right>`),
+"   - commenting/uncommenting.
 "
 " * Mostly define functions for printable character keys and character keys
 "   with `<Shift>` in normal and visual modes.
