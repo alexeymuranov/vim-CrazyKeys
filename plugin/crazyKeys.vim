@@ -2458,39 +2458,57 @@ nnoremap <S-A-Tab> <C-w>W
 map <SID>unimpairedMoveUp   <Plug>unimpairedMoveUp
 map <SID>unimpairedMoveDown <Plug>unimpairedMoveDown
 
+" Map command-[ and command-] to indenting or outdenting
+" while keeping the original selection in visual mode
+vnoremap <A-]> >gv
+vnoremap <A-[> <gv
+vnoremap <C-A-Right> >gv
+vnoremap <C-A-Left>  <gv
+
+nnoremap <A-]> >>
+nnoremap <A-[> <<
+nnoremap <C-A-Right> >>
+nnoremap <C-A-Left>  <<
+
+onoremap <A-]> >>
+onoremap <A-[> <<
+onoremap <C-A-Right> >>
+onoremap <C-A-Left>  <<
+
+inoremap <A-]> <C-t>
+inoremap <A-[> <C-d>
+inoremap <C-A-Right> <C-t>
+inoremap <C-A-Left>  <C-d>
+
+if !has("gui_running")
+  vnoremap <C-Right> >gv
+  vnoremap <C-Left>  <gv
+
+  nnoremap <C-Right> >>
+  nnoremap <C-Left>  <<
+
+  onoremap <C-Right> >>
+  onoremap <C-Left>  <<
+
+  inoremap <C-Right> <C-t>
+  inoremap <C-Left>  <C-d>
+endif
+
+" Bubble single lines
+" XXX: depends on "unimpaired" plugin, does not work after "mapclear"
+nnoremap <script> <C-A-Up>   <SID>unimpairedMoveUp
+nnoremap <script> <C-A-Down> <SID>unimpairedMoveDown
+
+" Bubble multiple lines
+" XXX: depends on "unimpaired" plugin, does not work after "mapclear"
+vnoremap <script> <C-A-Up>   <SID>unimpairedMoveUpgv
+vnoremap <script> <C-A-Down> <SID>unimpairedMoveDowngv
+
+" Make Shift-Insert work like in Xterm
+noremap  <S-Insert> <MiddleMouse>
+noremap! <S-Insert> <MiddleMouse>
+
 if has("gui_macvim") && has("gui_running")
-  " Map command-[ and command-] to indenting or outdenting
-  " while keeping the original selection in visual mode
-  vnoremap <A-]> >gv
-  vnoremap <A-[> <gv
-  vnoremap <C-A-Right> >gv
-  vnoremap <C-A-Left>  <gv
-
-  nnoremap <A-]> >>
-  nnoremap <A-[> <<
-  nnoremap <C-A-Right> >>
-  nnoremap <C-A-Left>  <<
-
-  onoremap <A-]> >>
-  onoremap <A-[> <<
-  onoremap <C-A-Right> >>
-  onoremap <C-A-Left>  <<
-
-  inoremap <A-]> <C-t>
-  inoremap <A-[> <C-d>
-  inoremap <C-A-Right> <C-t>
-  inoremap <C-A-Left>  <C-d>
-
-  " Bubble single lines
-  " XXX: depends on "unimpaired" plugin, does not work after "mapclear"
-  nnoremap <script> <C-A-Up>   <SID>unimpairedMoveUp
-  nnoremap <script> <C-A-Down> <SID>unimpairedMoveDown
-
-  " Bubble multiple lines
-  " XXX: depends on "unimpaired" plugin, does not work after "mapclear"
-  vnoremap <script> <C-A-Up>   <SID>unimpairedMoveUpgv
-  vnoremap <script> <C-A-Down> <SID>unimpairedMoveDowngv
-
   " Map Command-# to switch tabs
   noremap  <D-0> 0gt
   inoremap <D-0> <Esc>0gt
@@ -2513,48 +2531,6 @@ if has("gui_macvim") && has("gui_running")
   noremap  <D-9> 9gt
   inoremap <D-9> <Esc>9gt
 else
-  " Map command-[ and command-] to indenting or outdenting
-  " while keeping the original selection in visual mode
-  vnoremap <A-]> >gv
-  vnoremap <A-[> <gv
-  vnoremap <C-A-Right> >gv
-  vnoremap <C-A-Left>  <gv
-  vnoremap <C-Right> >gv
-  vnoremap <C-Left>  <gv
-
-  nnoremap <A-]> >>
-  nnoremap <A-[> <<
-  nnoremap <C-A-Right> >>
-  nnoremap <C-A-Left>  <<
-  nnoremap <C-Right> >>
-  nnoremap <C-Left>  <<
-
-  onoremap <A-]> >>
-  onoremap <A-[> <<
-  onoremap <C-A-Right> >>
-  onoremap <C-A-Left>  <<
-  onoremap <C-Right> >>
-  onoremap <C-Left>  <<
-
-  inoremap <A-]> <C-t>
-  inoremap <A-[> <C-d>
-  inoremap <C-A-Right> <C-t>
-  inoremap <C-A-Left>  <C-d>
-  inoremap <C-Right> <C-t>
-  inoremap <C-Left>  <C-d>
-
-  " Bubble single lines
-  nnoremap <script> <C-A-Up>   <SID>unimpairedMoveUp
-  nnoremap <script> <C-A-Down> <SID>unimpairedMoveDown
-
-  " Bubble multiple lines
-  vnoremap <script> <C-A-Up>   <SID>unimpairedMoveUpgv
-  vnoremap <script> <C-A-Down> <SID>unimpairedMoveDowngv
-
-  " Make shift-insert work like in Xterm
-  noremap  <S-Insert> <MiddleMouse>
-  noremap! <S-Insert> <MiddleMouse>
-
   " Map Control-# to switch tabs
   noremap  <C-0> 0gt
   inoremap <C-0> <Esc>0gt
