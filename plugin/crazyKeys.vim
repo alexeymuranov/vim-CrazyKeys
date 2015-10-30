@@ -33,10 +33,10 @@
 " # Quick start guide                                       [documentation]
 " =========================================================================
 "
-" Load this file and set the (default) US Qwerty left-handed mapping by
+" Load this file and set the (default) US Qwerty right-handed mapping by
 " executing
 " ~~~
-"     call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'l')
+"     call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
 " ~~~
 "
 " To activate the mappings automatically on startup, use this file as a
@@ -53,9 +53,9 @@
 "     call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
 " ~~~
 "
-" The left-handed configuration may be easier to learn for Vim user because
-" the basic cursor movement keys are on the right, while in the
-" right-handed configuration they are on the left (which may be easier to
+" Right-handed configuration may be easier to learn for Vim users
+" because the basic cursor movement keys are on the right, while in
+" left-handed configuration they are on the left (which may be easier to
 " learn for Quake players).
 "
 " To enter Insert mode from Normal mode, press `<Space>`.  To exit, press
@@ -285,8 +285,8 @@ let g:CrazyKeysMenuItemLayoutDescription = {
       \ 'Russian' : 'Russian'
       \ }
 let s:menu_item_configuration_description = {
-      \ 'l' : 'left-handed',
-      \ 'r' : 'right-handed'
+      \ 'r' : 'right-handed',
+      \ 'l' : 'left-handed'
       \ }
 
 for s:layout_key in ['Qwerty-US-En', 'Qwerty-Ca-Fr', 'Russian']
@@ -423,10 +423,10 @@ for s:mode in ['n', 'v', 'o']
 endfor
 
 let g:CrazyKeysLayouts = { 'Qwerty-US-En' : {} }
-let g:CrazyKeysConfigurations = { 'l' : {} }
+let g:CrazyKeysConfigurations = { 'r' : {} }
 
 " NOTE: the key position is on the right, the key function is on the left.
-let g:CrazyKeysConfigurations['r'] = {
+let g:CrazyKeysConfigurations['l'] = {
       \ 'p' : 'q',
       \ 'i' : 'w',
       \ 'o' : 'e',
@@ -604,7 +604,7 @@ let g:CrazyKeysLayouts['Russian'] = {
       \ '~' : '['
       \ }
 
-" Find a translation from the default "left-handed" US Qwerty to the
+" Find a translation from the default "right-handed" US Qwerty to the
 " specified layout and configuration.
 function! s:get_key_transltation_from_default_to(layout, configuration)
   let l:layout_keymap        = g:CrazyKeysLayouts[a:layout]
