@@ -2384,13 +2384,15 @@ inoremap <C-BS> <C-w>
 inoremap <S-BS> <Del>
 
 " <C-d> delete the character after the cursor
-" NOTE: the default Vim function of removing one shiftwidth of indent at the
-"   start from the current line was also moderately useful
+" NOTE:  The default Vim function of removing one shiftwidth of indent at
+"   the start from the current line was also moderately useful.  It can be
+"   assigned to `<C-A-Left>`
 inoremap <C-d> <Del>
 
 " <C-t> Insert the character which is below the cursor (`<C-e>` in Vim)
-" NOTE: the default Vim function of adding one shiftwidth of indent at the
-"   start from the current line was also moderately useful
+" NOTE:   the default Vim function of adding one shiftwidth of indent at
+"   the start from the current line was also moderately useful.  It can be
+"   assigned to `<C-A-Right>`
 inoremap <C-t> <C-e>
 
 " <C-a> go to the beginning of the line
