@@ -351,6 +351,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
+      \   '''u', '''U',
       \   '''&', '''^',
       \   '''%',
       \   '''A', '''''A', 'aa',
@@ -375,6 +376,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
+      \   '''u', '''U',
       \   '''&', '''^',
       \   '''a',
       \   '''''s', '''''S',
@@ -1264,8 +1266,8 @@ noremap <SID>key_<bar> <Nop>
 "           `:h cmdline-window`)
 "  <C-CR> - command mode (`:`) (duplicate mappings for the case
 "           when a different function is assigned to <CR>)
-"  '<CR>  - "Ex" command mode (`gQ`)
-"  <S-CR> - "Ex" command mode (`gQ`)
+"  '<CR>, <A-CR> - open the command-line window (`q:`)
+"  <S-CR>, <C-x> - "Ex" command mode (`gQ`)
 "  h  - visual mode (`v`)
 "       in visual mode: visual block-wise mode
 "  H  - without count, start line-wise visual mode (`V`); with count, start
@@ -1319,12 +1321,14 @@ vnoremap <CR> :
 autocmd CmdwinEnter * vnoremap <buffer> <CR> <CR>
 nnoremap <C-CR> :
 vnoremap <C-CR> :
-nnoremap <C-x> :
-vnoremap <C-x> :
-nnoremap <SID>key_'<CR> gQ
-vnoremap <SID>key_'<CR> gQ
-nnoremap <S-CR> gQ
-vnoremap <S-CR> gQ
+nnoremap <SID>key_'<CR> q:
+vnoremap <SID>key_'<CR> q:
+nnoremap <script> <A-CR> <SID>key_'<CR>
+vnoremap <script> <A-CR> <SID>key_'<CR>
+nnoremap <C-x> gQ
+vnoremap <C-x> gQ
+nmap <S-CR> <C-x>
+vmap <S-CR> <C-x>
 
 nnoremap <SID>key_h v
 
@@ -1992,6 +1996,8 @@ vnoremap <SID>2keyseq_++ m`
 "
 "  u   - find forward (`/`)
 "  U   - find backward (`?`)
+"  'u  - find forward with search window (`q/`)
+"  'U  - find backward with search window (`q?`)
 "  &   - find next occurrence of the current word (`*`)
 "  ^   - find previous occurrence of the current word (`#`)
 "  '&  - find next occurrence of the current word as a part of a word
@@ -2004,6 +2010,10 @@ vnoremap <SID>2keyseq_++ m`
 "   in the same or opposite direction.
 noremap <SID>key_u /
 noremap <SID>key_U ?
+nnoremap <SID>2keyseq_'u q/
+vnoremap <SID>2keyseq_'u q/
+nnoremap <SID>2keyseq_'U q?
+vnoremap <SID>2keyseq_'U q?
 noremap <SID>key_& *
 noremap <SID>2keyseq_'& g*
 noremap <SID>key_^ #
@@ -2442,6 +2452,9 @@ inoremap <C-e> <End>
 " Use <Esc> as a prefix for command line editing commands
 cnoremap <Esc> <C-c>
 cnoremap <Esc><Esc> <C-c>
+
+" <Esc><CR> - `<C-f>` in Vim
+cnoremap <Esc><CR> <C-f>
 
 cnoremap <C-x> <C-a>
 cnoremap <C-Tab> <C-d>
