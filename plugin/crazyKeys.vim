@@ -276,7 +276,7 @@ elseif &compatible
   echo "CrazyKeys: you need to have 'nocompatible' set"
   finish
 endif
-" XXX: while in development, the following line is commented out.
+" XXX: while in development, the following line is commented out
 "let g:loaded_crazy_keys = 1
 
 " =========================================================================
@@ -284,8 +284,9 @@ endif
 " =========================================================================
 "
 " NOTE: most of this section would not be needed if the following worked as
-" expected (by me), which actually should work starting from Vim 7.4.502:
-" set langmap=йцукенгшщзфывапролдячсмитьбю;qwertyuiopasdfghjklzxcvbnm\\,.,ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЯЧСМИТЬ;QWERTYUIOPASDFGHJKL:ZXCVBNM
+"   expected (by me), which actually should work starting from Vim 7.4.502:
+"   set langmap=йцукенгшщзфывапролдячсмитьбю;qwertyuiopasdfghjklzxcvbnm
+"         \\\,.,ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЯЧСМИТЬ;QWERTYUIOPASDFGHJKL:ZXCVBNM
 
 let g:CrazyKeysMenuItemLayoutDescription = {
       \ 'Qwerty-US-En' : 'US\ English\ Qwerty',
