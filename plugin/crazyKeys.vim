@@ -1263,10 +1263,10 @@ noremap <SID>key_<bar> <Nop>
 "
 "  <CR>   - command mode (`:`), except when in command window (see
 "           `:h cmdline-window`)
-"  <C-CR> - command mode (`:`) (duplicate mappings for the case
-"           when a different function is assigned to <CR>)
+"  <C-CR>, <S-CR>, <C-x> - command mode (`:`)
+"           (duplicate mappings for the case when a different function is
+"           assigned to <CR>)
 "  '<CR>, <A-CR> - open the command-line window (`q:`)
-"  <S-CR>, <C-x> - "Ex" command mode (`gQ`)
 "  h  - visual mode (`v`)
 "       in visual mode: visual block-wise mode
 "  H  - without count, start line-wise visual mode (`V`); with count, start
@@ -1320,14 +1320,14 @@ vnoremap <CR> :
 autocmd CmdwinEnter * vnoremap <buffer> <CR> <CR>
 nnoremap <C-CR> :
 vnoremap <C-CR> :
+nnoremap <C-x> :
+vnoremap <C-x> :
+nmap <S-CR> <C-x>
+vmap <S-CR> <C-x>
 nnoremap <SID>key_'<CR> q:
 vnoremap <SID>key_'<CR> q:
 nnoremap <script> <A-CR> <SID>key_'<CR>
 vnoremap <script> <A-CR> <SID>key_'<CR>
-nnoremap <C-x> gQ
-vnoremap <C-x> gQ
-nmap <S-CR> <C-x>
-vmap <S-CR> <C-x>
 
 nnoremap <SID>key_h v
 
