@@ -187,8 +187,9 @@
 "   This may be confusing, especially with long 'timeout'.
 "   A possible exception: screen scrolling.
 "
-" * In Cmdline and Insert modes, try to use some standard key bindings for
-"   `<Ctrl>`-key combinations (like those of *tcsh* or of *Readline*).
+" * In Cmdline and Insert modes, try to avoid reinventing a wheel: use some
+"   standard key bindings for editing, like those of *tcsh* (in vi or in
+"   Emacs mode) or of Emacs.
 "
 " * Use a command (`:rec`?) to start recording macros, thus liberating one
 "   more key for common editing functions.  Users who use macros a lot
