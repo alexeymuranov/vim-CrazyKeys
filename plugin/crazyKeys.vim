@@ -2381,6 +2381,10 @@ inoremap <C-f> <Right>
 "   "digraphs"
 inoremap <C-k> <C-o>D
 
+" <C-Ins> - insert a "digraph" (`<C-k>` in Vim); hardly needed, but
+"           let it be
+inoremap <C-Ins> <C-k>
+
 " <S-Enter> or <S-Return> inserts a line break AFTER the cursor:
 inoremap <S-CR> <CR><Esc>kA
 
@@ -2447,6 +2451,10 @@ cnoremap <Esc>f <S-Right>
 " NOTE: the default use of <C-k> in Cmdline mode in Vim is to enter
 "   "digraphs"
 cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
+
+" <C-Ins> - insert a "digraph" (`<C-k>` in Vim); hardly needed, but
+"           let it be
+cnoremap <C-Ins> <C-k>
 
 " `<C-d>` - behave like in *tcsh*: delete a letter after the cursor
 "           unless at the end of line, otherwise list all possible
