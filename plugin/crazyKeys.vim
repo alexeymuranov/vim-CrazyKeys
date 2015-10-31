@@ -2376,6 +2376,11 @@ noremap <SID>key_Y <Nop>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 
+" <C-k> - delete to the end of line
+" NOTE: the default use of <C-k> in Insert mode in Vim is to enter
+"   "digraphs"
+inoremap <C-k> <C-o>D
+
 " <S-Enter> or <S-Return> inserts a line break AFTER the cursor:
 inoremap <S-CR> <CR><Esc>kA
 
@@ -2430,6 +2435,11 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+
+" <C-k> - delete to the end of line
+" NOTE: the default use of <C-k> in Cmdline mode in Vim is to enter
+"   "digraphs"
+cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 
 " `<C-d>` - behave like in *tcsh*: delete a letter after the cursor
 "           unless at the end of line, otherwise list all possible
