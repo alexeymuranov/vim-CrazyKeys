@@ -1260,8 +1260,9 @@ noremap <SID>key_<bar> <Nop>
 " #.#.# Modes
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  <CR>   - command mode (`:`)
-"  <C-CR>, <C-x> - command mode (`:`) (duplicate mappings for the case
+"  <CR>   - command mode (`:`), except when in command window (see
+"           `:h cmdline-window`)
+"  <C-CR> - command mode (`:`) (duplicate mappings for the case
 "           when a different function is assigned to <CR>)
 "  '<CR>  - "Ex" command mode (`gQ`)
 "  <S-CR> - "Ex" command mode (`gQ`)
@@ -1312,7 +1313,9 @@ noremap <SID>key_<bar> <Nop>
 "   and with jumping to error under cursor in quickfix/location list
 "   windows".
 nnoremap <CR> :
+autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 vnoremap <CR> :
+autocmd CmdwinEnter * vnoremap <buffer> <CR> <CR>
 nnoremap <C-CR> :
 vnoremap <C-CR> :
 nnoremap <C-x> :
