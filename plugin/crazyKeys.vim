@@ -368,7 +368,6 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
-      \   '''''/', '''''?'
       \   ],
       \ 'v' : [
       \   '''h',
@@ -391,7 +390,6 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
-      \   '''''/', '''''?'
       \   ],
       \ 'o' : [
       \   '''l', '''k',
@@ -403,7 +401,6 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
-      \   '''''/', '''''?'
       \   ]
       \ }
 
@@ -1936,12 +1933,6 @@ noremap <Tab>   <C-i>
 "       (like `T` in Vim)
 "  "? - in Visual and Operator modes: go to a character back and stop just
 "       after it (like `T` in Vim)
-"  ''/ - go to the matching parenthesis-like delimiter (like `%`) or
-"        cycle forward through matching keywords like if-then-else
-"        (like `%` with "matchit" plugin), synonym of `*`
-"  ""? - go to the matching parenthesis-like delimiter (like `%`) or
-"        cycle backward through matching keywords like if-then-else
-"        (like `g%` with "matchit" plugin), synonym of `'*`
 "  m  - repeat in the same direction (roughly `;` in Vim)
 "  M  - repeat in the opposite direction (roughly `,` in Vim)
 "
@@ -1968,9 +1959,6 @@ omap <SID>2keyseq_'/ <Plug>ExtendedFtOperationModeSearchTForward
 nmap <SID>2keyseq_'? <Plug>ExtendedFtSearchTBackward
 vmap <SID>2keyseq_'? <Plug>ExtendedFtVisualModeSearchTBackward
 omap <SID>2keyseq_'? <Plug>ExtendedFtOperationModeSearchTBackward
-
-noremap <script> <SID>3keyseq_''/ <SID>key_*
-noremap <script> <SID>3keyseq_''? <SID>2keyseq_'*
 
 nmap <SID>key_m <Plug>ExtendedFtRepeatSearchForward
 vmap <SID>key_m <Plug>ExtendedFtVisualModeRepeatSearchForward
