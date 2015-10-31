@@ -1406,7 +1406,7 @@ function! s:VMapExpr_EscKey()
   endif
 endfunction
 vnoremap <expr> <SID>key_<Esc> <SID>VMapExpr_EscKey()
-onoremap <expr> <SID>key_<Esc> <Esc>
+onoremap <SID>key_<Esc> <Esc>
 noremap <script> <Esc> <SID>key_<Esc>
 
 inoremap <SID>key_<Esc> <Esc>`^
