@@ -1293,7 +1293,8 @@ noremap <SID>key_<bar> <Nop>
 "              in Operator-pending mode: `<Esc>` in Vim;
 "              in Insert mode: exit to Normal mode (without moving the
 "              cursor one character to the left, unlike Vim
-"              (`<Esc>\(backquote)^` in Vim)
+"              (`<Esc>\(backquote)^` in Vim);
+"              in command window (`:h cmdwin`) behave like `<C-c>`
 "  z  - replace a single character with another character, or a visual
 "       selection with one character (`r`)
 "  Z  - replace mode (`R`)
@@ -1411,6 +1412,8 @@ endfunction
 vnoremap <expr> <SID>key_<Esc> <SID>VMapExpr_EscKey()
 onoremap <SID>key_<Esc> <Esc>
 noremap <script> <Esc> <SID>key_<Esc>
+
+autocmd CmdwinEnter * nnoremap <buffer> <Esc> <C-c>
 
 inoremap <SID>key_<Esc> <Esc>`^
 inoremap <script> <Esc> <SID>key_<Esc>
