@@ -2428,6 +2428,11 @@ inoremap <C-e> <End>
 " -------------------------------------------------------------------------
 "
 " XXX:experimental
+"
+" Use <Esc> as a prefix for command line editing commands
+cnoremap <Esc> <C-c>
+cnoremap <Esc><Esc> <C-c>
+
 cnoremap <C-x> <C-a>
 cnoremap <C-Tab> <C-d>
 
@@ -2435,6 +2440,8 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
 
 " <C-k> - delete to the end of line
 " NOTE: the default use of <C-k> in Cmdline mode in Vim is to enter
