@@ -2523,8 +2523,8 @@ vnoremap <script> <C-A-Up>   <SID>unimpairedMoveUpgv
 vnoremap <script> <C-A-Down> <SID>unimpairedMoveDowngv
 
 " Make Shift-Insert work like in Xterm
-noremap  <S-Insert> <MiddleMouse>
-noremap! <S-Insert> <MiddleMouse>
+noremap  <S-Ins> <MiddleMouse>
+noremap! <S-Ins> <MiddleMouse>
 
 if has("gui_macvim") && has("gui_running")
   " Map Command-# to switch tabs
