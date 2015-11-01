@@ -1262,11 +1262,12 @@ noremap <SID>key_<bar> <Nop>
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
 "  <CR>   - command mode (`:`), except when in command window (see
-"           `:h cmdline-window`)
-"  <C-CR>, <S-CR>, <C-x> - command mode (`:`)
+"           `:h cmdline-window`), see also the section about Cmdline mode
+"           mappings
+"  <C-CR>, <C-x> - command mode (`:`)
 "           (duplicate mappings for the case when a different function is
 "           assigned to <CR>)
-"  '<CR>, <A-CR> - open the command-line window (`q:`)
+"  '<CR>, <A-CR>, <S-CR> - open the command-line window (`q:`)
 "  h  - visual mode (`v`)
 "       in visual mode: visual block-wise mode
 "  H  - without count, start line-wise visual mode (`V`); with count, start
@@ -1295,7 +1296,8 @@ noremap <SID>key_<bar> <Nop>
 "              in Insert mode: exit to Normal mode (without moving the
 "              cursor one character to the left, unlike Vim
 "              (`<Esc>\(backquote)^` in Vim);
-"              in command window (`:h cmdwin`) behave like `<C-c>`
+"              in command window (`:h cmdwin`) behave like `<C-c>`,
+"              see  the section about Cmdline mode mappings
 "  z  - replace a single character with another character, or a visual
 "       selection with one character (`r`)
 "  Z  - replace mode (`R`)
@@ -1315,19 +1317,17 @@ noremap <SID>key_<bar> <Nop>
 "   and with jumping to error under cursor in quickfix/location list
 "   windows".
 nnoremap <CR> :
-autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 vnoremap <CR> :
-autocmd CmdwinEnter * vnoremap <buffer> <CR> <CR>
 nnoremap <C-CR> :
 vnoremap <C-CR> :
 nnoremap <C-x> :
 vnoremap <C-x> :
-nmap <S-CR> <C-x>
-vmap <S-CR> <C-x>
 nnoremap <SID>key_'<CR> q:
 vnoremap <SID>key_'<CR> q:
 nnoremap <script> <A-CR> <SID>key_'<CR>
 vnoremap <script> <A-CR> <SID>key_'<CR>
+nnoremap <script> <S-CR> <SID>key_'<CR>
+vnoremap <script> <S-CR> <SID>key_'<CR>
 
 nnoremap <SID>key_h v
 
@@ -1415,8 +1415,6 @@ endfunction
 vnoremap <expr> <SID>key_<Esc> <SID>VMapExpr_EscKey()
 onoremap <SID>key_<Esc> <Esc>
 noremap <script> <Esc> <SID>key_<Esc>
-
-autocmd CmdwinEnter * nnoremap <buffer> <Esc> <C-c>
 
 inoremap <SID>key_<Esc> <Esc>`^
 inoremap <script> <Esc> <SID>key_<Esc>
@@ -2440,13 +2438,25 @@ inoremap <C-e> <End>
 " XXX:experimental
 "
 " Use <Esc> as a prefix for command line editing commands
-cnoremap <Esc> <C-c>
+cnoremap <Esc>      <C-c>
 cnoremap <Esc><Esc> <C-c>
+cnoremap <C-Esc>    <C-c>
 
-" <Esc><CR> - `<C-f>` in Vim
-cnoremap <Esc><CR> <C-f>
+" Cmdwin mappings
+autocmd CmdwinEnter * nnoremap <buffer> <Esc>  <C-c>
+autocmd CmdwinEnter * nnoremap <buffer> <C-CR> <C-c>
+autocmd CmdwinEnter * nnoremap <buffer> <S-CR> <C-c>
+autocmd CmdwinEnter * noremap  <buffer> <C-c> <C-\><C-n>
+autocmd CmdwinEnter * inoremap <buffer> <C-c> <Esc><C-\><C-n>
+autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+autocmd CmdwinEnter * vnoremap <buffer> <CR> <CR>
 
-cnoremap <C-x> <C-a>
+" <C-CR>, <S-CR>, <C-x>, <S-Esc> - open command window (`<C-f>` in Vim)
+cnoremap <C-CR>  <C-f>
+cnoremap <S-CR>  <C-f>
+cnoremap <C-x>   <C-f>
+cnoremap <S-Esc> <C-f>
+
 cnoremap <C-Tab> <C-d>
 
 cnoremap <C-b> <Left>
