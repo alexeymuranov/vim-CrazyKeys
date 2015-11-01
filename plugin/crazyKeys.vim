@@ -722,6 +722,8 @@ function! g:CrazyKeysSetMappingsFor(layout, configuration)
     execute 'map' l:etsp . l:etsp l:etp . l:etp
   endfor
 
+  " TODO: put autocommands here
+
   let g:langmap_string = s:langmap_string_for(a:layout, a:configuration)
   " let &g:langmap = g:langmap_string
   let g:CrazyKeysLayout = [a:layout, a:configuration]
