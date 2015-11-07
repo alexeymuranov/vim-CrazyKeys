@@ -355,6 +355,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '++',
       \   '''u', '''U',
       \   '''&', '''^',
+      \   '''n', '''N',
       \   '''%',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
@@ -367,7 +368,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '[[', ']]', '[]', '][',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
-      \   '''/', '''?',
+      \   '''/', '''?'
       \   ],
       \ 'v' : [
       \   '''h',
@@ -379,6 +380,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '++',
       \   '''u', '''U',
       \   '''&', '''^',
+      \   '''n', '''N',
       \   '''a',
       \   '''''s', '''''S',
       \   '''d',
@@ -389,7 +391,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '00',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
-      \   '''/', '''?',
+      \   '''/', '''?'
       \   ],
       \ 'o' : [
       \   '''l', '''k',
@@ -401,6 +403,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
+      \   '''n', '''N'
       \   ]
       \ }
 
@@ -1996,8 +1999,9 @@ vnoremap <SID>2keyseq_++ m`
 "        (`g#`)
 "  n   - repeat last find in the same direction (`n`)
 "  N   - repeat last find in the opposite direction (`N`)
-" NOTE: `'n` and `'N` may be used to repeat the last "go to symbol" command
-"   in the same or opposite direction.
+"  'n  - go to the next match and select it with Visual mode (`gn` in Vim)
+"  'N  - go to the previous match and select it with Visual mode
+"        (`gN` in Vim)
 noremap <SID>key_u /
 noremap <SID>key_U ?
 nnoremap <SID>2keyseq_'u q/
@@ -2010,6 +2014,8 @@ noremap <SID>key_^ #
 noremap <SID>2keyseq_'^ g#
 noremap <SID>key_n n
 noremap <SID>key_N N
+noremap <SID>2keyseq_'n gn
+noremap <SID>2keyseq_'N gN
 
 "
 " #.#.# Find and replace (substitute)
