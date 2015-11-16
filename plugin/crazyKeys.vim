@@ -951,7 +951,10 @@ endfunction
 function! s:Motion_ToEndOfWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
-    call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'W')
+    " XXX: this pattern does not work at all when the word contains non
+    "   ASCII letter
+    " call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'W')
+    call search('\>', 'W')
     let l:count1 -= 1
   endwhile
 endfunction
@@ -960,7 +963,10 @@ endfunction
 function! s:Motion_ToEndOfWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
-    call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'Wb')
+    " XXX: this pattern does not work at all when the word contains non
+    "   ASCII letter
+    " call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'Wb')
+    call search('\>', 'Wb')
     let l:count1 -= 1
   endwhile
 endfunction
