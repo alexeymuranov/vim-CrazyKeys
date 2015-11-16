@@ -796,7 +796,7 @@ endfunction
 
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
-  command MRU Unite
+  command! MRU Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -start-insert
         \ file_mru
