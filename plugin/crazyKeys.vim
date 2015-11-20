@@ -2406,15 +2406,14 @@ inoremap <C-Ins> <C-k>
 " <S-Enter> or <S-Return> inserts a line break AFTER the cursor
 inoremap <S-CR> <CR><Esc>kA
 
-" XXX:experiment
 " <C-m> inserts a line break
-" <C-j> inserts a line break AFTER the cursor:
+" XXX: <C-m> seems to be (mostly?) indistinguishable form <CR> to Vim:
+"   remapping <C-m> affects <CR>
 " XXX:  This line is commented out because there is some strange bug:
 "   with this mapping in a startup script, newlines get inserted twice.
 "   This seem to be caused by some extensions or configurations (not
 "   reproducible when .vim directory is removed).
 " inoremap <C-m> <C-m>
-inoremap <C-j> <CR><Esc>kA
 
 " <C-BS> deletes the previous word:
 inoremap <C-BS> <C-w>
@@ -2438,6 +2437,13 @@ inoremap <C-t> <C-e>
 " <C-e> go to the end of the line
 inoremap <C-a> <C-o>^
 inoremap <C-e> <End>
+
+" <C-j> go to the end of line (same as <C-e>)
+" NOTE: <C-j> seems to be a nice candidate for inserting a line break AFTER
+"   the cursor, but this is already assigned to <S-CR>, and <C-j> is used in
+"   UltiSnips to jump between tabstops, which ressembles a bit to jumping
+"   to the end of line
+inoremap <C-j> <End>
 
 " NOTE: these are not as useful as i thought before:
 " inoremap <C-Left>  <Esc><C-Left>
