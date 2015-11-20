@@ -2404,7 +2404,7 @@ inoremap <C-k> <C-o>D
 inoremap <C-Ins> <C-k>
 
 " <S-Enter> or <S-Return> inserts a line break AFTER the cursor
-inoremap <S-CR> <CR><Esc>kA
+inoremap <S-CR> <CR><Up><End>
 
 " <C-m> inserts a line break
 " XXX: <C-m> seems to be (mostly?) indistinguishable form <CR> to Vim:
