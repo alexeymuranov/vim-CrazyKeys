@@ -1543,29 +1543,29 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <A-Right> - duplicate of `';`
 "  <S-A-Left>  - duplicate of `"J`
 "  <S-A-Right> - duplicate of `":`
-nnoremap <SID>key_, b
-vmap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
-omap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
+map <SID>key_i <Plug>(CrazyKeys-ToEndOfWordBackward)
 map <SID>key_I <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
-nmap <SID>key_i <Plug>(CrazyKeys-ToEndOfWordBackward)
-vnoremap <SID>key_i b
-onoremap <SID>key_i b
-nnoremap <SID>key_. w
-vnoremap <SID>key_. @=" w\<lt>BS>"<CR>
-onoremap <SID>key_. w
-nnoremap <SID>key_O @="\<lt>BS>E "<CR>
-vnoremap <SID>key_O @=" W\<lt>BS>"<CR>
-onoremap <SID>key_O W
 nmap <SID>key_o <Plug>(CrazyKeys-ToEndOfWordForward)
 vnoremap <SID>key_o e
 omap <SID>key_o <Plug>(CrazyKeys-ToEndOfWordForward)
+nmap <SID>key_O <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
+vnoremap <SID>key_O E
+omap <SID>key_O <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
+noremap <SID>key_, b
+noremap <SID>key_< B
+nnoremap <SID>key_. w
+vnoremap <SID>key_. @=" w\<lt>BS>"<CR>
+onoremap <SID>key_. w
+nnoremap <SID>key_> W
+vnoremap <SID>key_> @=" w\<lt>BS>"<CR>
+onoremap <SID>key_> W
 noremap <script> <S-Left>  <SID>key_<
 noremap <script> <S-Right> <SID>key_>
 
-noremap  <SID>key_< B
-nnoremap <SID>key_> W
-vnoremap <SID>key_> E
 omap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
+
+noremap <script> <S-Left>  <SID>key_<
+noremap <script> <S-Right> <SID>key_>
 
 noremap  <SID>key_L @="k{ ^"<CR>
 onoremap <SID>key_L {
