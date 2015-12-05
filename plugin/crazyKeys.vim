@@ -1485,13 +1485,13 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  ,         - beginning of this or previous word (`b` in Vim)
 "  <         - beginning of this or previous space-delimited word
 "              (`B` in Vim)
-"  i        - Normal mode: after the end of the previous word
+"  i         - Normal mode: after the end of the previous word
 "  I         - after the end of the previous space-delimited word
 "  .         - Normal mode: beginning of the next word (`w` in Vim)
 "  >         - Normal mode: beginning of the next space-delimited word
 "              (`W` in Vim)
-"  o        - Normal mode: after the end of this or next word
-"  O        - Normal mode: after the end of this or next space-delimited
+"  o         - Normal mode: after the end of this or next word
+"  O         - Normal mode: after the end of this or next space-delimited
 "              word
 "  L         - beginning of the first line of this or previous paragraph
 "  K         - Normal mode: beginning of the first line of the next
@@ -1499,7 +1499,7 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "              Visual mode: beginning of the last line of this or
 "              next paragraph
 "  'j        - go to the first column of the line (`0`)
-"  [count]',  - go to the first non-blank of the previous line or
+"  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
 "  ';        - go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
