@@ -116,6 +116,14 @@
 "   For example, stop treating the whitespace intelligently, or stop
 "   distinguishing whitespace from non-whitespace if possible.
 "
+" * Do not map sequences of more than 2 characters unless the sequence
+"   can be split into an at-most-2-key-long operator mapping and
+"   at-most-2-key-long motion mapping, or into a one-key prefix and
+"   at-most-2-key other command.  Consider using "short" Command-line
+"   commands (or menus?) instead of "long" mappings.  The advantages are:
+"   - seeing well what you are typing, and
+"   - not having to worry about the mapping timeout.
+"
 " * Think about assigning a prefix, `<p>`/`<P>`, for example, to define
 "   less commonly used multi-key mappings.
 "   Maybe all key pairs starting with `<p>` can be considered as "prefixes",
@@ -128,6 +136,14 @@
 "   - indenting/unindenting (especially if this is accessible through
 "     something like `<C-A-Left>`/`<C-A-Right>`),
 "   - commenting/uncommenting.
+"
+" * A better idea than the previous one: use `<p>` key to start a
+"   "special" command mode to enter short, tersely abbreviated commands,
+"   followed by Enter key.  For example, to indent the current line or
+"   selection, it is enough to map `<p>` to Vim's `:PP` and define a
+"   command `PPi`; then, entering `pi<CR>` (in the default layout) will
+"   indent the current line.  The `count` prefix may easily be taken into
+"   account.
 "
 " * Mostly define functions for printable character keys and character keys
 "   with `<Shift>` in normal and visual modes.
