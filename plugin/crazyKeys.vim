@@ -369,9 +369,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
-      \   '''u', '''U',
+      \   '''p', '''P',
       \   '''&', '''^',
-      \   '''n', '''N',
+      \   '''u', '''U',
       \   '''%',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
@@ -394,9 +394,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
-      \   '''u', '''U',
+      \   '''p', '''P',
       \   '''&', '''^',
-      \   '''n', '''N',
+      \   '''u', '''U',
       \   '''a',
       \   '''''s', '''''S',
       \   '''d',
@@ -419,7 +419,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
-      \   '''n', '''N'
+      \   '''u', '''U'
       \   ]
       \ }
 
@@ -2028,35 +2028,35 @@ vnoremap <SID>2keyseq_++ m`
 " #.#.# Find
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  u   - find forward (`/`)
-"  U   - find backward (`?`)
-"  'u  - find forward with search window (`q/`)
-"  'U  - find backward with search window (`q?`)
+"  p   - find forward (`/`)
+"  P   - find backward (`?`)
+"  'p  - find forward with search window (`q/`)
+"  'P  - find backward with search window (`q?`)
 "  &   - find next occurrence of the current word (`*`)
 "  ^   - find previous occurrence of the current word (`#`)
 "  '&  - find next occurrence of the current word as a part of a word
 "        (`g*`)
 "  '^  - find previous occurrence of the current word as a part of a word
 "        (`g#`)
-"  n   - repeat last find in the same direction (`n`)
-"  N   - repeat last find in the opposite direction (`N`)
-"  'n  - go to the next match and select it with Visual mode (`gn` in Vim)
-"  'N  - go to the previous match and select it with Visual mode
+"  u   - repeat last find in the same direction (`n`)
+"  U   - repeat last find in the opposite direction (`N`)
+"  'u  - go to the next match and select it with Visual mode (`gn` in Vim)
+"  'U  - go to the previous match and select it with Visual mode
 "        (`gN` in Vim)
-noremap <SID>key_u /
-noremap <SID>key_U ?
-nnoremap <SID>2keyseq_'u q/
-vnoremap <SID>2keyseq_'u q/
-nnoremap <SID>2keyseq_'U q?
-vnoremap <SID>2keyseq_'U q?
+noremap <SID>key_p /
+noremap <SID>key_P ?
+nnoremap <SID>2keyseq_'p q/
+vnoremap <SID>2keyseq_'p q/
+nnoremap <SID>2keyseq_'P q?
+vnoremap <SID>2keyseq_'P q?
 noremap <SID>key_& *
 noremap <SID>2keyseq_'& g*
 noremap <SID>key_^ #
 noremap <SID>2keyseq_'^ g#
-noremap <SID>key_n n
-noremap <SID>key_N N
-noremap <SID>2keyseq_'n gn
-noremap <SID>2keyseq_'N gN
+noremap <SID>key_u n
+noremap <SID>key_U N
+noremap <SID>2keyseq_'u gn
+noremap <SID>2keyseq_'U gN
 
 "
 " #.#.# Find and replace (substitute)
@@ -2402,25 +2402,23 @@ noremap <script> <S-A-Down> <SID>3keyseq_''k
 " #.#.# Folds
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-" p  - `zo`
-" P  - `zc`
-" TODO: map 'p to more complex operations
-nnoremap <SID>key_p zo
-vnoremap <SID>key_p zo
-nnoremap <SID>key_P zc
-vnoremap <SID>key_P zc
+" y  - `zo`
+" Y  - `zc`
+" TODO: map 'y to more complex operations
+nnoremap <SID>key_y zo
+vnoremap <SID>key_y zo
+nnoremap <SID>key_Y zc
+vnoremap <SID>key_Y zc
 
 "
 " #.#.# User keys
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  <t,T> and <y,Y> are reserved as keys or prefixes for user defined
-"  functions.
-"  (Another alternative: the single <b,B> key.)
-noremap <SID>key_t <Nop>
-noremap <SID>key_T <Nop>
-noremap <SID>key_y <Nop>
-noremap <SID>key_Y <Nop>
+"  <n,N> in right-handed layouts (<b,B> in left-handed) is reserved as
+"  a key or prefix for user defined functions.
+"  (Another alternative: <t,T> and <y,Y>.)
+noremap <SID>key_n <Nop>
+noremap <SID>key_N <Nop>
 
 "
 " #.# Insert mode mappings
