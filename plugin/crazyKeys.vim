@@ -375,8 +375,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''%',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
-      \   'dd', '''d',
-      \   'ff',
+      \   'ff', '''f',
+      \   'dd',
       \   '''t', '''T',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
@@ -2130,15 +2130,15 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  ""S       - in Visual mode: replace with replacing the content of the
 "              unnamed register with the replaces text (`p` or `P`)
 "              and go to the beginning of the pasted text
-"  d{motion} - `d`
-"  dd        - `x`
-"  D         - in Normal mode: `dd`,
+"  f{motion} - `d`
+"  ff        - `x`
+"  F         - in Normal mode: `dd`,
 "              in Visual mode: "smart delete" -- delete and trim extra
 "              whitespace
-"  'd        - `"_d`
-"  f{motion} - `c`
-"  ff        - `s`
-"  F         - `cc`
+"  'f        - `"_d`
+"  d{motion} - `c`
+"  dd        - `s`
+"  D         - `cc`
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
@@ -2214,19 +2214,19 @@ endfunction
 nnoremap <SID>2keyseq_'S @=<SID>NMapEReg_PasteAfterV2()<CR>
 vnoremap <SID>3keyseq_''S P`[
 
-nnoremap <SID>key_d d
-vnoremap <SID>key_d d
-nnoremap <SID>key_D dd
+nnoremap <SID>key_f d
+vnoremap <SID>key_f d
+nnoremap <SID>key_F dd
 " TODO: implement
-vnoremap <SID>key_D <Nop>
-nnoremap <SID>2keyseq_dd x
-nnoremap <SID>2keyseq_'d "_d
-vnoremap <SID>2keyseq_'d "_d
+vnoremap <SID>key_F <Nop>
+nnoremap <SID>2keyseq_ff x
+nnoremap <SID>2keyseq_'f "_d
+vnoremap <SID>2keyseq_'f "_d
 
-nnoremap <SID>key_f c
-vnoremap <SID>key_f c
-nnoremap <SID>key_F cc
-nnoremap <SID>2keyseq_ff s
+nnoremap <SID>key_d c
+vnoremap <SID>key_d c
+nnoremap <SID>key_D cc
+nnoremap <SID>2keyseq_dd s
 
 "
 " #.#.# Change case
