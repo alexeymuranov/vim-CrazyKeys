@@ -812,6 +812,8 @@ endfunction
 
 function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
+  let g:vimfiler_as_default_explorer = 1
+
   command! MRU Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -start-insert
@@ -854,7 +856,7 @@ function! s:confugure_desired_configurations(keymap)
         \ -auto-resize -auto-preview -start-insert
         \ file_rec/async<CR>
   nnoremap <silent> <leader>fe :<C-u>VimFilerCurrentDir
-        \ -explorer -split -horizontal -direction=botright<CR>
+        \ -explorer -split -vertical -direction=botright<CR>
   nmap <leader>F <leader>fr
   nnoremap <silent> <leader>b :<C-u>Unite
         \ -direction=botright -prompt-direction=below
