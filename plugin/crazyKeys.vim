@@ -1178,6 +1178,23 @@ call mapToSideEffects#SetUpIdempotent(
 
 "
 " =========================================================================
+" # Short commands to complement mappings                            [code]
+" =========================================================================
+"
+" The idea is to use `<p>` key to start a "special" Command-line mode to
+" enter short commands, followed by Enter key.  For example, to make
+" `pi<CR>` key sequence in the default layout to indent the current line or
+" selection, it can be enough to map `<p>` to Vim's `:PP` and define a
+" command `PPi` that indents the current line or selection.
+"
+" FIXME: this moves the cursor to the last line of the range and turns off
+"   visual selection
+command! -range PPi <line1>,<line2>>
+command! -range PPI <line1>,<line2><
+command! -range PPc <line1>,<line2>TComment
+
+"
+" =========================================================================
 " # Actual mappings                                                  [code]
 " =========================================================================
 "
@@ -2253,6 +2270,10 @@ nnoremap <SID>key_q >>
 vnoremap <SID>key_q >gv
 nnoremap <SID>key_Q <<
 vnoremap <SID>key_Q <gv
+" nnoremap <SID>key_q :PPi<CR>
+" vnoremap <SID>key_q :PPi<CR>
+" nnoremap <SID>key_Q :PPI<CR>
+" vnoremap <SID>key_Q :PPI<CR>
 
 "
 " #.#.# Commenting/uncommenting
