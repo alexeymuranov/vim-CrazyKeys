@@ -377,7 +377,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''s', '''S',
       \   'dd', '''d',
       \   'ff',
-      \   '''r', '''R',
+      \   '''t', '''T',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
       \   '''''l', '''''k', '''''j',
@@ -2075,9 +2075,12 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "
 "  <C-BS>    - delete a single character to the left without copying
 "              to the register (`"_X`)
-"  <Del>, <BS><BS>, <A-BS> - in Normal mode: delete a single character on
-"              the right of the cursor without copying to the register
+"  <Del>, <r>, <BS><BS>, <A-BS> - in Normal mode: delete a single character
+"              on the right of the cursor without copying to the register
 "              (`"_x` in Vim)
+"  <R>         - in Normal mode: delete a single character
+"              on the right of the cursor without copying to the register
+"              (`"_X` in Vim)
 "  <BS>      - in Normal mode: delete without copying to the register
 "              (`"_d`),
 "              in Visual mode: delete the selection without copying
@@ -2141,9 +2144,11 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "    mode.  Probably, use `d` or `g` key as the first key.
 nnoremap <C-BS> "_X
 vnoremap <C-BS> <Nop>
-nnoremap <Del>    "_x
-nnoremap <BS><BS> "_x
-nnoremap <A-BS>   "_x
+nnoremap <Del>      "_x
+nnoremap <SID>key_r "_x
+nnoremap <BS><BS>   "_x
+nnoremap <A-BS>     "_x
+nnoremap <SID>key_R "_X
 nnoremap <BS>  "_d
 vnoremap <Del> "_d
 vnoremap <BS>  "_d
@@ -2227,16 +2232,16 @@ nnoremap <SID>2keyseq_ff s
 " #.#.# Change case
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  r  - Normal mode: Switch case of the character under the cursor and
+"  t  - Normal mode: Switch case of the character under the cursor and
 "       move the cursor to the right (`~` in Vim);
 "       Visual mode: downcase (`gu` in Vim)
-"  R  - Normal mode: Switch case of the character under the cursor and
+"  T  - Normal mode: Switch case of the character under the cursor and
 "       make the rest of the word the same case;
 "       Visual mode: up (`gU` in Vim)
-"  'r{motion} - Normal mode: downcase over the {motion} (like `gu` in Vim)
-"  "R{motion} - Normal mode: upcase over the {motion} (like `gU` in Vim)
-nnoremap <SID>key_r ~
-vnoremap <SID>key_r gu
+"  't{motion} - Normal mode: downcase over the {motion} (like `gu` in Vim)
+"  "T{motion} - Normal mode: upcase over the {motion} (like `gU` in Vim)
+nnoremap <SID>key_t ~
+vnoremap <SID>key_t gu
 function! s:NMapExpr_ChangeCaseTillEOW()
   let l:char = getline('.')[col('.') - 1]
   if toupper(l:char) !=# l:char
@@ -2247,10 +2252,10 @@ function! s:NMapExpr_ChangeCaseTillEOW()
     return "\<Nop>"
   endif
 endfunction
-nnoremap <expr> <SID>key_R <SID>NMapExpr_ChangeCaseTillEOW()
-vnoremap <SID>key_R gU
-nnoremap <SID>2keyseq_'r gu
-nnoremap <SID>2keyseq_'R gU
+nnoremap <expr> <SID>key_T <SID>NMapExpr_ChangeCaseTillEOW()
+vnoremap <SID>key_T gU
+nnoremap <SID>2keyseq_'t gu
+nnoremap <SID>2keyseq_'T gU
 
 "
 " #.#.# Running external programs
