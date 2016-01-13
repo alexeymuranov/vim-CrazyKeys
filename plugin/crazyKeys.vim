@@ -2261,7 +2261,8 @@ vnoremap <SID>key_Q <gv
 "  'q - comment/uncomment the line or selection
 " XXX: this relies on "tComment" plugin
 nnoremap <SID>2keyseq_'q :TComment<CR>
-vnoremap <SID>2keyseq_'q :TComment<CR>gv
+" vnoremap <SID>2keyseq_'q :TComment<CR>gv
+vnoremap <SID>2keyseq_'q :TComment<CR>
 
 "
 " #.#.# Auto-formatting
