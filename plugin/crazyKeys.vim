@@ -373,6 +373,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''&', '''^',
       \   '''u', '''U',
       \   '''%',
+      \   'rr',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
       \   'ff', '''f',
@@ -2073,23 +2074,20 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 " #.#.# Editing
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  <C-BS>    - delete a single character to the left without copying
-"              to the register (`"_X`)
-"  <Del>, <r>, <BS><BS>, <A-BS> - in Normal mode: delete a single character
+" NOTE: the roles of <Del> and <BS> may be inverted in Normal mode
+"  <BS>, <C-Del> - in Normal mode: delete a single character
 "              on the right of the cursor without copying to the register
-"              (`"_x` in Vim)
-"  <R>         - in Normal mode: delete a single character
-"              on the right of the cursor without copying to the register
-"              (`"_X` in Vim)
-"  <BS>      - in Normal mode: delete without copying to the register
-"              (`"_d`),
+"              (`"_x` in Vim),
 "              in Visual mode: delete the selection without copying
 "              to the register (`"_d`)
 "  <S-BS>    - in Normal mode: delete a line without copying
 "              to the register (`"_dd`),
-"              in Visual mode: "smart delete" the selection without copying
-"              to the register -- delete including extra whitespace
-" NOTE: the roles of <Del> and <BS> may be partially inverted in Normal mode
+"              in Visual mode: delete the entire lines that have something
+"              selected without copying to the register (`V"_d`)
+"  <Del>, <C-BS> - delete a single character to the left without copying
+"              to the register (`"_X`)
+"  <S-Del>   - in Normal mode: delete the line before the current one
+"              without copying to the register
 "  a{motion} - in Normal mode: copy `y`
 "  a         - in Visual mode: copy and move cursor to the opposit end of
 "              the yanked block (to the beginning or just after it)
@@ -2133,30 +2131,30 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  f{motion} - `d`
 "  ff        - `x`
 "  F         - in Normal mode: `dd`,
-"              in Visual mode: "smart delete" -- delete and trim extra
-"              whitespace
-"  'f        - `"_d`
+"              in Visual mode: delete the entire lines that have something
+"              selected (`Vd`)
+"  'f        - same as `f` but without copying to the register (`"_d`)
+"  r{motion} - same as `f{motion}` but without copying to the register (`"_d`)
+"  rr        - same as `ff` but without copying to the register (`"_x`)
+"  R         - same as `F` but without copying to the register
 "  d{motion} - `c`
 "  dd        - `s`
 "  D         - `cc`
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
-nnoremap <C-BS> "_X
-vnoremap <C-BS> <Nop>
-nnoremap <Del>      "_x
-nnoremap <SID>key_r "_x
-nnoremap <BS><BS>   "_x
-nnoremap <A-BS>     "_x
-nnoremap <SID>key_R "_X
-nnoremap <BS>  "_d
-vnoremap <Del> "_d
+nnoremap <BS>  "_x
 vnoremap <BS>  "_d
-onoremap <BS> <Nop>
+onoremap <BS> <Esc>
+map <C-Del> <BS>
 nnoremap <S-BS> "_dd
-" TODO: implement
-vnoremap <S-BS>  <Nop>
-noremap  <C-Del> <Nop>
+vnoremap <S-BS>  V"_d
+nnoremap <Del> "_X
+vnoremap <Del> "_d
+onoremap <Del> <Esc>
+map <C-BS> <Del>
+nnoremap <expr> <S-Del> ':<C-u>-' . v:count1 . ',-1delete<CR>'
+vnoremap <S-Del> V"_d
 nnoremap <SID>key_a y
 vnoremap <script> <SID>key_a ygvo<SID>key_<Esc>
 vnoremap <script> <SID>2keyseq_'a ygv<SID>key_<Esc>
@@ -2217,11 +2215,15 @@ vnoremap <SID>3keyseq_''S P`[
 nnoremap <SID>key_f d
 vnoremap <SID>key_f d
 nnoremap <SID>key_F dd
-" TODO: implement
-vnoremap <SID>key_F <Nop>
+vnoremap <SID>key_F Vd
 nnoremap <SID>2keyseq_ff x
 nnoremap <SID>2keyseq_'f "_d
 vnoremap <SID>2keyseq_'f "_d
+nnoremap <SID>key_r "_d
+vnoremap <SID>key_r "_d
+nnoremap <SID>key_R "_dd
+vnoremap <SID>key_R V"_d
+nnoremap <SID>2keyseq_rr "_x
 
 nnoremap <SID>key_d c
 vnoremap <SID>key_d c
