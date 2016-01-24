@@ -400,7 +400,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''u', '''U',
       \   '''a',
       \   '''''s', '''''S',
-      \   '''d',
+      \   '''f',
       \   '''q', '''Q',
       \   '''G', '''''G',
       \   '''''l', '''''k', '''''j',
