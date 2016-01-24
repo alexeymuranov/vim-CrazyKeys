@@ -377,7 +377,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
       \   'ff', '''f',
-      \   'dd',
+      \   'dd', '''d', '''D',
       \   '''t', '''T',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
@@ -401,6 +401,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''a',
       \   '''''s', '''''S',
       \   '''f',
+      \   '''d', '''D',
       \   '''q', '''Q',
       \   '''G', '''''G',
       \   '''''l', '''''k', '''''j',
@@ -2137,9 +2138,11 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  r{motion} - same as `f{motion}` but without copying to the register (`"_d`)
 "  rr        - same as `ff` but without copying to the register (`"_x`)
 "  R         - same as `F` but without copying to the register
-"  d{motion} - `c`
-"  dd        - `s`
-"  D         - `cc`
+"  d{motion} - `"_c`
+"  dd        - `"_s`
+"  D         - `"_cc`
+"  'd        - `c`
+"  "D        - `cc`
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
@@ -2225,10 +2228,15 @@ nnoremap <SID>key_R "_dd
 vnoremap <SID>key_R V"_d
 nnoremap <SID>2keyseq_rr "_x
 
-nnoremap <SID>key_d c
-vnoremap <SID>key_d c
-nnoremap <SID>key_D cc
-nnoremap <SID>2keyseq_dd s
+nnoremap <SID>key_d "_c
+vnoremap <SID>key_d "_c
+nnoremap <SID>key_D "_cc
+vnoremap <SID>key_D V"_cc
+nnoremap <SID>2keyseq_dd "_s
+nnoremap <SID>2keyseq_'d c
+vnoremap <SID>2keyseq_'d c
+nnoremap <SID>2keyseq_'D cc
+vnoremap <SID>2keyseq_'D Vcc
 
 "
 " #.#.# Change case
