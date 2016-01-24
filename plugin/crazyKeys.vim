@@ -2456,7 +2456,9 @@ inoremap <C-k> <C-o>D
 "           let it be
 inoremap <C-Ins> <C-k>
 
-" <S-Enter> or <S-Return> inserts a line break AFTER the cursor
+" <C-Enter>, <C-Return>, <S-Enter>, or <S-Return> inserts a line break
+"   AFTER the cursor
+inoremap <C-CR> <CR><Up><End>
 inoremap <S-CR> <CR><Up><End>
 
 " <C-m> inserts a line break
