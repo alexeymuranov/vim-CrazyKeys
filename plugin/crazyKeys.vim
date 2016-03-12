@@ -1519,16 +1519,17 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 " #.#.# Big motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  ,         - beginning of this or previous word (`b` in Vim)
-"  <         - beginning of this or previous space-delimited word
-"              (`B` in Vim)
-"  i         - Normal mode: after the end of the previous word
-"  I         - after the end of the previous space-delimited word
-"  .         - Normal mode: beginning of the next word (`w` in Vim)
-"  >         - Normal mode: beginning of the next space-delimited word
+"  i         - Normal mode: beginning of this or previous word (`b` in Vim)
+"  I         - Normal mode: beginning of this or previous space-delimited
+"              word (`B` in Vim)
+"  ,         - Normal mode: after the end of the previous word
+"  <         - Normal mode: after the end of the previous space-delimited
+"              word
+"  o         - Normal mode: beginning of the next word (`w` in Vim)
+"  O         - Normal mode: beginning of the next space-delimited word
 "              (`W` in Vim)
-"  o         - Normal mode: after the end of this or next word
-"  O         - Normal mode: after the end of this or next space-delimited
+"  .         - Normal mode: after the end of this or next word
+"  >         - Normal mode: after the end of this or next space-delimited
 "              word
 "  L         - beginning of the first line of this or previous paragraph
 "  K         - Normal mode: beginning of the first line of the next
@@ -1572,37 +1573,23 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "              (a bit like `-g_` in Vim)
 "  <C-Left>  - move one word left (like the default, or like in Emacs)
 "  <C-Right> - move one word right (like the default, or like in Emacs)
-"  <S-Left>  - duplicate of `<`
-"  <S-Right> - duplicate of `>`
+"  <S-Left>  - duplicate of `I`
+"  <S-Right> - duplicate of `O`
 "  <S-Up>    - duplicate of `L`
 "  <S-Down>  - duplicate of `K`
 "  <A-Left>  - duplicate of `'j`
 "  <A-Right> - duplicate of `';`
 "  <S-A-Left>  - duplicate of `"J`
 "  <S-A-Right> - duplicate of `":`
-map <SID>key_i <Plug>(CrazyKeys-ToEndOfWordBackward)
-map <SID>key_I <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
-nmap <SID>key_o <Plug>(CrazyKeys-ToEndOfWordForward)
-vnoremap <SID>key_o e
-omap <SID>key_o <Plug>(CrazyKeys-ToEndOfWordForward)
-nmap <SID>key_O <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-vnoremap <SID>key_O E
-omap <SID>key_O <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-noremap <SID>key_, b
-noremap <SID>key_< B
-nnoremap <SID>key_. w
-vnoremap <SID>key_. @=" w\<lt>BS>"<CR>
-onoremap <SID>key_. w
-nnoremap <SID>key_> W
-vnoremap <SID>key_> @=" w\<lt>BS>"<CR>
-onoremap <SID>key_> W
-noremap <script> <S-Left>  <SID>key_<
-noremap <script> <S-Right> <SID>key_>
 
+map <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
+map <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
+nmap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
+vnoremap <SID>key_. e
+omap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
+nmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
+vnoremap <SID>key_> E
 omap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-
-noremap <script> <S-Left>  <SID>key_<
-noremap <script> <S-Right> <SID>key_>
 
 noremap  <SID>key_L @="k{ ^"<CR>
 onoremap <SID>key_L {
@@ -1614,6 +1601,16 @@ noremap <script> <S-Up>   <SID>key_L
 noremap <script> <S-Down> <SID>key_K
 
 noremap <SID>2keyseq_'j 0
+noremap <SID>key_i b
+noremap <SID>key_I B
+nnoremap <SID>key_o w
+vnoremap <SID>key_o @=" w\<lt>BS>"<CR>
+onoremap <SID>key_o w
+nnoremap <SID>key_O W
+vnoremap <SID>key_O @=" w\<lt>BS>"<CR>
+onoremap <SID>key_O W
+noremap <script> <S-Left>  <SID>key_I
+noremap <script> <S-Right> <SID>key_O
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
