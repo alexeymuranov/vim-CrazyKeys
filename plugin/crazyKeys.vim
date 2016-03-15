@@ -817,10 +817,21 @@ function! s:confugure_desired_configurations(keymap)
   let g:mapleader = get(a:keymap, '\', '\')
   let g:vimfiler_as_default_explorer = 1
 
-  command! MRU Unite
+  " Fuzzily find and open a recently used file
+  command! FFRecentlyUsed Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -start-insert
         \ file_mru
+  " Fuzzily find and open a file in the working directory
+  command! FFWorkingDirectory Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file
+  " Fuzzily find and open a file under the working directory
+  command! FFUnderWorkingDdirectory Unite
+        \ -direction=botright -prompt-direction=below
+        \ -auto-resize -auto-preview -start-insert
+        \ file_rec/async
   " TODO: convert most of these mappings into menus (with mappings)
   " source $VIMRUNTIME/menu.vim
   " set wildmenu
