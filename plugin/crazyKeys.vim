@@ -376,8 +376,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   'rr',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
-      \   'ff', '''f',
-      \   'dd', '''d', '''D',
+      \   'dd', '''d',
+      \   'ff', '''f', '''F',
       \   '''t', '''T',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
@@ -400,8 +400,8 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''u', '''U',
       \   '''a',
       \   '''''s', '''''S',
-      \   '''f',
-      \   '''d', '''D',
+      \   '''d',
+      \   '''f', '''F',
       \   '''q', '''Q',
       \   '''G', '''''G',
       \   '''''l', '''''k', '''''j',
@@ -2142,20 +2142,20 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  ""S       - in Visual mode: replace with replacing the content of the
 "              unnamed register with the replaces text (`p` or `P`)
 "              and go to the beginning of the pasted text
-"  f{motion} - `d`
-"  ff        - `x`
-"  F         - in Normal mode: `dd`,
+"  d{motion} - `d`
+"  dd        - `x`
+"  D         - in Normal mode: `dd`,
 "              in Visual mode: delete the entire lines that have something
 "              selected (`Vd`)
-"  'f        - same as `f` but without copying to the register (`"_d`)
+"  'd        - same as `f` but without copying to the register (`"_d`)
 "  r{motion} - same as `f{motion}` but without copying to the register (`"_d`)
 "  rr        - same as `ff` but without copying to the register (`"_x`)
 "  R         - same as `F` but without copying to the register
-"  d{motion} - `"_c`
-"  dd        - `"_s`
-"  D         - `"_cc`
-"  'd        - `c`
-"  "D        - `cc`
+"  f{motion} - `"_c`
+"  ff        - `"_s`
+"  F         - `"_cc`
+"  'f        - `c`
+"  "F        - `cc`
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
@@ -2228,28 +2228,28 @@ endfunction
 nnoremap <SID>2keyseq_'S @=<SID>NMapEReg_PasteAfterV2()<CR>
 vnoremap <SID>3keyseq_''S P`[
 
-nnoremap <SID>key_f d
-vnoremap <SID>key_f d
-nnoremap <SID>key_F dd
-vnoremap <SID>key_F Vd
-nnoremap <SID>2keyseq_ff x
-nnoremap <SID>2keyseq_'f "_d
-vnoremap <SID>2keyseq_'f "_d
+nnoremap <SID>key_d d
+vnoremap <SID>key_d d
+nnoremap <SID>key_D dd
+vnoremap <SID>key_D Vd
+nnoremap <SID>2keyseq_dd x
+nnoremap <SID>2keyseq_'d "_d
+vnoremap <SID>2keyseq_'d "_d
 nnoremap <SID>key_r "_d
 vnoremap <SID>key_r "_d
 nnoremap <SID>key_R "_dd
 vnoremap <SID>key_R V"_d
 nnoremap <SID>2keyseq_rr "_x
 
-nnoremap <SID>key_d "_c
-vnoremap <SID>key_d "_c
-nnoremap <SID>key_D "_cc
-vnoremap <SID>key_D V"_cc
-nnoremap <SID>2keyseq_dd "_s
-nnoremap <SID>2keyseq_'d c
-vnoremap <SID>2keyseq_'d c
-nnoremap <SID>2keyseq_'D cc
-vnoremap <SID>2keyseq_'D Vcc
+nnoremap <SID>key_f "_c
+vnoremap <SID>key_f "_c
+nnoremap <SID>key_F "_cc
+vnoremap <SID>key_F V"_cc
+nnoremap <SID>2keyseq_ff "_s
+nnoremap <SID>2keyseq_'f c
+vnoremap <SID>2keyseq_'f c
+nnoremap <SID>2keyseq_'F cc
+vnoremap <SID>2keyseq_'F Vcc
 
 "
 " #.#.# Change case
