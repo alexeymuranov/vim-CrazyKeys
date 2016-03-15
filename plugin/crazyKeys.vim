@@ -1531,11 +1531,6 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  .         - Normal mode: after the end of this or next word
 "  >         - Normal mode: after the end of this or next space-delimited
 "              word
-"  L         - beginning of the first line of this or previous paragraph
-"  K         - Normal mode: beginning of the first line of the next
-"              paragraph
-"              Visual mode: beginning of the last line of this or
-"              next paragraph
 "  'j        - go to the first column of the line (`0`)
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
@@ -1562,6 +1557,11 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
 "  c         - Operator pending mode: duplicate of `:`
+"  {         - beginning of the first line of this or previous paragraph
+"  }         - Normal mode: beginning of the first line of the next
+"              paragraph
+"              Visual mode: beginning of the last line of this or
+"              next paragraph
 "  [count]'< - go to the first column of the previous line or
 "              to the first column of [count] line above
 "              (a bit like `-0` in Vim)
@@ -1575,8 +1575,8 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <C-Right> - move one word right (like the default, or like in Emacs)
 "  <S-Left>  - duplicate of `I`
 "  <S-Right> - duplicate of `O`
-"  <S-Up>    - duplicate of `L`
-"  <S-Down>  - duplicate of `K`
+"  <S-Up>    - duplicate of `{`
+"  <S-Down>  - duplicate of `}`
 "  <A-Left>  - duplicate of `'j`
 "  <A-Right> - duplicate of `';`
 "  <S-A-Left>  - duplicate of `"J`
@@ -1590,15 +1590,6 @@ omap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
 nmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
 vnoremap <SID>key_> E
 omap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-
-noremap  <SID>key_L @="k{ ^"<CR>
-onoremap <SID>key_L {
-" TODO: test and/or improve this
-nnoremap <SID>key_K }}k{<Space>^
-vnoremap <SID>key_K @="j}\<lt>BS>^"<CR>
-onoremap <SID>key_K }
-noremap <script> <S-Up>   <SID>key_L
-noremap <script> <S-Down> <SID>key_K
 
 noremap <SID>2keyseq_'j 0
 noremap <SID>key_i b
@@ -1766,6 +1757,15 @@ nnoremap <expr> <SID>2keyseq_': <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
 vnoremap <expr> <SID>2keyseq_': <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
 onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
 
+noremap  <SID>key_{ @="k{ ^"<CR>
+onoremap <SID>key_{ {
+" TODO: test and/or improve this
+nnoremap <SID>key_} }}k{<Space>^
+vnoremap <SID>key_} @="j}\<lt>BS>^"<CR>
+onoremap <SID>key_} }
+noremap <script> <S-Up>   <SID>key_{
+noremap <script> <S-Down> <SID>key_}
+
 nnoremap <SID>2keyseq_'< -0
 vnoremap <SID>2keyseq_'< -0
 " FIXME: implement
@@ -1801,8 +1801,8 @@ noremap <SID>2keyseq__= M
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
 "  Some ideas:
-"  {  - beginning of the sentence `(`
-"  }  - end of the sentence `)`
+"  (  - beginning of the sentence `(`
+"  )  - end of the sentence `)`
 "  '[ - ?
 "  '] - ?
 "  [[ - `[[`
@@ -1811,8 +1811,8 @@ noremap <SID>2keyseq__= M
 "  [] - `[]`
 
 " TODO: test this
-noremap <SID>key_{ (
-noremap <SID>key_} )
+noremap <SID>key_( (
+noremap <SID>key_) )
 noremap <SID>2keyseq_[[ [[
 noremap <SID>2keyseq_]] ]]
 noremap <SID>2keyseq_[] []
