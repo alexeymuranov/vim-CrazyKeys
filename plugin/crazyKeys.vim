@@ -2628,7 +2628,7 @@ vnoremap <script> <C-A-Down> <SID>unimpairedMoveDowngv
 noremap  <S-Ins> <MiddleMouse>
 noremap! <S-Ins> <MiddleMouse>
 
-if has("gui_macvim") && has("gui_running")
+if (has('gui_macvim') && has('gui_running')) || exists('neovim_dot_app')
   " Map Command-# to switch tabs
   noremap  <D-0> 0gt
   inoremap <D-0> <Esc>0gt
