@@ -454,7 +454,8 @@ endfor
 let g:CrazyKeysLayouts = { 'Qwerty-US-En' : {} }
 let g:CrazyKeysConfigurations = { 'r' : {} }
 
-" NOTE: the key position is on the right, the key function is on the left.
+" NOTE: the key position is on the right, the key function (the
+"   corresponding key of the default configuration) is on the left.
 let g:CrazyKeysConfigurations['l'] = {
       \ 'p' : 'q',
       \ 'i' : 'w',
