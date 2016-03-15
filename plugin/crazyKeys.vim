@@ -1557,6 +1557,8 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
 "  c         - Operator pending mode: duplicate of `:`
+"  [count]J  - `-` in Vim
+"  [count]K  - `+` in Vim
 "  {         - beginning of the first line of this or previous paragraph
 "  }         - Normal mode: beginning of the first line of the next
 "              paragraph
@@ -1755,6 +1757,9 @@ noremap <script> <A-Left>   <SID>2keyseq_'l
 noremap <script> <S-A-Left> <SID>2keyseq_'L
 noremap <script> <A-Right>   <SID>2keyseq_';
 noremap <script> <S-A-Right> <SID>2keyseq_':
+
+noremap <SID>key_J -
+noremap <SID>key_K +
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
