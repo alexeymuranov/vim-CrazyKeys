@@ -2326,12 +2326,11 @@ vnoremap <SID>2keyseq_'Q gq
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
 "  w  - insert a space before the cursor
-"  e  - insert a space after the current character
-" NOTE: this seems more reasonable than the other option:
-"    e  - insert a space at/after the cursor, leaving the cursor at the
-"         beginning of the inserted space
+"  e  - insert a space before the cursor, leaving the cursor at the
+"       beginning of the inserted space
 "  W  - insert a blank line before the current
-"  E  - insert a blank line after the current
+"  E  - insert a blank line before the current and leave the cursor on the
+"       inserted line
 " NOTE:  Consider using <Ctrl-> keys instead if simple keys are needed
 "   elsewhere.  These keys may be designated as of "minor importance" and
 "   be safely assigned new functions when Vim is launched as a tool from
@@ -2340,9 +2339,9 @@ vnoremap <SID>2keyseq_'Q gq
 "   the ones for pasting (`key_d`, `key_D`, etc.)
 nnoremap <SID>key_w i<Space><Esc>l
 " nnoremap <SID>key_e @="i \<lt>Esc>`["<CR>
-nnoremap <SID>key_e a<Space><Esc>`[h
+nnoremap <SID>key_e i<Space><Esc>`[
 nnoremap <SID>key_W @="m`O\<lt>Esc>``"<CR>
-nnoremap <SID>key_E @="m`o\<lt>Esc>``"<CR>
+nnoremap <SID>key_E @="O\<lt>Esc>"<CR>
 
 "
 " #.#.# Join/break lines
