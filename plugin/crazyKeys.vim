@@ -2121,7 +2121,7 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              in Visual mode: replace without changing the unnamed register
 "              (not like `p`) and put the cursor after the pasted text
 "  S         - in Normal mode:
-"              for charcter-wise and block-wise pasting, paste "at"/"before"
+"              for character-wise and block-wise pasting, paste "at"/"before"
 "              the cursor without moving the cursor, that is leaving the
 "              cursor at the beginning of the pasted text;
 "              for line-wise pasting, paste after the current line without
