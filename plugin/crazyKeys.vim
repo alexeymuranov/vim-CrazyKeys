@@ -373,7 +373,6 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''&', '''^',
       \   '''u', '''U',
       \   '''%',
-      \   'rr',
       \   '''A', '''''A', 'aa',
       \   '''s', '''S',
       \   'dd', '''d',
@@ -2089,18 +2088,19 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
 " NOTE: the roles of <Del> and <BS> may be inverted in Normal mode
-"  <BS>, <C-Del> - in Normal mode: delete a single character
+"  r         - in Normal mode: delete a single character
 "              on the right of the cursor without copying to the register
 "              (`"_x` in Vim),
 "              in Visual mode: delete the selection without copying
 "              to the register (`"_d`)
-"  <S-BS>    - in Normal mode: delete a line without copying
-"              to the register (`"_dd`),
+"  R         - in Normal mode: delete a single character
+"              on the left of the cursor without copying to the register
+"              (`"_X` in Vim),
 "              in Visual mode: delete the entire lines that have something
 "              selected without copying to the register (`V"_d`)
-"  <Del>, <C-BS> - delete a single character to the left without copying
+"  <Del>, <A-BS> - delete a single character to the left without copying
 "              to the register (`"_X`)
-"  <S-Del>   - in Normal mode: delete the line before the current one
+"  <S-Del>, <A-C-BS> - in Normal mode: delete the line before the current one
 "              without copying to the register
 "  a{motion} - in Normal mode: copy `y`
 "  a         - in Visual mode: copy and move cursor to the opposite end of
@@ -2148,29 +2148,27 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  D         - in Normal mode: `dd`,
 "              in Visual mode: delete the entire lines that have something
 "              selected (`Vd`)
-"  'd        - same as `f` but without copying to the register (`"_d`)
-"  r{motion} - same as `f{motion}` but without copying to the register (`"_d`)
-"  rr        - same as `ff` but without copying to the register (`"_x`)
-"  R         - same as `F` but without copying to the register
+"  'd{motion}  - same as `d` but without copying to the register (`"_d`)
+"  <BS>{motion}  - same as `d{motion}` but without copying to the register
+"              (`"_d`)
+"  <BS><BS>  - same as `dd` but without copying to the register (`"_x`)
+"  <S-BS>    - same as `D` but without copying to the register
 "  f{motion} - `"_c`
 "  ff        - `"_s`
 "  F         - `"_cc`
 "  'f        - `c`
 "  "F        - `cc`
+"  <C-Del>   - same as <BS>
+"  <C-BS>    - same as <Del>
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
-nnoremap <BS>  "_x
-vnoremap <BS>  "_d
-onoremap <BS> <Esc>
-map <C-Del> <BS>
-nnoremap <S-BS> "_dd
-vnoremap <S-BS>  V"_d
-nnoremap <Del> "_X
-vnoremap <Del> "_d
-onoremap <Del> <Esc>
-map <C-BS> <Del>
+nnoremap <SID>key_r "_x
+vnoremap <SID>key_r "_d
+nnoremap <SID>key_R "_X
+vnoremap <SID>key_R V"_d
 nnoremap <expr> <S-Del> ':<C-u>-' . v:count1 . ',-1delete<CR>'
+nmap <A-C-BS> <S-Del>
 vnoremap <S-Del> V"_d
 nnoremap <SID>key_a y
 vnoremap <script> <SID>key_a ygvo<SID>key_<Esc>
@@ -2237,11 +2235,18 @@ vnoremap <SID>key_D Vd
 nnoremap <SID>2keyseq_dd x
 nnoremap <SID>2keyseq_'d "_d
 vnoremap <SID>2keyseq_'d "_d
-nnoremap <SID>key_r "_d
-vnoremap <SID>key_r "_d
-nnoremap <SID>key_R "_dd
-vnoremap <SID>key_R V"_d
 nnoremap <SID>2keyseq_rr "_x
+nnoremap <BS> "_d
+vnoremap <BS> "_d
+nnoremap <S-BS> "_dd
+vnoremap <S-BS> V"_d
+nnoremap <BS><BS> "_x
+onoremap <BS> <Esc>
+nnoremap <Del> "_X
+vnoremap <Del> "_d
+onoremap <Del> <Esc>
+map <C-Del> <BS>
+map <C-BS>  <Del>
 
 nnoremap <SID>key_f "_c
 vnoremap <SID>key_f "_c
