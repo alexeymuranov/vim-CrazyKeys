@@ -2103,7 +2103,7 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  <S-Del>   - in Normal mode: delete the line before the current one
 "              without copying to the register
 "  a{motion} - in Normal mode: copy `y`
-"  a         - in Visual mode: copy and move cursor to the opposit end of
+"  a         - in Visual mode: copy and move cursor to the opposite end of
 "              the yanked block (to the beginning or just after it)
 "  'a        - in Visual mode: copy without moving cursor, if the cursor is
 "              in the beginning, and move it just after the yanked block
@@ -2114,29 +2114,30 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  A         - in Visual mode: yank and restore the selection (`ygv`)
 "  [count]"A - in Normal mode: yank [count] lines and jump over them
 "  ""A       - in Normal mode: yank the current line without indent, without
-"              trailing whitespace, and wihtout new line characters
+"              trailing whitespace, and without new line characters
 "  <S-Space> - in visual mode: yank and restore the selection (`ygv`,
 "              same as `A`)
 "  s         - in Normal mode (character-wise only): paste before (`gP`)
 "              in Visual mode: replace without changing the unnamed register
 "              (not like `p`) and put the cursor after the pasted text
+"  's        - in Normal mode:
+"              for character-wise and block-wise pasting, same as `s`;
+"              for line-wise pasting, paste after the current line and move
+"              the cursor after the pasted text
+"  ''s       - in Visual mode: replace with replacing the content of the
+"              unnamed register with the replaces text (`p` or `P`)
+"              and put the cursor after the pasted text
 "  S         - in Normal mode:
 "              for character-wise and block-wise pasting, paste "at"/"before"
 "              the cursor without moving the cursor, that is leaving the
 "              cursor at the beginning of the pasted text;
-"              for line-wise pasting, paste after the current line without
-"              moving cursor;
+"              for line-wise pasting, paste before the current line and put
+"              the cursor at the beginning of the pasted text;
 "              in Visual mode: replace, without changing the unnamed
 "              register (not like `p`) and go to the beginning of the pasted
 "              text
-"  's        - in Normal mode: paste before and go to the beginning of the
-"              pasted text
-"              (same as `S` for character-wise and block-wise pasing)
-"  ''s       - in Visual mode: replace with replacing the content of the
-"              unnamed register with the replaces text (`p` or `P`)
-"              and put the cursor after the pasted text
 "  "S        - in Normal mode:
-"              for charcter-wise and block-wise pasting, same as `S`;
+"              for character-wise and block-wise pasting, same as `S`;
 "              for line-wise pasting, paste after the current line and move
 "              the cursor to the beginning of the pasted text
 "  ""S       - in Visual mode: replace with replacing the content of the
@@ -2194,27 +2195,28 @@ function! s:NMapEReg_PasteBeforeV1()
 endfunction
 nnoremap <SID>key_s @=<SID>NMapEReg_PasteBeforeV1()<CR>
 vnoremap <SID>key_s "_dgP
-function! s:NMapEReg_PasteBeforeV2()
-  let l:reg_name = v:register
-  let l:reg_type = getregtype(l:reg_name)
-  if l:reg_type ==# 'V'
-    return '"' . l:reg_name . 'P'
-  else
-    return '"' . l:reg_name . 'P`['
-  endif
-endfunction
-nnoremap <SID>2keyseq_'s @=<SID>NMapEReg_PasteBeforeV2()<CR>
-vnoremap <SID>3keyseq_''s gP
 function! s:NMapEReg_PasteAfterV1()
   let l:reg_name = v:register
   let l:reg_type = getregtype(l:reg_name)
   if l:reg_type ==# 'V'
-    return 'm`"' . l:reg_name . 'p``'
+    return '"' . l:reg_name . 'gp'
   else
-    return '"' . l:reg_name . 'P`['
+    return '"' . l:reg_name . 'gP'
   endif
 endfunction
-nnoremap <SID>key_S @=<SID>NMapEReg_PasteAfterV1()<CR>
+nnoremap <SID>2keyseq_'s @=<SID>NMapEReg_PasteAfterV1()<CR>
+vnoremap <SID>3keyseq_''s gP
+" function! s:NMapEReg_PasteBeforeV2()
+"   let l:reg_name = v:register
+"   let l:reg_type = getregtype(l:reg_name)
+"   if l:reg_type ==# 'V'
+"     return '"' . l:reg_name . 'P'
+"   else
+"     return '"' . l:reg_name . 'P`['
+"   endif
+" endfunction
+" nnoremap <SID>key_S @=<SID>NMapEReg_PasteBeforeV2()<CR>
+nnoremap <SID>key_S P`[
 vnoremap <SID>key_S "_dP`[
 function! s:NMapEReg_PasteAfterV2()
   let l:reg_name = v:register
