@@ -1505,12 +1505,12 @@ noremap <SID>key_` "
 " #.#.# Small motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  l, <Left>  - left (`h`)
-"  ;, <Right> - right (`l`)
-"  j, <Up>    - up on screen (`gk`)
-"  k, <Down>  - down on screen (`gj`)
-"  'j, <A-Up>     - up in text (`k`)
-"  'k, <A-Down>   - down in text (`j`)
+"  l, <Left>  - left (`h` in Vim)
+"  ;, <Right> - right (`l` in Vim)
+"  j, <Up>    - up on screen (`gk` in Vim)
+"  k, <Down>  - down on screen (`gj` in Vim)
+"  'j, <A-Up>     - up in text (`k` in Vim)
+"  'k, <A-Down>   - down in text (`j` in Vim)
 "  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
 noremap <SID>key_l h
 noremap <SID>key_; l
