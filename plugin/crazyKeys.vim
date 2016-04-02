@@ -1511,10 +1511,12 @@ noremap <SID>key_` "
 "  k, <Down>  - down on screen (`gj`)
 "  'j, <A-Up>     - up in text (`k`)
 "  'k, <A-Down>   - down in text (`j`)
+"  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
 noremap <SID>key_l h
 noremap <SID>key_; l
 noremap <SID>key_j gk
 noremap <SID>key_k gj
+onoremap <Space> l
 
 noremap <script> <Left>  <SID>key_l
 noremap <script> <Right> <SID>key_;
