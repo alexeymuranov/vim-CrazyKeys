@@ -398,7 +398,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''&', '''^',
       \   '''u', '''U',
       \   '''a',
-      \   '''''s', '''''S',
+      \   '``s', '``S',
       \   '''d',
       \   '''f', '''F',
       \   '''q', '''Q',
@@ -2126,7 +2126,7 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              for character-wise and block-wise pasting, same as `s`;
 "              for line-wise pasting, paste after the current line and move
 "              the cursor after the pasted text
-"  ''s       - in Visual mode: replace with replacing the content of the
+"  ``s       - in Visual mode: replace with replacing the content of the
 "              unnamed register with the replaces text (`p` or `P`)
 "              and put the cursor after the pasted text
 "  S         - in Normal mode:
@@ -2142,7 +2142,7 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              for character-wise and block-wise pasting, same as `S`;
 "              for line-wise pasting, paste after the current line and move
 "              the cursor to the beginning of the pasted text
-"  ""S       - in Visual mode: replace with replacing the content of the
+"  ``S       - in Visual mode: replace with replacing the content of the
 "              unnamed register with the replaces text (`p` or `P`)
 "              and go to the beginning of the pasted text
 "  d{motion} - `d`
@@ -2205,7 +2205,7 @@ function! s:NMapEReg_PasteAfterV1()
   endif
 endfunction
 nnoremap <SID>2keyseq_'s @=<SID>NMapEReg_PasteAfterV1()<CR>
-vnoremap <SID>3keyseq_''s gP
+vnoremap <SID>3keyseq_``s gP
 " function! s:NMapEReg_PasteBeforeV2()
 "   let l:reg_name = v:register
 "   let l:reg_type = getregtype(l:reg_name)
@@ -2228,7 +2228,7 @@ function! s:NMapEReg_PasteAfterV2()
   endif
 endfunction
 nnoremap <SID>2keyseq_'S @=<SID>NMapEReg_PasteAfterV2()<CR>
-vnoremap <SID>3keyseq_''S P`[
+vnoremap <SID>3keyseq_``S P`[
 
 nnoremap <SID>key_d d
 vnoremap <SID>key_d d
