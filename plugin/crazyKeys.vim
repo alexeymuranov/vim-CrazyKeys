@@ -2100,10 +2100,10 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              (`"_X` in Vim),
 "              in Visual mode: delete the entire lines that have something
 "              selected without copying to the register (`V"_d`)
-"  <Del>, <A-BS> - delete a single character to the left without copying
-"              to the register (`"_X`)
-"  <S-Del>, <A-C-BS> - in Normal mode: delete the line before the current one
-"              without copying to the register
+"  <Del>     - delete a single character to the left without copying
+"              to the register (`"_X` in Vim)
+"  <S-Del>   - delete a single character at/after the cursor without copying
+"              to the register (`"_x` in Vim)
 "  a{motion} - in Normal mode: copy `y`
 "  a         - in Visual mode: copy and move cursor to the opposite end of
 "              the yanked block (to the beginning or just after it)
@@ -2160,8 +2160,6 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  F         - `"_cc`
 "  'f        - `c`
 "  "F        - `cc`
-"  <C-Del>   - same as <BS>
-"  <C-BS>    - same as <Del>
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
@@ -2169,8 +2167,7 @@ nnoremap <SID>key_r "_x
 vnoremap <SID>key_r "_d
 nnoremap <SID>key_R "_X
 vnoremap <SID>key_R V"_d
-nnoremap <expr> <S-Del> ':<C-u>-' . v:count1 . ',-1delete<CR>'
-nmap <A-C-BS> <S-Del>
+nnoremap <S-Del> "_x
 vnoremap <S-Del> V"_d
 nnoremap <SID>key_a y
 vnoremap <script> <SID>key_a ygvo<SID>key_<Esc>
@@ -2247,8 +2244,6 @@ onoremap <BS> <Esc>
 nnoremap <Del> "_X
 vnoremap <Del> "_d
 onoremap <Del> <Esc>
-map <C-Del> <BS>
-map <C-BS>  <Del>
 
 nnoremap <SID>key_f "_c
 vnoremap <SID>key_f "_c
