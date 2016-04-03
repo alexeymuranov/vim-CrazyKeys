@@ -979,6 +979,66 @@ endfunction
 " #.# Motions
 " -------------------------------------------------------------------------
 "
+" TODO:  Try to find and implement a reasonable and consistent behavior of
+"   word-based motions in different visual modes.
+"
+" To Start Of Word Forward
+function! s:Motion_ToStartOfWordForward(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\<', 'W')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+function! s:Motion_ToStartOfWordForwardV(count1)
+  " TODO: test and improve if needed
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! l
+  endif
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\<', 'W')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
+" To Start Of Word Backward
+function! s:Motion_ToStartOfWordBackward(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\<', 'Wb')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+function! s:Motion_ToStartOfWordBackwardV(count1)
+  " TODO: test and improve if needed
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\<', 'Wb')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
 " To End Of Word Forward
 function! s:Motion_ToEndOfWordForward(count1)
   let l:count1 = a:count1
@@ -989,6 +1049,29 @@ function! s:Motion_ToEndOfWordForward(count1)
     call search('\>', 'W')
     let l:count1 -= 1
   endwhile
+endfunction
+
+function! s:Motion_ToEndOfWordForwardV(count1)
+  " TODO: test and improve if needed
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! l
+  endif
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\>', 'W')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
 endfunction
 
 " To End Of Word Backward
@@ -1003,6 +1086,79 @@ function! s:Motion_ToEndOfWordBackward(count1)
   endwhile
 endfunction
 
+function! s:Motion_ToEndOfWordBackwardV(count1)
+  " TODO: test and improve if needed
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\>', 'Wb')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
+" To Start Of Spaced Word Forward
+function! s:Motion_ToStartOfSpacedWordForward(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@=\S\@<!', 'W')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+function! s:Motion_ToStartOfSpacedWordForwardV(count1)
+  " TODO: test and improve if needed
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! l
+  endif
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@=\S\@<!', 'W')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
+" To Start Of Spaced Word Backward
+function! s:Motion_ToStartOfSpacedWordBackward(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@=\S\@<!', 'Wb')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+function! s:Motion_ToStartOfSpacedWordBackwardV(count1)
+  " TODO: test and improve if needed
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@=\S\@<!', 'Wb')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
 " To End Of Spaced Word Forward
 function! s:Motion_ToEndOfSpacedWordForward(count1)
   let l:count1 = a:count1
@@ -1012,6 +1168,29 @@ function! s:Motion_ToEndOfSpacedWordForward(count1)
   endwhile
 endfunction
 
+function! s:Motion_ToEndOfSpacedWordForwardV(count1)
+  " TODO: test and improve if needed
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! l
+  endif
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@<=\S\@!', 'W')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
+endfunction
+
 " To End Of Spaced Word Backward
 function! s:Motion_ToEndOfSpacedWordBackward(count1)
   let l:count1 = a:count1
@@ -1019,6 +1198,22 @@ function! s:Motion_ToEndOfSpacedWordBackward(count1)
     call search('\S\@<=\S\@!', 'Wb')
     let l:count1 -= 1
   endwhile
+endfunction
+
+function! s:Motion_ToEndOfSpacedWordBackwardV(count1)
+  " TODO: test and improve if needed
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\@<=\S\@!', 'Wb')
+    let l:count1 -= 1
+  endwhile
+  let cur_pos = getcurpos()
+  let v_start = getpos('v')
+  let at_end_of_v = cur_pos[1] > v_start[1] ||
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+  if at_end_of_v
+    normal! h
+  endif
 endfunction
 
 " To First Nonblank Of This Or Next Line
@@ -1142,20 +1337,68 @@ endfunction
 call mapToSideEffects#Reset()
 
 call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfWordForward'),
+      \ {'name' : 'CrazyKeys-ToStartOfWordForward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfWordForwardV'),
+      \ {'name' : 'CrazyKeys-ToStartOfWordForwardV', 'modes' : 'v'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfWordBackward'),
+      \ {'name' : 'CrazyKeys-ToStartOfWordBackward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfWordBackwardV'),
+      \ {'name' : 'CrazyKeys-ToStartOfWordBackwardV', 'modes' : 'v'} )
+
+call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToEndOfWordForward'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordForward'} )
+      \ {'name' : 'CrazyKeys-ToEndOfWordForward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToEndOfWordForwardV'),
+      \ {'name' : 'CrazyKeys-ToEndOfWordForwardV', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToEndOfWordBackward'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordBackward'} )
+      \ {'name' : 'CrazyKeys-ToEndOfWordBackward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToEndOfWordBackwardV'),
+      \ {'name' : 'CrazyKeys-ToEndOfWordBackwardV', 'modes' : 'v'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfSpacedWordForward'),
+      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordForward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfSpacedWordForwardV'),
+      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordForwardV', 'modes' : 'v'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfSpacedWordBackward'),
+      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordBackward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToStartOfSpacedWordBackwardV'),
+      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordBackwardV', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToEndOfSpacedWordForward'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordForward'} )
+      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordForward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToEndOfSpacedWordForwardV'),
+      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordForwardV', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToEndOfSpacedWordBackward'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordBackward'} )
+      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordBackward', 'modes' : 'no'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToEndOfSpacedWordBackwardV'),
+      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordBackwardV', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrNextLine'),
@@ -1597,22 +1840,40 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <A-Right> - duplicate of `';`
 "  <S-A-Left>  - duplicate of `"L`
 "  <S-A-Right> - duplicate of `":`
-map <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
-map <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
+nmap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
+omap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
+vmap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackwardV)
+nmap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
+omap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
+vmap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackwardV)
 nmap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
-vnoremap <SID>key_. e
 omap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
+vmap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForwardV)
+" vnoremap <SID>key_. e
 nmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-vnoremap <SID>key_> E
 omap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-noremap <SID>key_i b
-noremap <SID>key_I B
-nnoremap <SID>key_o w
-vnoremap <SID>key_o @=" w\<lt>BS>"<CR>
-onoremap <SID>key_o w
-nnoremap <SID>key_O W
-vnoremap <SID>key_O @=" w\<lt>BS>"<CR>
-onoremap <SID>key_O W
+vmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForwardV)
+" vnoremap <SID>key_> E
+" noremap <SID>key_i b
+nmap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackward)
+omap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackward)
+vmap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackwardV)
+" noremap <SID>key_I B
+nmap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackward)
+omap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackward)
+vmap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackwardV)
+" nnoremap <SID>key_o w
+" onoremap <SID>key_o w
+nmap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForward)
+omap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForward)
+vmap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForwardV)
+" vnoremap <SID>key_o @=" w\<lt>BS>"<CR>
+" nnoremap <SID>key_O W
+" onoremap <SID>key_O W
+nmap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForward)
+omap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForward)
+vmap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForwardV)
+" vnoremap <SID>key_O @=" w\<lt>BS>"<CR>
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
 
