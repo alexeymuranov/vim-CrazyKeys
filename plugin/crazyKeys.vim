@@ -1300,6 +1300,33 @@ function! s:MotionV_ToEndOfThisOrNextLine(count)
 endfunction
 
 "
+" #.# Editing
+" -------------------------------------------------------------------------
+"
+" Delete Lines Above without copying to a register
+"
+" NOTE:  For consistency, it is better only to use this action in pair
+"   with the analogous action that saves the deleted piece to a register.
+"   Defining actions that work with registers may require developing and
+"   upgrading MapToSideEffects plugin first.
+function! s:ActionN_DeleteLinesAbove(count1)
+  execute '-' . a:count1 . ',-1d _'
+endfunction
+
+" Cut Lines Above and save to a register
+"
+" XXX:  This looks like an extremely bad style to pass `v:count1` as an
+"   argument while reading `v:register` directly.  Maybe having an action
+"   without arguments that reads all needed Vim variables directly would
+"   be a simple solution.  This kind of action shall be viewed by
+"   MapToSideEffects plugin as "idempotent," but probably a synonym or
+"   "alias" for "idempotent" should be created in MapToSideEffects to match
+"   the different "meaning" of such actions.
+function! s:ActionN_CutLinesAbove(count1)
+  execute '-' . a:count1 . ',-1d ' . v:register
+endfunction
+
+"
 " #.# Changing modes
 " -------------------------------------------------------------------------
 "
@@ -1415,6 +1442,14 @@ call mapToSideEffects#SetUpWithCount(
 call mapToSideEffects#SetUpWithCount(
       \ function('s:MotionV_ToEndOfThisOrNextLine'),
       \ {'name'  : 'CrazyKeys-V_ToEndOfThisOrNextLine', 'modes' : 'v'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:ActionN_DeleteLinesAbove'),
+      \ {'name'  : 'CrazyKeys-N_DeleteLinesAbove', 'modes' : 'n'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:ActionN_CutLinesAbove'),
+      \ {'name'  : 'CrazyKeys-N_CutLinesAbove', 'modes' : 'n'} )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:ActionN_StartLineWiseVMode'),
@@ -2492,7 +2527,8 @@ vnoremap <SID>3keyseq_``S P`[
 
 nnoremap <SID>key_d d
 vnoremap <SID>key_d d
-nnoremap <expr> <SID>key_D ':<C-u>-' . v:count1 . ',-1d<CR>'
+" nnoremap <expr> <SID>key_D ':<C-u>-' . v:count1 . ',-1d<CR>'
+nmap <SID>key_D <Plug>(CrazyKeys-N_CutLinesAbove)
 vnoremap <SID>key_D Vd
 nnoremap <SID>2keyseq_dd dd
 nnoremap <SID>2keyseq_'d "_d
