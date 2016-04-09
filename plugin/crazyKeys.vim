@@ -2994,6 +2994,8 @@ onoremap <SID>key_E <Nop>
 "
 "  * `<$>` and `<%>` are for "substitute" (find-and-replace).
 "
+"  * `<a,A>`, `<s,S>`, `<d,D>` use registers.
+"
 "
 " #.# To do
 " -------------------------------------------------------------------------
