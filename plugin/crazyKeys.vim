@@ -373,10 +373,10 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''&', '''^',
       \   '''u', '''U',
       \   '''%',
-      \   '''A', '''''A', 'aa',
+      \   '''A', '''''A', 'aa', '''aa',
       \   '''s', '''S',
       \   'dd', '''d',
-      \   'ff', '''f', '''F',
+      \   'ff', 'af', 'aff', 'aF',
       \   '''t', '''T',
       \   '''q', '''Q',
       \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
@@ -400,7 +400,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''a',
       \   '``s', '``S',
       \   '''d',
-      \   '''f', '''F',
+      \   'af', '''F',
       \   '''q', '''Q',
       \   '''G', '''''G',
       \   '''''l', '''''k', '''''j',
@@ -2368,10 +2368,12 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              in the beginning, and move it just after the yanked block
 "              if it is at the end of the selected block
 "  <Space>   - in Visual mode: same as `'a`
-"  [count]aa - copy [count] characters: `yl`
-"  A         - in Normal mode: `yy`
+"  [count]aa - in Normal mode: `yy`
+"  [count]A  - in Normal mode: yank [count] lines and jump over them
 "  A         - in Visual mode: yank and restore the selection (`ygv`)
-"  [count]"A - in Normal mode: yank [count] lines and jump over them
+"  [count]"A  - in Normal mode: yank [count] lines above
+"  [count]'aa - in Normal mode: yank [count] lines above and jump to the
+"              first yanked line
 "  ""A       - in Normal mode: yank the current line without indent, without
 "              trailing whitespace, and without new line characters
 "  <S-Space> - in visual mode: yank and restore the selection (`ygv`,
@@ -2403,8 +2405,8 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "              unnamed register with the replaces text (`p` or `P`)
 "              and go to the beginning of the pasted text
 "  d{motion} - `d`
-"  dd        - `x`
-"  D         - in Normal mode: `dd`,
+"  dd        - in Normal mode: `dd`
+"  [count]D  - in Normal mode: delete [count] lines before the current line,
 "              in Visual mode: delete the entire lines that have something
 "              selected (`Vd`)
 "  'd{motion}  - same as `d` but without copying to the register (`"_d`)
@@ -2413,10 +2415,11 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
 "  <BS><BS>  - same as `dd` but without copying to the register (`"_x`)
 "  <S-BS>    - same as `D` but without copying to the register
 "  f{motion} - `"_c`
-"  ff        - `"_s`
-"  F         - `"_cc`
-"  'f        - `c`
-"  "F        - `cc`
+"  ff        - `"_cc`
+"  [count]F  - Normal mode: replace count previous lines,
+"              Visual mode: `V"_cc`
+"  af        - Normal mode: `c`
+"  aF        - `cc`
 "  TODO:
 "    Define some key combinations for `:diffget` and `:diffput` in diff
 "    mode.  Probably, use `d` or `g` key as the first key.
@@ -2428,15 +2431,18 @@ nnoremap <S-Del> "_x
 vnoremap <S-Del> V"_d
 nnoremap <SID>key_a y
 vnoremap <script> <SID>key_a ygvo<SID>key_<Esc>
+nnoremap <SID>2keyseq_aa yy
+" FIXME: make yank the lines above
+nnoremap <SID>3keyseq_'aa yy'[
 vnoremap <script> <SID>2keyseq_'a ygv<SID>key_<Esc>
-nnoremap <SID>key_A yy
+nnoremap <SID>key_A yy']j
 vnoremap <SID>key_A ygv
-nnoremap <SID>2keyseq_'A yy']j
+" FIXME: make yank the lines above
+nnoremap <SID>2keyseq_'A yy
 " FIXME: make work with [count]
 nnoremap <SID>3keyseq_''A m`^yg_``
 vnoremap <script> <Space>   <SID>2keyseq_'a
 vnoremap <script> <S-Space> <SID>key_A
-nnoremap <SID>2keyseq_aa yl
 
 function! s:NMapEReg_PasteBeforeV1()
   let l:reg_name = v:register
@@ -2486,17 +2492,19 @@ vnoremap <SID>3keyseq_``S P`[
 
 nnoremap <SID>key_d d
 vnoremap <SID>key_d d
-nnoremap <SID>key_D dd
+nnoremap <expr> <SID>key_D ':<C-u>-' . v:count1 . ',-1d<CR>'
 vnoremap <SID>key_D Vd
-nnoremap <SID>2keyseq_dd x
+nnoremap <SID>2keyseq_dd dd
 nnoremap <SID>2keyseq_'d "_d
 vnoremap <SID>2keyseq_'d "_d
 nnoremap <SID>2keyseq_rr "_x
 nnoremap <BS> "_d
 vnoremap <BS> "_d
-nnoremap <S-BS> "_dd
+" FIXME: when on the first line of a file, this deletes the current line
+" nnoremap <expr> <S-BS> ':<C-u>-' . v:count1 . ',-1d _<CR>'
+nmap <S-BS> <Plug>(CrazyKeys-N_DeleteLinesAbove)
 vnoremap <S-BS> V"_d
-nnoremap <BS><BS> "_x
+nnoremap <BS><BS> "_dd
 onoremap <BS> <Esc>
 nnoremap <Del> "_X
 vnoremap <Del> "_d
@@ -2504,12 +2512,14 @@ onoremap <Del> <Esc>
 
 nnoremap <SID>key_f "_c
 vnoremap <SID>key_f "_c
-nnoremap <SID>key_F "_cc
+nnoremap <expr> <SID>key_F ':<C-u>-' . v:count1 . ',-1d _<CR>O'
 vnoremap <SID>key_F V"_cc
-nnoremap <SID>2keyseq_ff "_s
-nnoremap <SID>2keyseq_'f c
-vnoremap <SID>2keyseq_'f c
-nnoremap <SID>2keyseq_'F cc
+nnoremap <SID>2keyseq_ff "_cc
+nnoremap <SID>2keyseq_af c
+vnoremap <SID>2keyseq_af c
+nnoremap <SID>3keyseq_aff cc
+" FIXME: make behave like `F`, but with a register
+nnoremap <SID>2keyseq_aF cc
 vnoremap <SID>2keyseq_'F Vcc
 
 "
