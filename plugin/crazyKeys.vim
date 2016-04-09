@@ -996,7 +996,7 @@ function! s:MotionV_ToStartOfWordForward(count1)
   let cur_pos = getcurpos()
   let v_start = getpos('v')
   let at_end_of_v = cur_pos[1] > v_start[1] ||
-        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] >= v_start[2])
   if at_end_of_v
     normal! l
   endif
@@ -1056,7 +1056,7 @@ function! s:MotionV_ToEndOfWordForward(count1)
   let cur_pos = getcurpos()
   let v_start = getpos('v')
   let at_end_of_v = cur_pos[1] > v_start[1] ||
-        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] >= v_start[2])
   if at_end_of_v
     normal! l
   endif
@@ -1116,7 +1116,7 @@ function! s:MotionV_ToStartOfSpacedWordForward(count1)
   let cur_pos = getcurpos()
   let v_start = getpos('v')
   let at_end_of_v = cur_pos[1] > v_start[1] ||
-        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] >= v_start[2])
   if at_end_of_v
     normal! l
   endif
@@ -1173,7 +1173,7 @@ function! s:MotionV_ToEndOfSpacedWordForward(count1)
   let cur_pos = getcurpos()
   let v_start = getpos('v')
   let at_end_of_v = cur_pos[1] > v_start[1] ||
-        \ (cur_pos[1] == v_start[1] && cur_pos[2] > v_start[2])
+        \ (cur_pos[1] == v_start[1] && cur_pos[2] >= v_start[2])
   if at_end_of_v
     normal! l
   endif
