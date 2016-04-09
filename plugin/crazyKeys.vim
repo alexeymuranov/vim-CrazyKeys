@@ -983,7 +983,7 @@ endfunction
 "   word-based motions in different visual modes.
 "
 " To Start Of Word Forward
-function! s:Motion_ToStartOfWordForward(count1)
+function! s:MotionNO_ToStartOfWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\<', 'W')
@@ -991,7 +991,7 @@ function! s:Motion_ToStartOfWordForward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToStartOfWordForwardV(count1)
+function! s:MotionV_ToStartOfWordForward(count1)
   " TODO: test and improve if needed
   let cur_pos = getcurpos()
   let v_start = getpos('v')
@@ -1015,7 +1015,7 @@ function! s:Motion_ToStartOfWordForwardV(count1)
 endfunction
 
 " To Start Of Word Backward
-function! s:Motion_ToStartOfWordBackward(count1)
+function! s:MotionNO_ToStartOfWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\<', 'Wb')
@@ -1023,7 +1023,7 @@ function! s:Motion_ToStartOfWordBackward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToStartOfWordBackwardV(count1)
+function! s:MotionV_ToStartOfWordBackward(count1)
   " TODO: test and improve if needed
   let l:count1 = a:count1
   while l:count1 > 0
@@ -1040,7 +1040,7 @@ function! s:Motion_ToStartOfWordBackwardV(count1)
 endfunction
 
 " To End Of Word Forward
-function! s:Motion_ToEndOfWordForward(count1)
+function! s:MotionNO_ToEndOfWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     " XXX: this pattern does not work at all when the word contains non
@@ -1051,7 +1051,7 @@ function! s:Motion_ToEndOfWordForward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToEndOfWordForwardV(count1)
+function! s:MotionV_ToEndOfWordForward(count1)
   " TODO: test and improve if needed
   let cur_pos = getcurpos()
   let v_start = getpos('v')
@@ -1075,7 +1075,7 @@ function! s:Motion_ToEndOfWordForwardV(count1)
 endfunction
 
 " To End Of Word Backward
-function! s:Motion_ToEndOfWordBackward(count1)
+function! s:MotionNO_ToEndOfWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     " XXX: this pattern does not work at all when the word contains non
@@ -1086,7 +1086,7 @@ function! s:Motion_ToEndOfWordBackward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToEndOfWordBackwardV(count1)
+function! s:MotionV_ToEndOfWordBackward(count1)
   " TODO: test and improve if needed
   let l:count1 = a:count1
   while l:count1 > 0
@@ -1103,7 +1103,7 @@ function! s:Motion_ToEndOfWordBackwardV(count1)
 endfunction
 
 " To Start Of Spaced Word Forward
-function! s:Motion_ToStartOfSpacedWordForward(count1)
+function! s:MotionNO_ToStartOfSpacedWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\S\@=\S\@<!', 'W')
@@ -1111,7 +1111,7 @@ function! s:Motion_ToStartOfSpacedWordForward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToStartOfSpacedWordForwardV(count1)
+function! s:MotionV_ToStartOfSpacedWordForward(count1)
   " TODO: test and improve if needed
   let cur_pos = getcurpos()
   let v_start = getpos('v')
@@ -1135,7 +1135,7 @@ function! s:Motion_ToStartOfSpacedWordForwardV(count1)
 endfunction
 
 " To Start Of Spaced Word Backward
-function! s:Motion_ToStartOfSpacedWordBackward(count1)
+function! s:MotionNO_ToStartOfSpacedWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\S\@=\S\@<!', 'Wb')
@@ -1143,7 +1143,7 @@ function! s:Motion_ToStartOfSpacedWordBackward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToStartOfSpacedWordBackwardV(count1)
+function! s:MotionV_ToStartOfSpacedWordBackward(count1)
   " TODO: test and improve if needed
   let l:count1 = a:count1
   while l:count1 > 0
@@ -1160,7 +1160,7 @@ function! s:Motion_ToStartOfSpacedWordBackwardV(count1)
 endfunction
 
 " To End Of Spaced Word Forward
-function! s:Motion_ToEndOfSpacedWordForward(count1)
+function! s:MotionNO_ToEndOfSpacedWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\S\@<=\S\@!', 'W')
@@ -1168,7 +1168,7 @@ function! s:Motion_ToEndOfSpacedWordForward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToEndOfSpacedWordForwardV(count1)
+function! s:MotionV_ToEndOfSpacedWordForward(count1)
   " TODO: test and improve if needed
   let cur_pos = getcurpos()
   let v_start = getpos('v')
@@ -1192,7 +1192,7 @@ function! s:Motion_ToEndOfSpacedWordForwardV(count1)
 endfunction
 
 " To End Of Spaced Word Backward
-function! s:Motion_ToEndOfSpacedWordBackward(count1)
+function! s:MotionNO_ToEndOfSpacedWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
     call search('\S\@<=\S\@!', 'Wb')
@@ -1200,7 +1200,7 @@ function! s:Motion_ToEndOfSpacedWordBackward(count1)
   endwhile
 endfunction
 
-function! s:Motion_ToEndOfSpacedWordBackwardV(count1)
+function! s:MotionV_ToEndOfSpacedWordBackward(count1)
   " TODO: test and improve if needed
   let l:count1 = a:count1
   while l:count1 > 0
@@ -1244,7 +1244,7 @@ function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
 endfunction
 
 " To End Of This Or Next Line
-function! s:Motion_ToEndOfThisOrNextLine(count)
+function! s:MotionNO_ToEndOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '$l'
   else
@@ -1258,7 +1258,7 @@ function! s:Motion_ToEndOfThisOrNextLine(count)
 endfunction
 
 " To End Of This Or Next Line in Visual
-function! s:Motion_ToEndOfThisOrNextLineVisual(count)
+function! s:MotionV_ToEndOfThisOrNextLine(count)
   let [@_, l:l_num, l:c_num, @_] = getpos('.')
   let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
   if a:count
@@ -1304,7 +1304,7 @@ endfunction
 " -------------------------------------------------------------------------
 "
 " Start Line-wise Visual Mode
-function! s:Action_StartLineWiseVMode(count1)
+function! s:ActionN_StartLineWiseVMode(count1)
   let [@_, l:line, l:column, @_] = getpos('.')
   normal! V
   call cursor(l:line + a:count1 - 1, l:column)
@@ -1312,7 +1312,7 @@ function! s:Action_StartLineWiseVMode(count1)
 endfunction
 
 " Switch Visual Modes between Character-wise and Block
-function! s:Action_SwitchVisualModesCB()
+function! s:ActionV_SwitchVisualModesCB()
   if mode() ==# "\<C-v>"
     normal! v
   else
@@ -1321,7 +1321,7 @@ function! s:Action_SwitchVisualModesCB()
 endfunction
 
 " Switch Visual Modes between Character-wise and Line-wise
-function! s:Action_SwitchVisualModesCL()
+function! s:ActionV_SwitchVisualModesCL()
   if mode() ==# 'V'
     normal! v
   else
@@ -1337,68 +1337,68 @@ endfunction
 call mapToSideEffects#Reset()
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfWordForward'),
-      \ {'name' : 'CrazyKeys-ToStartOfWordForward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToStartOfWordForward'),
+      \ {'name' : 'CrazyKeys-NO_ToStartOfWordForward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfWordForwardV'),
-      \ {'name' : 'CrazyKeys-ToStartOfWordForwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToStartOfWordForward'),
+      \ {'name' : 'CrazyKeys-V_ToStartOfWordForward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfWordBackward'),
-      \ {'name' : 'CrazyKeys-ToStartOfWordBackward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToStartOfWordBackward'),
+      \ {'name' : 'CrazyKeys-NO_ToStartOfWordBackward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfWordBackwardV'),
-      \ {'name' : 'CrazyKeys-ToStartOfWordBackwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToStartOfWordBackward'),
+      \ {'name' : 'CrazyKeys-V_ToStartOfWordBackward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfWordForward'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordForward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToEndOfWordForward'),
+      \ {'name' : 'CrazyKeys-NO_ToEndOfWordForward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfWordForwardV'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordForwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToEndOfWordForward'),
+      \ {'name' : 'CrazyKeys-V_ToEndOfWordForward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfWordBackward'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordBackward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToEndOfWordBackward'),
+      \ {'name' : 'CrazyKeys-NO_ToEndOfWordBackward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfWordBackwardV'),
-      \ {'name' : 'CrazyKeys-ToEndOfWordBackwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToEndOfWordBackward'),
+      \ {'name' : 'CrazyKeys-V_ToEndOfWordBackward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfSpacedWordForward'),
-      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordForward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToStartOfSpacedWordForward'),
+      \ {'name' : 'CrazyKeys-NO_ToStartOfSpacedWordForward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfSpacedWordForwardV'),
-      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordForwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToStartOfSpacedWordForward'),
+      \ {'name' : 'CrazyKeys-V_ToStartOfSpacedWordForward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfSpacedWordBackward'),
-      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordBackward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToStartOfSpacedWordBackward'),
+      \ {'name' : 'CrazyKeys-NO_ToStartOfSpacedWordBackward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToStartOfSpacedWordBackwardV'),
-      \ {'name' : 'CrazyKeys-ToStartOfSpacedWordBackwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToStartOfSpacedWordBackward'),
+      \ {'name' : 'CrazyKeys-V_ToStartOfSpacedWordBackward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfSpacedWordForward'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordForward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToEndOfSpacedWordForward'),
+      \ {'name' : 'CrazyKeys-NO_ToEndOfSpacedWordForward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfSpacedWordForwardV'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordForwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToEndOfSpacedWordForward'),
+      \ {'name' : 'CrazyKeys-V_ToEndOfSpacedWordForward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfSpacedWordBackward'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordBackward', 'modes' : 'no'} )
+      \ function('s:MotionNO_ToEndOfSpacedWordBackward'),
+      \ {'name' : 'CrazyKeys-NO_ToEndOfSpacedWordBackward', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Motion_ToEndOfSpacedWordBackwardV'),
-      \ {'name' : 'CrazyKeys-ToEndOfSpacedWordBackwardV', 'modes' : 'v'} )
+      \ function('s:MotionV_ToEndOfSpacedWordBackward'),
+      \ {'name' : 'CrazyKeys-V_ToEndOfSpacedWordBackward', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrNextLine'),
@@ -1409,29 +1409,24 @@ call mapToSideEffects#SetUpWithCount(
       \ {'name' : 'CrazyKeys-ToFirstColumnThisOrNext'} )
 
 call mapToSideEffects#SetUpWithCount(
-      \ function('s:Motion_ToEndOfThisOrNextLine'),
-      \ { 'name'  : 'CrazyKeys-ToEndOfThisOrNextLine',
-      \   'modes' : 'no'} )
+      \ function('s:MotionNO_ToEndOfThisOrNextLine'),
+      \ {'name'  : 'CrazyKeys-NO_ToEndOfThisOrNextLine', 'modes' : 'no'} )
 
 call mapToSideEffects#SetUpWithCount(
-      \ function('s:Motion_ToEndOfThisOrNextLineVisual'),
-      \ { 'name'  : 'CrazyKeys-ToEndOfThisOrNextLineVisual',
-      \   'modes' : 'v' } )
+      \ function('s:MotionV_ToEndOfThisOrNextLine'),
+      \ {'name'  : 'CrazyKeys-V_ToEndOfThisOrNextLine', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:Action_StartLineWiseVMode'),
-      \ { 'name'  : 'CrazyKeys-StartLineWiseVMode',
-      \   'modes' : 'n' } )
+      \ function('s:ActionN_StartLineWiseVMode'),
+      \ {'name'  : 'CrazyKeys-N_StartLineWiseVMode', 'modes' : 'n'} )
 
 call mapToSideEffects#SetUpIdempotent(
-      \ function('s:Action_SwitchVisualModesCL'),
-      \ { 'name'  : 'CrazyKeys-SwitchVisualModesCL',
-      \   'modes' : 'v' } )
+      \ function('s:ActionV_SwitchVisualModesCL'),
+      \ {'name'  : 'CrazyKeys-V_SwitchVisualModesCL', 'modes' : 'v'} )
 
 call mapToSideEffects#SetUpIdempotent(
-      \ function('s:Action_SwitchVisualModesCB'),
-      \ { 'name'  : 'CrazyKeys-SwitchVisualModesCB',
-      \   'modes' : 'v' } )
+      \ function('s:ActionV_SwitchVisualModesCB'),
+      \ {'name'  : 'CrazyKeys-V_SwitchVisualModesCB', 'modes' : 'v'} )
 
 "
 " =========================================================================
@@ -1634,10 +1629,10 @@ vnoremap <script> <S-CR> <SID>key_'<CR>
 
 nnoremap <SID>key_h v
 
-nmap <SID>key_H <Plug>(CrazyKeys-StartLineWiseVMode)
+nmap <SID>key_H <Plug>(CrazyKeys-N_StartLineWiseVMode)
 
-vmap <SID>key_h <Plug>(CrazyKeys-SwitchVisualModesCB)
-vmap <SID>key_H <Plug>(CrazyKeys-SwitchVisualModesCL)
+vmap <SID>key_h <Plug>(CrazyKeys-V_SwitchVisualModesCB)
+vmap <SID>key_H <Plug>(CrazyKeys-V_SwitchVisualModesCL)
 
 nnoremap <SID>2keyseq_'h gv
 vnoremap <SID>2keyseq_'h gv
@@ -1840,39 +1835,39 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <A-Right> - duplicate of `';`
 "  <S-A-Left>  - duplicate of `"L`
 "  <S-A-Right> - duplicate of `":`
-nmap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
-omap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackward)
-vmap <SID>key_, <Plug>(CrazyKeys-ToEndOfWordBackwardV)
-nmap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
-omap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackward)
-vmap <SID>key_< <Plug>(CrazyKeys-ToEndOfSpacedWordBackwardV)
-nmap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
-omap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForward)
-vmap <SID>key_. <Plug>(CrazyKeys-ToEndOfWordForwardV)
+nmap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
+omap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
+vmap <SID>key_, <Plug>(CrazyKeys-V_ToEndOfWordBackward)
+nmap <SID>key_< <Plug>(CrazyKeys-NO_ToEndOfSpacedWordBackward)
+omap <SID>key_< <Plug>(CrazyKeys-NO_ToEndOfSpacedWordBackward)
+vmap <SID>key_< <Plug>(CrazyKeys-V_ToEndOfSpacedWordBackward)
+nmap <SID>key_. <Plug>(CrazyKeys-NO_ToEndOfWordForward)
+omap <SID>key_. <Plug>(CrazyKeys-NO_ToEndOfWordForward)
+vmap <SID>key_. <Plug>(CrazyKeys-V_ToEndOfWordForward)
 " vnoremap <SID>key_. e
-nmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-omap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForward)
-vmap <SID>key_> <Plug>(CrazyKeys-ToEndOfSpacedWordForwardV)
+nmap <SID>key_> <Plug>(CrazyKeys-NO_ToEndOfSpacedWordForward)
+omap <SID>key_> <Plug>(CrazyKeys-NO_ToEndOfSpacedWordForward)
+vmap <SID>key_> <Plug>(CrazyKeys-V_ToEndOfSpacedWordForward)
 " vnoremap <SID>key_> E
 " noremap <SID>key_i b
-nmap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackward)
-omap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackward)
-vmap <SID>key_i <Plug>(CrazyKeys-ToStartOfWordBackwardV)
+nmap <SID>key_i <Plug>(CrazyKeys-NO_ToStartOfWordBackward)
+omap <SID>key_i <Plug>(CrazyKeys-NO_ToStartOfWordBackward)
+vmap <SID>key_i <Plug>(CrazyKeys-V_ToStartOfWordBackward)
 " noremap <SID>key_I B
-nmap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackward)
-omap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackward)
-vmap <SID>key_I <Plug>(CrazyKeys-ToStartOfSpacedWordBackwardV)
+nmap <SID>key_I <Plug>(CrazyKeys-NO_ToStartOfSpacedWordBackward)
+omap <SID>key_I <Plug>(CrazyKeys-NO_ToStartOfSpacedWordBackward)
+vmap <SID>key_I <Plug>(CrazyKeys-V_ToStartOfSpacedWordBackward)
 " nnoremap <SID>key_o w
 " onoremap <SID>key_o w
-nmap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForward)
-omap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForward)
-vmap <SID>key_o <Plug>(CrazyKeys-ToStartOfWordForwardV)
+nmap <SID>key_o <Plug>(CrazyKeys-NO_ToStartOfWordForward)
+omap <SID>key_o <Plug>(CrazyKeys-NO_ToStartOfWordForward)
+vmap <SID>key_o <Plug>(CrazyKeys-V_ToStartOfWordForward)
 " vnoremap <SID>key_o @=" w\<lt>BS>"<CR>
 " nnoremap <SID>key_O W
 " onoremap <SID>key_O W
-nmap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForward)
-omap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForward)
-vmap <SID>key_O <Plug>(CrazyKeys-ToStartOfSpacedWordForwardV)
+nmap <SID>key_O <Plug>(CrazyKeys-NO_ToStartOfSpacedWordForward)
+omap <SID>key_O <Plug>(CrazyKeys-NO_ToStartOfSpacedWordForward)
+vmap <SID>key_O <Plug>(CrazyKeys-V_ToStartOfSpacedWordForward)
 " vnoremap <SID>key_O @=" w\<lt>BS>"<CR>
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
@@ -1950,9 +1945,9 @@ map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 " nnoremap <expr> <SID>key_: <SID>NMapExpr_ToEndOfThisOrNextLine()
 " vnoremap <expr> <SID>key_: <SID>VMapExpr_ToEndOfThisOrNextLine()
 " onoremap <SID>key_: $
-nmap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
-vmap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLineVisual)
-omap <SID>key_: <Plug>(CrazyKeys-ToEndOfThisOrNextLine)
+nmap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+omap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+vmap <SID>key_: <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
 onoremap <script> <SID>key_c <SID>key_:
 
 function! s:NMapExpr_ToLastNonblankOfThisOrNextLine()
