@@ -870,12 +870,13 @@ function! s:confugure_desired_configurations(keymap)
         \ file_rec/async<CR>
   nnoremap <silent> <leader>fe :<C-u>VimFilerCurrentDir
         \ -explorer -split -vertical -direction=botright<CR>
-  nmap <leader>F <leader>fr
+  nmap <silent> <leader>F <leader>fr
+  nmap <silent> <C-r> <leader>fr
   nnoremap <silent> <leader>b :<C-u>Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -auto-preview -no-start-insert
         \ buffer<CR>
-  nmap <leader>B <leader>b
+  nmap <silent> <leader>B <leader>b
   nnoremap <silent> <leader>y :<C-u>Unite
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -no-start-insert
@@ -889,7 +890,7 @@ function! s:confugure_desired_configurations(keymap)
   " nnoremap <silent> <leader>tl :<C-u>Unite
   "       \ -direction=botright -prompt-direction=below
   "       \ -no-start-insert tag/include<CR>
-  nmap <leader>T <leader>tb
+  nmap <silent> <leader>T <leader>tb
   " Open a scratch buffer
   nnoremap <silent> <leader>s :new<CR>:setlocal buftype=nofile<CR>
         \:setlocal bufhidden=hide<CR>:setlocal noswapfile<CR>
