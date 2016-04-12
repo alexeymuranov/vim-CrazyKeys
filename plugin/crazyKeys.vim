@@ -1299,6 +1299,11 @@ function! s:MotionV_ToEndOfThisOrNextLine(count)
   endif
 endfunction
 
+" To Column Number in Visual
+function! s:MotionV_ToColumnNumber(count)
+  " TODO: implement
+endfunction
+
 "
 " #.# Editing
 " -------------------------------------------------------------------------
