@@ -363,9 +363,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \ 'n' : [
       \   '''h',
       \   '''x', '''c', '''X', '''C',
-      \   '''j', '''k',
+      \   ''';', '''j',
       \   '''i', '''I', '''o', '''O',
-      \   '''l', '''L', ''';', ''':',
+      \   '''k', '''K', '''l', '''L',
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
@@ -388,9 +388,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ],
       \ 'v' : [
       \   '''h',
-      \   '''j', '''k',
+      \   ''';', '''j',
       \   '''i', '''I', '''o', '''O',
-      \   '''l', '''L', ''';', ''':',
+      \   '''k', '''K', '''l', '''L',
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '++',
@@ -411,9 +411,9 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''/', '''?'
       \   ],
       \ 'o' : [
-      \   '''j', '''k',
+      \   ''';', '''j',
       \   '''i', '''I', '''o', '''O',
-      \   '''l', '''L', ''';', ''':',
+      \   '''k', '''K', '''l', '''L',
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '[[', ']]', '[]', '][',
@@ -467,9 +467,9 @@ let g:CrazyKeysConfigurations['l'] = {
       \ 'e' : 'o',
       \ 'q' : 'p',
       \
-      \ 'l' : 'a',
-      \ ';' : 's',
-      \ 'k' : 'd',
+      \ ';' : 'a',
+      \ 'k' : 's',
+      \ 'l' : 'd',
       \ 'j' : 'f',
       \ 'h' : 'g',
       \ 'g' : 'h',
@@ -503,9 +503,9 @@ let g:CrazyKeysConfigurations['l'] = {
       \ 'E' : 'O',
       \ 'Q' : 'P',
       \
-      \ 'L' : 'A',
-      \ ':' : 'S',
-      \ 'K' : 'D',
+      \ ':' : 'A',
+      \ 'K' : 'S',
+      \ 'L' : 'D',
       \ 'J' : 'F',
       \ 'H' : 'G',
       \ 'G' : 'H',
@@ -1784,28 +1784,28 @@ noremap <SID>key_` "
 " #.#.# Small motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  l, <Left>  - left (`h` in Vim)
-"  ;, <Right> - right (`l` in Vim)
-"  j, <Up>    - up on screen (`gk` in Vim)
-"  k, <Down>  - down on screen (`gj` in Vim)
-"  'j, <A-Up>     - up in text (`k` in Vim)
-"  'k, <A-Down>   - down in text (`j` in Vim)
+"  k, <Left>  - left (`h` in Vim)
+"  l, <Right> - right (`l` in Vim)
+"  ;, <Up>    - up on screen (`gk` in Vim)
+"  j, <Down>  - down on screen (`gj` in Vim)
+"  ';, <A-Up>     - up in text (`k` in Vim)
+"  'j, <A-Down>   - down in text (`j` in Vim)
 "  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
-noremap <SID>key_l h
-noremap <SID>key_; l
-noremap <SID>key_j gk
-noremap <SID>key_k gj
+noremap <SID>key_k h
+noremap <SID>key_l l
+noremap <SID>key_; gk
+noremap <SID>key_j gj
 onoremap <Space> l
 
-noremap <script> <Left>  <SID>key_l
-noremap <script> <Right> <SID>key_;
-noremap <script> <Up>    <SID>key_j
-noremap <script> <Down>  <SID>key_k
+noremap <script> <Left>  <SID>key_k
+noremap <script> <Right> <SID>key_l
+noremap <script> <Up>    <SID>key_;
+noremap <script> <Down>  <SID>key_j
 
-noremap <SID>2keyseq_'j k
-noremap <SID>2keyseq_'k j
-noremap <script> <A-Up>   <SID>2keyseq_'j
-noremap <script> <A-Down> <SID>2keyseq_'k
+noremap <SID>2keyseq_'; k
+noremap <SID>2keyseq_'j j
+noremap <script> <A-Up>   <SID>2keyseq_';
+noremap <script> <A-Down> <SID>2keyseq_'j
 
 "
 " #.#.# Big motions
@@ -1823,34 +1823,34 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  .         - Normal mode: after the end of this or next word
 "  >         - Normal mode: after the end of this or next space-delimited
 "              word
-"  'l        - go to the first column of the line (`0`)
+"  'k        - go to the first column of the line (`0`)
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
-"  ';        - go to or after the last non-blank character of the line
+"  'l        - go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
-"  [count]L  - go to the first non-blank character of the line (`^`) if not
+"  [count]K  - go to the first non-blank character of the line (`^`) if not
 "              there already and if no count is given, otherwise act like
 "              `+` in Vim (like `"O`)
-"  [count]"L - go to the first column of the line (like `0` in Vim) or to
+"  [count]"K - go to the first column of the line (like `0` in Vim) or to
 "              the first column of [count] line below
 "  x         - Operator pending mode: duplicate of `J`
-"  [count]:  - Normal mode: go after the last character of the line (`$l`),
+"  [count]L  - Normal mode: go after the last character of the line (`$l`),
 "              unless already there and no [count] is given; if [count] is
 "              given, act like `$l` in Vim, otherwise go after the end of
 "              the following line;
 "              Visual mode: go to the last character of the line (like `$h`
 "              in Vim), unless already there or [count] is givent, etc.
 "              Operator pending mode: a like `$` in Vim
-"  [count]": - go to or after the first non-blank character of the line
+"  [count]"L - go to or after the first non-blank character of the line
 "              (`g_l` or `g_` in Vim) (like `'l`), unless already there or
 "              [count] is given; if [count] is given, also act abit like `g_`
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
 "  c         - Operator pending mode: duplicate of `:`
-"  [count]J  - `-` in Vim
-"  [count]K  - `+` in Vim
+"  [count]:  - `-` in Vim
+"  [count]J  - `+` in Vim
 "  {         - beginning of the first line of this or previous paragraph
 "  }         - Normal mode: beginning of the first line of the next
 "              paragraph
@@ -1912,23 +1912,23 @@ vmap <SID>key_O <Plug>(CrazyKeys-V_ToStartOfSpacedWordForward)
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
 
-noremap <SID>2keyseq_'l 0
+noremap <SID>2keyseq_'k 0
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
-nnoremap <SID>2keyseq_'; g_l
+nnoremap <SID>2keyseq_'l g_l
 " FIXME: include the last non-blank character when moving from the left,
 "   exclude when moving from the right
-vnoremap <SID>2keyseq_'; g_
+vnoremap <SID>2keyseq_'l g_
 " FIXME: same
-onoremap <SID>2keyseq_'; g_
+onoremap <SID>2keyseq_'l g_
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
-map <SID>key_L <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
-onoremap <script> <SID>key_x <SID>key_L
+map <SID>key_K <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+onoremap <script> <SID>key_x <SID>key_K
 
-map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
+map <SID>2keyseq_'K <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 
 " function! s:NMapExpr_ToEndOfThisOrNextLine()
 "   if v:count
@@ -1982,13 +1982,13 @@ map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 "     endif
 "   endif
 " endfunction
-" nnoremap <expr> <SID>key_: <SID>NMapExpr_ToEndOfThisOrNextLine()
-" vnoremap <expr> <SID>key_: <SID>VMapExpr_ToEndOfThisOrNextLine()
-" onoremap <SID>key_: $
-nmap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-omap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-vmap <SID>key_: <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
-onoremap <script> <SID>key_c <SID>key_:
+" nnoremap <expr> <SID>key_L <SID>NMapExpr_ToEndOfThisOrNextLine()
+" vnoremap <expr> <SID>key_L <SID>VMapExpr_ToEndOfThisOrNextLine()
+" onoremap <SID>key_L $
+nmap <SID>key_L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+omap <SID>key_L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+vmap <SID>key_L <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
+onoremap <script> <SID>key_c <SID>key_L
 
 function! s:NMapExpr_ToLastNonblankOfThisOrNextLine()
   if v:count
@@ -2059,17 +2059,17 @@ function! s:OMapExpr_ToLastNonblankOfThisOrNextLine()
     endif
   endif
 endfunction
-nnoremap <expr> <SID>2keyseq_': <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
-vnoremap <expr> <SID>2keyseq_': <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
-onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
+nnoremap <expr> <SID>2keyseq_'L <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
+vnoremap <expr> <SID>2keyseq_'L <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
+onoremap <expr> <SID>2keyseq_'L <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
 
-noremap <script> <A-Left>   <SID>2keyseq_'l
-noremap <script> <S-A-Left> <SID>2keyseq_'L
-noremap <script> <A-Right>   <SID>2keyseq_';
-noremap <script> <S-A-Right> <SID>2keyseq_':
+noremap <script> <A-Left>   <SID>2keyseq_'k
+noremap <script> <S-A-Left> <SID>2keyseq_'K
+noremap <script> <A-Right>   <SID>2keyseq_'l
+noremap <script> <S-A-Right> <SID>2keyseq_'L
 
-noremap <SID>key_J -
-noremap <SID>key_K +
+noremap <SID>key_: -
+noremap <SID>key_J +
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
