@@ -379,7 +379,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   'ff', 'af', 'aff', 'aF',
       \   '''t', '''T',
       \   '''q', '''Q',
-      \   'gg', 'gG', '''gg', '''gG', '''G', '''''G',
+      \   'zz', 'zZ', '''zz', '''zZ', '''Z', '''''Z',
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
       \   '''-', '0-', '''=', '0=',
@@ -402,7 +402,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''d',
       \   'af', '''F',
       \   '''q', '''Q',
-      \   '''G', '''''G',
+      \   '''Z', '''''Z',
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
       \   '00',
@@ -1636,9 +1636,9 @@ noremap <SID>key_<bar> <Nop>
 "              (`<Esc>\(backquote)^` in Vim);
 "              in command window (`:h cmdwin`) behave like `<C-c>`,
 "              see  the section about Cmdline mode mappings
-"  z  - replace a single character with another character, or a visual
+"  g  - replace a single character with another character, or a visual
 "       selection with one character (`r`)
-"  Z  - replace mode (`R`)
+"  G  - replace mode (`R`)
 "  x  - Normal: insert before the first non-blank character of the line (`I`)
 "  c  - Normal: insert at the last character of the line (`A`)
 "  x  - Visual: (`I`)
@@ -1757,10 +1757,10 @@ noremap <script> <Esc> <SID>key_<Esc>
 inoremap <SID>key_<Esc> <Esc>`^
 inoremap <script> <Esc> <SID>key_<Esc>
 
-nnoremap <SID>key_z r
-vnoremap <SID>key_z r
-nnoremap <SID>key_Z R
-vnoremap <SID>key_Z R
+nnoremap <SID>key_g r
+vnoremap <SID>key_g r
+nnoremap <SID>key_G R
+vnoremap <SID>key_G R
 
 nnoremap <SID>key_c A
 vnoremap <SID>key_c A
@@ -2659,38 +2659,38 @@ nnoremap <SID>key_E @="O\<lt>Esc>"<CR>
 " #.#.# Join/break lines
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  gg  - Normal mode: break the line before the current symbol
-"  gG  - Normal mode: break the line before the current symbol, leave the
+"  zz  - Normal mode: break the line before the current symbol
+"  zZ  - Normal mode: break the line before the current symbol, leave the
 "        cursor after/on the linebreak
-"  'gg - Normal mode: break the line before the current symbol without space
-"  'gG - Normal mode: break the line before the current symbol without space,
+"  'zz - Normal mode: break the line before the current symbol without space
+"  'zZ - Normal mode: break the line before the current symbol without space,
 "        leave the cursor after/on the linebreak
-"  G   - Normal mode: join this line with the next (`Jw`)
-"  G   - Visual mode: join lines (`J`)
-"  "G  - Normal mode: join this line with the next without space (`gJw`)
-"  "G  - Visual mode: join lines without space (`gJ`)
-"  ""G - Normal mode: join this line with the next one removing any space in
+"  Z   - Normal mode: join this line with the next (`Jw`)
+"  Z   - Visual mode: join lines (`J`)
+"  "Z  - Normal mode: join this line with the next without space (`gJw`)
+"  "Z  - Visual mode: join lines without space (`gJ`)
+"  ""Z - Normal mode: join this line with the next one removing any space in
 "        between (`@_Jdw`)
-"  ""G - Visual mode: join lines removing any space in between
+"  ""Z - Visual mode: join lines removing any space in between
 " TODO: implement this
-"  gg  - Visual mode: break the line at the current edge of selection
-"  gG  - Visual mode: break the line at the current edge of selection without
+"  zz  - Visual mode: break the line at the current edge of selection
+"  zZ  - Visual mode: break the line at the current edge of selection without
 "        space
-nnoremap <SID>key_g <Nop>
-nnoremap <script> <SID>2keyseq_gG i<CR><SID>key_<Esc>0<BS>l
-nnoremap <script> <SID>2keyseq_gg i<CR><SID>key_<Esc>
+nnoremap <SID>key_z <Nop>
+nnoremap <script> <SID>2keyseq_zZ i<CR><SID>key_<Esc>0<BS>l
+nnoremap <script> <SID>2keyseq_zz i<CR><SID>key_<Esc>
 " FIXME: the following 2 mappings seem broken in some situations
-nnoremap <script> <SID>3keyseq_'gg i<CR><C-w><SID>key_<Esc>
-nnoremap <script> <SID>3keyseq_'gG i<CR><C-w><SID>key_<Esc>0<BS>l
-nnoremap <SID>key_G Jw
-nnoremap <SID>2keyseq_'G gJw
-nnoremap <SID>3keyseq_''G @_Jdw
+nnoremap <script> <SID>3keyseq_'zz i<CR><C-w><SID>key_<Esc>
+nnoremap <script> <SID>3keyseq_'zZ i<CR><C-w><SID>key_<Esc>0<BS>l
+nnoremap <SID>key_Z Jw
+nnoremap <SID>2keyseq_'Z gJw
+nnoremap <SID>3keyseq_''Z @_Jdw
 
-vnoremap <SID>key_g <Nop>
-vnoremap <SID>key_G J
-vnoremap <SID>2keyseq_'G gJ
+vnoremap <SID>key_z <Nop>
+vnoremap <SID>key_Z J
+vnoremap <SID>2keyseq_'Z gJ
 " TODO: implement
-vnoremap <SID>3keyseq_''G <Nop>
+vnoremap <SID>3keyseq_''Z <Nop>
 
 "
 " #.#.# Scrolling
