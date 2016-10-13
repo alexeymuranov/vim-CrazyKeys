@@ -1687,24 +1687,27 @@ nnoremap          <C-S-Space> <C-b>
 noremap  <script> <S-Space> <SID>key_<Esc>
 noremap! <script> <S-Space> <SID>key_<Esc>
 
-function! s:NMapExpr_SpaceKey()
-  if &readonly
-    return "\<C-f>"
-  else
-    return 'i'
-  endif
-endfunction
+" function! s:NMapExpr_SpaceKey()
+"   if &readonly
+"     return "\<C-f>"
+"   else
+"     return 'i'
+"   endif
+" endfunction
+"
+" function! s:NMapExpr_ShiftSpaceKey()
+"   if &readonly
+"     return "\<C-b>"
+"   else
+"     return 'gi'
+"   endif
+" endfunction
+"
+" nnoremap <expr> <Space>   <SID>NMapExpr_SpaceKey()
+" nnoremap <expr> <S-Space> <SID>NMapExpr_ShiftSpaceKey()
 
-function! s:NMapExpr_ShiftSpaceKey()
-  if &readonly
-    return "\<C-b>"
-  else
-    return 'gi'
-  endif
-endfunction
-
-nnoremap <expr> <Space>   <SID>NMapExpr_SpaceKey()
-nnoremap <expr> <S-Space> <SID>NMapExpr_ShiftSpaceKey()
+nnoremap <expr> <Space>   (&readonly?"\<C-f>":'i')
+nnoremap <expr> <S-Space> (&readonly?"\<C-b>":'gi')
 
 function! s:NMapExpr_EscKey()
   if v:count
