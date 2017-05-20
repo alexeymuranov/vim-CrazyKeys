@@ -1776,10 +1776,13 @@ function! s:VMapExpr_EscKey()
 endfunction
 vnoremap <expr> <SID>key_<Esc> <SID>VMapExpr_EscKey()
 onoremap <SID>key_<Esc> <Esc>
-noremap <script> <Esc> <SID>key_<Esc>
-
 inoremap <SID>key_<Esc> <Esc>`^
-inoremap <script> <Esc> <SID>key_<Esc>
+
+if has('gui_running') || has('nvim')
+  " XXX: remapping <Esc> breaks arrow keys in terminal Vim
+  noremap  <script> <Esc> <SID>key_<Esc>
+  inoremap <script> <Esc> <SID>key_<Esc>
+endif
 
 nnoremap <SID>key_g r
 vnoremap <SID>key_g r
