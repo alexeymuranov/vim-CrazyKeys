@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2016-10-15
+" Last Change:  2017-03-16
 " Author:       Alexey Muranov <alexeymuranov@users.noreply.github.com>
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -894,6 +894,27 @@ function! s:confugure_desired_configurations(keymap)
   " Open a scratch buffer
   nnoremap <silent> <leader>s :new<CR>:setlocal buftype=nofile<CR>
         \:setlocal bufhidden=hide<CR>:setlocal noswapfile<CR>
+
+  " Easy tab navigation
+  nnoremap <silent> <C-S-Tab> :tabprevious<CR>
+  nnoremap <silent> <C-Tab> :tabnext<CR>
+  inoremap <silent> <C-S-Tab> <ESC>:tabprevious<CR>i
+  inoremap <silent> <C-Tab> <ESC>:tabnext<CR>i
+  " nnoremap <silent> <D-t> :tabnew<CR>
+  " nnoremap <silent> <C-t> :tabnew<CR>
+  " inoremap <silent> <C-t> <ESC>:tabnew<CR>i
+  " noremap <silent> <C-w> :tabclose<CR>
+
+  " Easy buffer navigation
+  nnoremap <silent> <F5> :buffers<CR>:buffer<Space>
+  nnoremap <silent> <C-n> :bnext<CR>
+  nnoremap <silent> <C-p> :bprevious<CR>
+
+  " Easy window split navigation
+  nnoremap <silent> <A-Up> :wincmd k<CR>
+  nnoremap <silent> <A-Down> :wincmd j<CR>
+  nnoremap <silent> <A-Left> :wincmd h<CR>
+  nnoremap <silent> <A-Right> :wincmd l<CR>
 endfunction
 
 "
@@ -1791,8 +1812,8 @@ noremap <SID>key_` "
 "  ;, <Right> - right (`l` in Vim)
 "  l, <Up>    - up on screen (`gk` in Vim)
 "  k, <Down>  - down on screen (`gj` in Vim)
-"  'l, <A-Up>     - up in text (`k` in Vim)
-"  'k, <A-Down>   - down in text (`j` in Vim)
+"  'l         - up in text (`k` in Vim)
+"  'k         - down in text (`j` in Vim)
 "  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
 noremap <SID>key_j h
 noremap <SID>key_; l
@@ -1807,8 +1828,8 @@ noremap <script> <Down>  <SID>key_k
 
 noremap <SID>2keyseq_'l k
 noremap <SID>2keyseq_'k j
-noremap <script> <A-Up>   <SID>2keyseq_'l
-noremap <script> <A-Down> <SID>2keyseq_'k
+" noremap <script> <A-Up>   <SID>2keyseq_'l
+" noremap <script> <A-Down> <SID>2keyseq_'k
 
 "
 " #.#.# Big motions
@@ -1874,10 +1895,13 @@ noremap <script> <A-Down> <SID>2keyseq_'k
 "  <S-Right> - duplicate of `O`
 "  <S-Up>    - duplicate of `{`
 "  <S-Down>  - duplicate of `}`
-"  <A-Left>  - duplicate of `';`
-"  <A-Right> - duplicate of `'l`
-"  <S-A-Left>  - duplicate of `":`
-"  <S-A-Right> - duplicate of `"L`
+"
+"  The following are currently disabled:
+"
+"    <A-Left>  - duplicate of `';`
+"    <A-Right> - duplicate of `'l`
+"    <S-A-Left>  - duplicate of `":`
+"    <S-A-Right> - duplicate of `"L`
 nmap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 omap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 vmap <SID>key_, <Plug>(CrazyKeys-V_ToEndOfWordBackward)
@@ -2066,10 +2090,10 @@ nnoremap <expr> <SID>2keyseq_': <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
 vnoremap <expr> <SID>2keyseq_': <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
 onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
 
-noremap <script> <A-Left>   <SID>2keyseq_'j
-noremap <script> <S-A-Left> <SID>2keyseq_'J
-noremap <script> <A-Right>   <SID>2keyseq_';
-noremap <script> <S-A-Right> <SID>2keyseq_':
+" noremap <script> <A-Left>   <SID>2keyseq_'j
+" noremap <script> <S-A-Left> <SID>2keyseq_'J
+" noremap <script> <A-Right>   <SID>2keyseq_';
+" noremap <script> <S-A-Right> <SID>2keyseq_':
 
 noremap <SID>key_L -
 noremap <SID>key_K +
