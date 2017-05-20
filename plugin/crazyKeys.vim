@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2017-03-16
+" Last Change:  2017-05-20
 " Author:       Alexey Muranov <alexeymuranov@users.noreply.github.com>
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -1064,8 +1064,8 @@ endfunction
 function! s:MotionNO_ToEndOfWordForward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
-    " XXX: this pattern does not work at all when the word contains non
-    "   ASCII letter
+    " " XXX: this pattern does not work at all when the word contains non
+    " "   ASCII letter
     " call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'W')
     call search('\>', 'W')
     let l:count1 -= 1
@@ -1099,8 +1099,8 @@ endfunction
 function! s:MotionNO_ToEndOfWordBackward(count1)
   let l:count1 = a:count1
   while l:count1 > 0
-    " XXX: this pattern does not work at all when the word contains non
-    "   ASCII letter
+    " " XXX: this pattern does not work at all when the word contains non
+    " "   ASCII letter
     " call search('\(\k\@<=\k\@!\)\|\(\w\@<=\w\@!\)\|\(\S\@<=\S\@!\)', 'Wb')
     call search('\>', 'Wb')
     let l:count1 -= 1
@@ -2358,7 +2358,8 @@ omap <SID>key_M <Plug>ExtendedFtOperationModeRepeatSearchBackward
 "  +  - set a mark (`m`)
 "  ++ - set the mark `\(backquote)`
 "  =  - go to the mark (see "Goto" section)
-"  -  - go to the first non-blank character of the mark line (see "Goto" section)
+"  -  - go to the first non-blank character of the mark line (see "Goto"
+"       section)
 nnoremap <SID>key_+ m
 vnoremap <SID>key_+ m
 nnoremap <SID>2keyseq_++ m`
