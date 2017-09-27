@@ -1242,12 +1242,7 @@ function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '+'
   else
-    let [@_, l:l_num, l:c_num, @_] = getpos('.')
-    if l:c_num == match(getline(l:l_num), '\S') + 1
-      normal! +
-    else
-      normal! ^
-    endif
+    normal! ^
   endif
 endfunction
 
@@ -1256,11 +1251,7 @@ function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '+0'
   else
-    if col('.') == 1
-      normal! +0
-    else
-      normal! 0
-    endif
+    normal! 0
   endif
 endfunction
 
