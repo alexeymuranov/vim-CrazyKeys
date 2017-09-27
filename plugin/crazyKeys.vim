@@ -35,23 +35,23 @@
 "
 " Load this file and set the (default) US Qwerty right-handed mapping by
 " executing
-" ~~~
-"   call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
-" ~~~
+"     ~~~
+"     call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
+"     ~~~
 "
 " To activate the mappings automatically on startup, use this file as a
 " plugin and add to vimrc an autocommand for `VimEnter` event, for example:
-" ~~~
-"   augroup MyCrazyKeys
-"     autocmd!
-"     autocmd VimEnter * call g:CrazyKeysSetMappingsFor('Qwerty-Ca-Fr', 'l')
-"   augroup END
-" ~~~
+"     ~~~
+"     augroup MyCrazyKeys
+"       autocmd!
+"       autocmd VimEnter * call g:CrazyKeysSetMappingsFor('Qwerty-Ca-Fr', 'l')
+"     augroup END
+"     ~~~
 "
 " To set the US Qwerty right-handed mapping, execute
-" ~~~
-"   call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
-" ~~~
+"     ~~~
+"     call g:CrazyKeysSetMappingsFor('Qwerty-US-En', 'r')
+"     ~~~
 "
 " Right-handed configuration may be easier to learn for Vim users
 " because the basic cursor movement keys are on the right, while in
@@ -1517,21 +1517,21 @@ command! -range PPc <line1>,<line2>TComment
 "   in the following order.
 "
 "   1.
-"     ~~~
-"       [nvo]noremap <key_sequence> <target_key_sequence>
-"     ~~~
+"         ~~~
+"         [nvo]noremap <key_sequence> <target_key_sequence>
+"         ~~~
 "
 "   2.
-"     ~~~
-"       [nv]noremap <key_sequence> @="<target_key_sequence>"<CR>
-"     ~~~
+"         ~~~
+"         [nv]noremap <key_sequence> @="<target_key_sequence>"<CR>
+"         ~~~
 "     This does not work with `onoremap`.
 "
 "   3. When the `count` prefix needs to be discarded:
-"     ~~~
-"       nnoremap <key_sequence> :<C-u>norm! <target_key_sequence><CR>
-"       onoremap <key_sequence> :norm! <target_key_sequence><CR>
-"     ~~~
+"         ~~~
+"         nnoremap <key_sequence> :<C-u>norm! <target_key_sequence><CR>
+"         onoremap <key_sequence> :norm! <target_key_sequence><CR>
+"         ~~~
 "     This does not work well with `vnoremap`: the visual selection is
 "     cleared before running any Ex mode command, so it would probably need
 "     to be restored using the `gv` command, but this would still have the
@@ -1539,52 +1539,52 @@ command! -range PPc <line1>,<line2>TComment
 "     otherwise with `gv`).
 "
 "   4.
-"     ~~~
-"       nnoremap <key_sequence> :<C-u>exe "norm! <target_key_sequence>"<CR>
-"       onoremap <key_sequence> :exe "norm! <target_key_sequence>"<CR>
-"     ~~~
+"         ~~~
+"         nnoremap <key_sequence> :<C-u>exe "norm! <target_key_sequence>"<CR>
+"         onoremap <key_sequence> :exe "norm! <target_key_sequence>"<CR>
+"         ~~~
 "     The `<target_key_sequence>` can contain special symbols, like `<BS>`
 "     (escaped as `"\<lt>BS>"`), and variable interpolations, like
 "     `.v:count.`.
 "
 "   5.
-"     ~~~
-"       [nvo]noremap <expr> <key_sequence> <my_function>()
-"     ~~~
+"         ~~~
+"         [nvo]noremap <expr> <key_sequence> <my_function>()
+"         ~~~
 "     The function `<my_function>` should use `return` and avoid `normal!`
 "     `execute` and `feedkeys`.  The name `<my_function>` should contain
 "     something like `map_expr` or `MapExpr`.
 "
 "     A possible workaround for some ostensible restrictions of this method
 "     is to use a "callback" in the returned key sequence like this:
-"     ~~~
-"       return `"<main_keys>@='\<lt>SID><callback>()'\<lt>CR>"`,
-"     ~~~
+"         ~~~
+"         return `"<main_keys>@='\<lt>SID><callback>()'\<lt>CR>"`,
+"         ~~~
 "     where `<callback>` is an adhoc function or funcref.
 "
 "   6.
-"     ~~~
-"       [nv]noremap <key_sequence> @=<SID><my_function>()<CR>
-"     ~~~
+"         ~~~
+"         [nv]noremap <key_sequence> @=<SID><my_function>()<CR>
+"         ~~~
 "     The function `<my_function>` should use `return` and avoid
 "     `execute` and `feedkeys`.  The name `<my_function>` should
 "     contain something like `map_ereg` or `MapEReg`.
 "
 "   7.
-"     ~~~
-"       nnoremap <key_sequence> :<C-u>call <SID><my_function>()<CR>
-"       onoremap <key_sequence> :call <SID><my_function>()<CR>
-"     ~~~
+"         ~~~
+"         nnoremap <key_sequence> :<C-u>call <SID><my_function>()<CR>
+"         onoremap <key_sequence> :call <SID><my_function>()<CR>
+"         ~~~
 "     The function `<my_function>` should either not use `return` or
 "     use it without argument (thus returning 0).  The name
 "     `<my_function>` should contain something like `map_call` or
 "     `MapCall`.
 "
 "   8.
-"     ~~~
-"       [nv]noremap <expr> <key_sequence>
-"               \ "@_@=\<SID><my_function>(".v:count1.")\<CR>"
-"     ~~~
+"         ~~~
+"         [nv]noremap <expr> <key_sequence>
+"                 \ "@_@=\<SID><my_function>(".v:count1.")\<CR>"
+"         ~~~
 "     The function `<my_function>` should preferably return the empty string
 "     `''`, while producing the desired side effects.  The name
 "     `<my_function>` should contain something like `map_exprereg` or
