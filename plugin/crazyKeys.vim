@@ -1878,7 +1878,7 @@ noremap <SID>2keyseq_'k j
 "              there already and if no count is given, otherwise act like
 "              `+` in Vim (like `"O`)
 "  [count]"J - go to the first column of the line (like `0` in Vim) or to
-"              the first column of [count] line below
+"              the first column of [count]th line below
 "  x         - Operator pending mode: duplicate of `J`
 "  [count]:  - Normal mode: go after the last character of the line (`$l`),
 "              unless already there and no [count] is given; if [count] is
