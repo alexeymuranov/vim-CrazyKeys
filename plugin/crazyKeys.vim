@@ -1887,7 +1887,7 @@ noremap <SID>2keyseq_'k j
 "              Visual mode: go to the last character of the line (like `$h`
 "              in Vim), unless already there or [count] is givent, etc.
 "              Operator pending mode: a like `$` in Vim
-"  [count]": - go to or after the first non-blank character of the line
+"  [count]": - go to or after the last non-blank character of the line
 "              (`g_l` or `g_` in Vim) (like `'l`), unless already there or
 "              [count] is given; if [count] is given, also act abit like `g_`
 "              in Vim, otherwise go to or after the last non-blank character
