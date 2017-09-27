@@ -1246,10 +1246,28 @@ function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
   endif
 endfunction
 
+" To First Nonblank Of This Or Previous Line
+function! s:Motion_ToFirstNonblankOfThisOrPreviousLine(count)
+  if a:count
+    execute 'normal!' a:count . '-'
+  else
+    normal! ^
+  endif
+endfunction
+
 " To First Column Of This Or Next Line
 function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '+0'
+  else
+    normal! 0
+  endif
+endfunction
+
+" To First Column Of This Or Previous Line
+function! s:Motion_ToFirstColumnOfThisOrPreviousLine(count)
+  if a:count
+    execute 'normal!' a:count . '-0'
   else
     normal! 0
   endif
@@ -1449,8 +1467,16 @@ call mapToSideEffects#SetUpWithCount(
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrNext'} )
 
 call mapToSideEffects#SetUpWithCount(
+      \ function('s:Motion_ToFirstNonblankOfThisOrPreviousLine'),
+      \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrPrev'} )
+
+call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstColumnOfThisOrNextLine'),
       \ {'name' : 'CrazyKeys-ToFirstColumnThisOrNext'} )
+
+call mapToSideEffects#SetUpWithCount(
+      \ function('s:Motion_ToFirstColumnOfThisOrPreviousLine'),
+      \ {'name' : 'CrazyKeys-ToFirstColumnThisOrPrev'} )
 
 call mapToSideEffects#SetUpWithCount(
       \ function('s:MotionNO_ToEndOfThisOrNextLine'),
