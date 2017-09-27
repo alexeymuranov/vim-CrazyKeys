@@ -1875,7 +1875,7 @@ noremap <SID>2keyseq_'k j
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
 "  [count]J  - go to the first non-blank character of the line (`^`) if no
-"              count is given, or else act like `+` in Vim (like `"O`)
+"              count is given, or else act like `+` in Vim
 "  [count]"J - go to the first column of the line (like `0` in Vim) or to
 "              the first column of [count]th line below
 "  x         - Operator pending mode: duplicate of `J`
