@@ -885,7 +885,7 @@ function! s:confugure_desired_configurations(keymap)
         \ -direction=botright -prompt-direction=below
         \ -auto-resize -no-start-insert
         \ outline<CR>
-  nnoremap <silent> <leader>tb :<C-u>TagbarToggle<CR>
+  nnoremap <silent> <leader>tb :<C-u>Tagbar<CR>
   " FIXME: make this work (or at least find out what it is supposed to do)
   " nnoremap <silent> <leader>tl :<C-u>Unite
   "       \ -direction=botright -prompt-direction=below
