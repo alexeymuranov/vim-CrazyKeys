@@ -1870,7 +1870,7 @@ noremap <SID>2keyseq_'k j
 "  'j        - go to the first column of the line (`0`)
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
-"  ';        - go to or after the last non-blank character of the line
+"  [count1]';- go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
