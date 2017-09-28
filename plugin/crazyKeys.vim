@@ -1897,7 +1897,7 @@ noremap <SID>2keyseq_'k j
 "  [count]'< - go to the first column of the previous line or
 "              to the first column of [count] line above
 "              (a bit like `-0` in Vim)
-"  [count]'i  - go after the end of the previous line (`-`) or
+"  [count]'i - go after the end of the previous line (`-`) or
 "              after the end of [count] line above
 "              (a bit like `-$` in Vim)
 "  [count]"I - go after the last non-blank of the previous line or
