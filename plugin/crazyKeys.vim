@@ -1301,25 +1301,9 @@ function! s:MotionV_ToEndOfThisOrNextLine(count)
     if (l:l_num_oppos < l:l_num) ||
           \ (l:l_num_oppos == l:l_num &&
           \  l:c_num_oppos <= l:c_num_last_nonblank)
-      if l:c_num == l:c_num_last_nonblank
-        normal! 2$h
-      else
-        normal! $h
-      endif
+      normal! $h
     else
-      if l:c_num == l:c_num_last_nonblank + 1
-        let l:l_num += 1
-        let l:c_num_last_nonblank = len(getline(l:l_num))
-        if (l:l_num_oppos < l:l_num) ||
-              \ (l:l_num_oppos == l:l_num &&
-              \  l:c_num_oppos <= l:c_num_last_nonblank)
-          normal! 2$h
-        else
-          normal! 2$
-        endif
-      else
-        normal! $
-      endif
+      normal! $
     endif
   endif
 endfunction
