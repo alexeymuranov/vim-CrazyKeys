@@ -1278,12 +1278,7 @@ function! s:MotionNO_ToEndOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '$l'
   else
-    let [@_, l:l_num, l:c_num, @_] = getpos('.')
-    if l:c_num == len(getline(l:l_num)) + 1
-      normal! +$l
-    else
-      normal! $l
-    endif
+    normal! $l
   endif
 endfunction
 
