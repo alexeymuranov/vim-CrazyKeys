@@ -1268,6 +1268,16 @@ function! s:Motion_ToPreviousInitialNonblankOfALine(count1)
   endwhile
 endfunction
 
+
+" To Next End Of Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToNextEOL(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('$', 'W')
+    let l:count1 -= 1
+  endwhile
+endfunction
 " To First Nonblank Of This Or Next Line
 " FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
@@ -1483,6 +1493,10 @@ call mapToSideEffects#SetUpWithCount1(
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToPreviousInitialNonblankOfALine'),
       \ {'name' : 'CrazyKeys-ToPrevInitNonblankOfLine'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToNextEOL'),
+      \ {'name' : 'CrazyKeys-ToNextEOL'} )
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrNextLine'),
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrNext'} )
@@ -1902,13 +1916,7 @@ noremap <SID>2keyseq_'k j
 "  [count]"J - go to the first column of the line (like `0` in Vim) or to
 "              the first column of [count]th line below
 "  x         - Operator pending mode: duplicate of `J`
-"  [count]:  - Normal mode: go after the last character of the line (`$l`),
-"              unless already there and no [count] is given; if [count] is
-"              given, act like `$l` in Vim, otherwise go after the end of
-"              the following line;
-"              Visual mode: go to the last character of the line (like `$h`
-"              in Vim), unless already there or [count] is givent, etc.
-"              Operator pending mode: a like `$` in Vim
+"  [count1]: - go to the next end of line
 "  [count]": - go to or after the last non-blank character of the line
 "              (`g_l` or `g_` in Vim) (like `'l`), unless already there or
 "              [count] is given; if [count] is given, also act abit like `g_`
@@ -2003,64 +2011,7 @@ onoremap <script> <SID>key_x <SID>key_J
 
 map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 
-" function! s:NMapExpr_ToEndOfThisOrNextLine()
-"   if v:count
-"     return '$l'
-"   else
-"     let [@_, l:l_num, l:c_num, @_] = getpos('.')
-"     if l:c_num == len(getline(l:l_num)) + 1
-"       return '+$l'
-"     else
-"       return '$l'
-"     endif
-"   endif
-" endfunction
-" function! s:VMapExpr_ToEndOfThisOrNextLine()
-"   let [@_, l:l_num, l:c_num, @_] = getpos('.')
-"   let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
-"   if v:count
-"     let l:l_num += v:count - 1
-"     let l:c_num_last_nonblank = len(getline(l:l_num))
-"     if (l:l_num_oppos < l:l_num) ||
-"           \ (l:l_num_oppos == l:l_num &&
-"           \  l:c_num_oppos <= l:c_num_last_nonblank)
-"       return '$h'
-"     else
-"       return '$'
-"     endif
-"   else
-"     let l:c_num_last_nonblank = len(getline(l:l_num))
-"     if (l:l_num_oppos < l:l_num) ||
-"           \ (l:l_num_oppos == l:l_num &&
-"           \  l:c_num_oppos <= l:c_num_last_nonblank)
-"       if l:c_num == l:c_num_last_nonblank
-"         return '2$h'
-"       else
-"         return '$h'
-"       endif
-"     else
-"       if l:c_num == l:c_num_last_nonblank + 1
-"         let l:l_num += 1
-"         let l:c_num_last_nonblank = len(getline(l:l_num))
-"         if (l:l_num_oppos < l:l_num) ||
-"               \ (l:l_num_oppos == l:l_num &&
-"               \  l:c_num_oppos <= l:c_num_last_nonblank)
-"           return '2$h'
-"         else
-"           return '2$'
-"         endif
-"       else
-"         return '$'
-"       endif
-"     endif
-"   endif
-" endfunction
-" nnoremap <expr> <SID>key_: <SID>NMapExpr_ToEndOfThisOrNextLine()
-" vnoremap <expr> <SID>key_: <SID>VMapExpr_ToEndOfThisOrNextLine()
-" onoremap <SID>key_: $
-nmap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-omap <SID>key_: <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-vmap <SID>key_: <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
+map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
 onoremap <script> <SID>key_c <SID>key_:
 
 function! s:NMapExpr_ToLastNonblankOfThisOrNextLine()
