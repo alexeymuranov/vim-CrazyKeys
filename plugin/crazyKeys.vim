@@ -1298,7 +1298,7 @@ endfunction
 
 " To End Of This Or Next Line in Visual
 function! s:MotionV_ToEndOfThisOrNextLine(count)
-  let [@_, l:l_num, l:c_num, @_] = getpos('.')
+  let [@_, l:l_num, @_, @_] = getpos('.')
   let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
   if a:count
     let l:l_num += a:count - 1
