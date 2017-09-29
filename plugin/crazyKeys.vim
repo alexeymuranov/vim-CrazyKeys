@@ -1307,6 +1307,16 @@ function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
   endif
 endfunction
 
+" To Last Nonblank Of This Or Previous Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToLastNonblankOfThisOrPreviousLine(count)
+  if a:count
+    execute 'normal!' a:count . '-g_'
+  else
+    normal! g_
+  endif
+endfunction
+
 " To First Column Of This Or Previous Line
 " FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstColumnOfThisOrPreviousLine(count)
@@ -1538,8 +1548,8 @@ call mapToSideEffects#SetUpWithCount(
 "
 
 call mapToSideEffects#SetUpWithCount(
-      \ function('s:Motion_ToFirstColumnOfThisOrNextLine'),
-      \ {'name' : 'CrazyKeys-ToFirstColumnThisOrNext'} )
+      \ function('s:Motion_ToLastNonblankOfThisOrPreviousLine'),
+      \ {'name' : 'CrazyKeys-ToLastNonblankThisOrPrev'} )
 
 "
 
@@ -1959,8 +1969,8 @@ noremap <SID>2keyseq_'k j
 "              following line (`+`)
 "  [count]J  - go to the first non-blank character of the line (`^`) if no
 "              count is given, or else act like `+` in Vim
-"  [count]"J - go to the first column of the line (like `0` in Vim) or to
-"              the first column of [count]th line below
+"  [count]"J - go to or after the last non-blank character of this or line
+"              or [count]'s line above
 "  [count1]: - go to the next end of line
 "  [count]": - go to the end of this line if no [count] is given, otherwise
 "              go to the end of [count]'s line below
@@ -2052,7 +2062,7 @@ onoremap <SID>2keyseq_'. v+
 map <SID>key_J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 onoremap <script> <SID>key_x <SID>2keyseq_'L
 
-map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
+map <SID>2keyseq_'J <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
 
 map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
 onoremap <script> <SID>key_c <SID>2keyseq_':
