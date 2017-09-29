@@ -363,7 +363,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \ 'n' : [
       \   '''h',
       \   '''x', '''c', '''X', '''C',
-      \   '''l', '''k',
+      \   '''l', '''L', '''k', '''K',
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
@@ -388,7 +388,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ],
       \ 'v' : [
       \   '''h',
-      \   '''l', '''k',
+      \   '''l', '''L', '''k', '''K',
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
@@ -411,7 +411,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''/', '''?'
       \   ],
       \ 'o' : [
-      \   '''l', '''k',
+      \   '''l', '''L', '''k', '''K',
       \   '''i', '''I', '''o', '''O',
       \   '''j', '''J', ''';', ''':',
       \   ''',', '''.', '''<', '''>',
@@ -1248,6 +1248,26 @@ function! s:MotionV_ToEndOfSpacedWordBackward(count1)
   endif
 endfunction
 
+" To Next Initial Nonblank Of A Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToNextInitialNonblankOfALine(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\(^\s*\)\@<=\S', 'W')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+" To Previous Initial Nonblank Of A Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToPreviousInitialNonblankOfALine(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\(^\s*\)\@<=\S', 'Wb')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
 " To First Nonblank Of This Or Next Line
 " FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
@@ -1455,6 +1475,14 @@ call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToEndOfSpacedWordBackward'),
       \ {'name' : 'CrazyKeys-V_ToEndOfSpacedWordBackward', 'modes' : 'v'} )
 
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToNextInitialNonblankOfALine'),
+      \ {'name' : 'CrazyKeys-ToNextInitNonblankOfLine'} )
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToPreviousInitialNonblankOfALine'),
+      \ {'name' : 'CrazyKeys-ToPrevInitNonblankOfLine'} )
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrNextLine'),
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrNext'} )
@@ -1885,8 +1913,12 @@ noremap <SID>2keyseq_'k j
 "              in Vim, otherwise go to or after the last non-blank character
 "              of the following line
 "  c         - Operator pending mode: duplicate of `:`
-"  [count]L  - `-` in Vim
-"  [count]K  - `+` in Vim
+"  [count1]L - go to previous initial non-blank of a line
+"  [count1]K - go to next initial non-blank of a line
+"  [count1]"L- go to the initial non-blank of this line of [count1]'s line
+"              above
+"  [count1]"K- go to the initial non-blank of this line of [count1]'s line
+"              below
 "  {         - beginning of the first line of this or previous paragraph
 "  }         - Normal mode: beginning of the first line of the next
 "              paragraph
@@ -2107,8 +2139,11 @@ onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
 " noremap <script> <A-Right>   <SID>2keyseq_';
 " noremap <script> <S-A-Right> <SID>2keyseq_':
 
-noremap <SID>key_L -
-noremap <SID>key_K +
+map <SID>key_L <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
+map <SID>key_K <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
+
+map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
+map <SID>2keyseq_'K <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
