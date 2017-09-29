@@ -1309,12 +1309,13 @@ function! s:Motion_ToFirstNonblankOfThisOrPreviousLine(count)
   endif
 endfunction
 
-" To First Column Of This Or Next Line
-function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
+" To Last Nonblank Of This Or Next Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToLastNonblankOfThisOrNextLine(count)
   if a:count
-    execute 'normal!' a:count . '+0'
+    execute 'normal!' (a:count + 1) . 'g_l'
   else
-    normal! 0
+    normal! g_l
   endif
 endfunction
 
@@ -1561,6 +1562,12 @@ call mapToSideEffects#SetUpWithCount(
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrPreviousLine'),
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrPrev'} )
+
+"
+
+call mapToSideEffects#SetUpWithCount(
+      \ function('s:Motion_ToLastNonblankOfThisOrNextLine'),
+      \ {'name' : 'CrazyKeys-ToLastNonblankThisOrNext'} )
 
 "
 
@@ -2066,12 +2073,13 @@ map <SID>2keyseq_'j <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
-nnoremap <SID>2keyseq_'; g_l
+nmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: include the last non-blank character when moving from the left,
 "   exclude when moving from the right
-vnoremap <SID>2keyseq_'; g_
+vmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: same
-onoremap <SID>2keyseq_'; g_
+omap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
