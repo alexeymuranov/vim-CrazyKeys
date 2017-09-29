@@ -2379,10 +2379,10 @@ noremap <SID>2keyseq_'U gN
 "
 "  %  - replace
 "  '% - replace the last search with ...
-nnoremap <SID>key_% :%s///<Left><Left>
-vnoremap <SID>key_% :s///<Left><Left>
-nnoremap <SID>2keyseq_'% :%s/<C-r>///<Left>
-vnoremap <SID>2keyseq_'% :s/<C-r>///<Left>
+nnoremap <SID>key_% :%s///gc<Left><Left><Left><Left>
+vnoremap <SID>key_% :s///gc<Left><Left><Left><Left>
+nnoremap <SID>2keyseq_'% :%s/<C-r>///gc<Left><Left><Left>
+vnoremap <SID>2keyseq_'% :s/<C-r>///gc<Left><Left><Left>
 
 "
 " #.#.# Editing
