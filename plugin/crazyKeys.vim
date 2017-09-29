@@ -1917,11 +1917,8 @@ noremap <SID>2keyseq_'k j
 "              the first column of [count]th line below
 "  x         - Operator pending mode: duplicate of `J`
 "  [count1]: - go to the next end of line
-"  [count]": - go to or after the last non-blank character of the line
-"              (`g_l` or `g_` in Vim) (like `'l`), unless already there or
-"              [count] is given; if [count] is given, also act abit like `g_`
-"              in Vim, otherwise go to or after the last non-blank character
-"              of the following line
+"  [count]": - go to the end of this line if no [count] is given, otherwise
+"              go to the end of [count]'s line below
 "  c         - Operator pending mode: duplicate of `:`
 "  [count1]L - go to previous initial non-blank of a line
 "  [count1]K - go to next initial non-blank of a line
@@ -2014,78 +2011,9 @@ map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
 onoremap <script> <SID>key_c <SID>key_:
 
-function! s:NMapExpr_ToLastNonblankOfThisOrNextLine()
-  if v:count
-    return 'g_l'
-  else
-    let [@_, l:l_num, l:c_num, @_] = getpos('.')
-    if l:c_num == match(getline(l:l_num), '\s*$') + 1
-      return '+g_l'
-    else
-      return 'g_l'
-    endif
-  endif
-endfunction
-function! s:VMapExpr_ToLastNonblankOfThisOrNextLine()
-  let [@_, l:l_num, l:c_num, @_] = getpos('.')
-  let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
-  let l:count = v:count
-  if l:count
-    let l:l_num += l:count - 1
-    let l:c_num_last_nonblank = match(getline(l:l_num), '\s*$')
-    if (l:l_num_oppos < l:l_num) ||
-          \ (l:l_num_oppos == l:l_num &&
-          \  l:c_num_oppos <= l:c_num_last_nonblank)
-      return 'g_'
-    else
-      return 'g_l'
-    endif
-  else
-    let l:c_num_last_nonblank = match(getline(l:l_num), '\s*$')
-    if (l:l_num_oppos < l:l_num) ||
-          \ (l:l_num_oppos == l:l_num &&
-          \  l:c_num_oppos <= l:c_num_last_nonblank)
-      if l:c_num == l:c_num_last_nonblank
-        return '2g_'
-      else
-        return 'g_'
-      endif
-    else
-      if l:c_num == l:c_num_last_nonblank + 1
-        let l:l_num += 1
-        let l:c_num_last_nonblank = match(getline(l:l_num), '\s*$')
-        if (l:l_num_oppos < l:l_num) ||
-              \ (l:l_num_oppos == l:l_num &&
-              \  l:c_num_oppos <= l:c_num_last_nonblank)
-          return '2g_'
-        else
-          return '2g_l'
-        endif
-      else
-        return 'g_l'
-      endif
-    endif
-  endif
-endfunction
-function! s:OMapExpr_ToLastNonblankOfThisOrNextLine()
-  if v:count
-    return 'g_'
-  else
-    let [@_, l:l_num, l:c_num, @_] = getpos('.')
-    let l:c_num_after_last_nonblank = match(getline(l:l_num), '\s*$') + 1
-    if l:c_num == l:c_num_after_last_nonblank
-      return '2g_'
-    elseif l:c_num < l:c_num_after_last_nonblank
-      return 'g_'
-    else
-      " FIXME: should not include the last nonblank character
-      return 'g_'
-    endif
-  endif
-endfunction
-nnoremap <expr> <SID>2keyseq_': <SID>NMapExpr_ToLastNonblankOfThisOrNextLine()
-vnoremap <expr> <SID>2keyseq_': <SID>VMapExpr_ToLastNonblankOfThisOrNextLine()
-onoremap <expr> <SID>2keyseq_': <SID>OMapExpr_ToLastNonblankOfThisOrNextLine()
+nmap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+vmap <SID>2keyseq_': <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
+omap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
 
 " noremap <script> <A-Left>   <SID>2keyseq_'j
 " noremap <script> <S-A-Left> <SID>2keyseq_'J
