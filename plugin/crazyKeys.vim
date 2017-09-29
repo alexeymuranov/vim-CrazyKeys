@@ -1421,6 +1421,8 @@ endfunction
 
 call mapToSideEffects#Reset()
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToStartOfWordForward'),
       \ {'name' : 'CrazyKeys-NO_ToStartOfWordForward', 'modes' : 'no'} )
@@ -1428,6 +1430,8 @@ call mapToSideEffects#SetUpWithCount1(
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToStartOfWordForward'),
       \ {'name' : 'CrazyKeys-V_ToStartOfWordForward', 'modes' : 'v'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToStartOfWordBackward'),
@@ -1437,6 +1441,8 @@ call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToStartOfWordBackward'),
       \ {'name' : 'CrazyKeys-V_ToStartOfWordBackward', 'modes' : 'v'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToEndOfWordForward'),
       \ {'name' : 'CrazyKeys-NO_ToEndOfWordForward', 'modes' : 'no'} )
@@ -1444,6 +1450,8 @@ call mapToSideEffects#SetUpWithCount1(
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToEndOfWordForward'),
       \ {'name' : 'CrazyKeys-V_ToEndOfWordForward', 'modes' : 'v'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToEndOfWordBackward'),
@@ -1453,21 +1461,31 @@ call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToEndOfWordBackward'),
       \ {'name' : 'CrazyKeys-V_ToEndOfWordBackward', 'modes' : 'v'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:MotionNO_ToStartOfSpacedWordForward'),
-      \ {'name' : 'CrazyKeys-NO_ToStartOfSpacedWordForward', 'modes' : 'no'} )
+      \  function('s:MotionNO_ToStartOfSpacedWordForward'),
+      \  { 'name' : 'CrazyKeys-NO_ToStartOfSpacedWordForward',
+      \    'modes' : 'no'}
+      \ )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToStartOfSpacedWordForward'),
       \ {'name' : 'CrazyKeys-V_ToStartOfSpacedWordForward', 'modes' : 'v'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
-      \ function('s:MotionNO_ToStartOfSpacedWordBackward'),
-      \ {'name' : 'CrazyKeys-NO_ToStartOfSpacedWordBackward', 'modes' : 'no'} )
+      \   function('s:MotionNO_ToStartOfSpacedWordBackward'),
+      \   { 'name' : 'CrazyKeys-NO_ToStartOfSpacedWordBackward',
+      \     'modes' : 'no' }
+      \ )
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToStartOfSpacedWordBackward'),
       \ {'name' : 'CrazyKeys-V_ToStartOfSpacedWordBackward', 'modes' : 'v'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToEndOfSpacedWordForward'),
@@ -1477,6 +1495,8 @@ call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToEndOfSpacedWordForward'),
       \ {'name' : 'CrazyKeys-V_ToEndOfSpacedWordForward', 'modes' : 'v'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionNO_ToEndOfSpacedWordBackward'),
       \ {'name' : 'CrazyKeys-NO_ToEndOfSpacedWordBackward', 'modes' : 'no'} )
@@ -1485,33 +1505,49 @@ call mapToSideEffects#SetUpWithCount1(
       \ function('s:MotionV_ToEndOfSpacedWordBackward'),
       \ {'name' : 'CrazyKeys-V_ToEndOfSpacedWordBackward', 'modes' : 'v'} )
 
+"
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToNextInitialNonblankOfALine'),
       \ {'name' : 'CrazyKeys-ToNextInitNonblankOfLine'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToPreviousInitialNonblankOfALine'),
       \ {'name' : 'CrazyKeys-ToPrevInitNonblankOfLine'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToNextEOL'),
       \ {'name' : 'CrazyKeys-ToNextEOL'} )
+
+"
+
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrNextLine'),
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrNext'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstNonblankOfThisOrPreviousLine'),
       \ {'name' : 'CrazyKeys-ToFirstNonblankThisOrPrev'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstColumnOfThisOrNextLine'),
       \ {'name' : 'CrazyKeys-ToFirstColumnThisOrNext'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount(
       \ function('s:Motion_ToFirstColumnOfThisOrPreviousLine'),
       \ {'name' : 'CrazyKeys-ToFirstColumnThisOrPrev'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount(
       \ function('s:MotionNO_ToEndOfThisOrNextLine'),
@@ -1521,21 +1557,31 @@ call mapToSideEffects#SetUpWithCount(
       \ function('s:MotionV_ToEndOfThisOrNextLine'),
       \ {'name'  : 'CrazyKeys-V_ToEndOfThisOrNextLine', 'modes' : 'v'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:ActionN_DeleteLinesAbove'),
       \ {'name'  : 'CrazyKeys-N_DeleteLinesAbove', 'modes' : 'n'} )
+
+"
 
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:ActionN_CutLinesAbove'),
       \ {'name'  : 'CrazyKeys-N_CutLinesAbove', 'modes' : 'n'} )
 
+"
+
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:ActionN_StartLineWiseVMode'),
       \ {'name'  : 'CrazyKeys-N_StartLineWiseVMode', 'modes' : 'n'} )
 
+"
+
 call mapToSideEffects#SetUpIdempotent(
       \ function('s:ActionV_SwitchVisualModesCL'),
       \ {'name'  : 'CrazyKeys-V_SwitchVisualModesCL', 'modes' : 'v'} )
+
+"
 
 call mapToSideEffects#SetUpIdempotent(
       \ function('s:ActionV_SwitchVisualModesCB'),
