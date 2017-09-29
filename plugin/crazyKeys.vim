@@ -1278,6 +1278,17 @@ function! s:Motion_ToNextEOL(count1)
     let l:count1 -= 1
   endwhile
 endfunction
+
+" To Previous End Of Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToPreviousEOL(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('$', 'Wb')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
 " To First Nonblank Of This Or Next Line
 " FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
@@ -1532,6 +1543,12 @@ call mapToSideEffects#SetUpWithCount1(
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToNextEOL'),
       \ {'name' : 'CrazyKeys-ToNextEOL'} )
+
+"
+
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToPreviousEOL'),
+      \ {'name' : 'CrazyKeys-ToPrevEOL'} )
 
 "
 
@@ -1967,8 +1984,7 @@ noremap <SID>2keyseq_'k j
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
-"  [count]J  - go to the first non-blank character of the line (`^`) if no
-"              count is given, or else act like `+` in Vim
+"  [count1]J - go to the previous end of line
 "  [count]"J - go to or after the last non-blank character of this or line
 "              or [count]'s line above
 "  [count1]: - go to the next end of line
@@ -2059,7 +2075,7 @@ onoremap <SID>2keyseq_'; g_
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
-map <SID>key_J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+map <SID>key_J <Plug>(CrazyKeys-ToPrevEOL)
 onoremap <script> <SID>key_x <SID>2keyseq_'L
 
 map <SID>2keyseq_'J <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
