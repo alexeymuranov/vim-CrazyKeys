@@ -1249,6 +1249,7 @@ function! s:MotionV_ToEndOfSpacedWordBackward(count1)
 endfunction
 
 " To First Nonblank Of This Or Next Line
+" FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
   if a:count
     execute 'normal!' a:count . '+'
@@ -1258,6 +1259,7 @@ function! s:Motion_ToFirstNonblankOfThisOrNextLine(count)
 endfunction
 
 " To First Nonblank Of This Or Previous Line
+" FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstNonblankOfThisOrPreviousLine(count)
   if a:count
     execute 'normal!' a:count . '-'
@@ -1276,6 +1278,7 @@ function! s:Motion_ToFirstColumnOfThisOrNextLine(count)
 endfunction
 
 " To First Column Of This Or Previous Line
+" FIXME: a separete version for Visual mode is needed
 function! s:Motion_ToFirstColumnOfThisOrPreviousLine(count)
   if a:count
     execute 'normal!' a:count . '-0'
