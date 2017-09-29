@@ -1961,15 +1961,15 @@ noremap <SID>2keyseq_'k j
 "              count is given, or else act like `+` in Vim
 "  [count]"J - go to the first column of the line (like `0` in Vim) or to
 "              the first column of [count]th line below
-"  x         - Operator pending mode: duplicate of `J`
 "  [count1]: - go to the next end of line
 "  [count]": - go to the end of this line if no [count] is given, otherwise
 "              go to the end of [count]'s line below
-"  c         - Operator pending mode: duplicate of `:`
+"  c         - Operator pending mode: duplicate of `":`
 "  [count1]L - go to previous initial non-blank of a line
 "  [count1]K - go to next initial non-blank of a line
 "  [count1]"L- go to the initial non-blank of this line of [count1]'s line
 "              above
+"  x         - Operator pending mode: duplicate of `"L`
 "  [count1]"K- go to the initial non-blank of this line of [count1]'s line
 "              below
 "  {         - beginning of the first line of this or previous paragraph
@@ -2050,12 +2050,12 @@ noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
 map <SID>key_J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
-onoremap <script> <SID>key_x <SID>key_J
+onoremap <script> <SID>key_x <SID>2keyseq_'L
 
 map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstColumnThisOrNext)
 
 map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
-onoremap <script> <SID>key_c <SID>key_:
+onoremap <script> <SID>key_c <SID>2keyseq_':
 
 nmap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
 vmap <SID>2keyseq_': <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
