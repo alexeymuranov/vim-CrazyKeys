@@ -1888,7 +1888,9 @@ noremap <SID>2keyseq_'k j
 "  .         - Normal mode: after the end of this or next word
 "  >         - Normal mode: after the end of this or next space-delimited
 "              word
-"  'j        - go to the first column of the line (`0`)
+"  [count]'j - go to the first column of the line (like `0` in Vim) if no
+"              count is given, or else to the first column of [count]'s
+"              line above
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
 "  [count1]';- go to or after the last non-blank character of the line
@@ -1983,7 +1985,7 @@ vmap <SID>key_O <Plug>(CrazyKeys-V_ToStartOfSpacedWordForward)
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
 
-noremap <SID>2keyseq_'j 0
+map <SID>2keyseq_'j <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
