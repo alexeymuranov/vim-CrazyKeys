@@ -1268,6 +1268,25 @@ function! s:Motion_ToPreviousInitialNonblankOfALine(count1)
   endwhile
 endfunction
 
+" To Next Final Nonblank Of A Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToNextFinalNonblankOfALine(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\(\s*$\)\@=', 'W')
+    let l:count1 -= 1
+  endwhile
+endfunction
+
+" To Previous Final Nonblank Of A Line
+" FIXME: a separete version for Visual mode is needed
+function! s:Motion_ToPreviousFinalNonblankOfALine(count1)
+  let l:count1 = a:count1
+  while l:count1 > 0
+    call search('\S\(\s*$\)\@=', 'Wb')
+    let l:count1 -= 1
+  endwhile
+endfunction
 
 " To Next End Of Line
 " FIXME: a separete version for Visual mode is needed
@@ -1538,6 +1557,20 @@ call mapToSideEffects#SetUpWithCount1(
 call mapToSideEffects#SetUpWithCount1(
       \ function('s:Motion_ToPreviousInitialNonblankOfALine'),
       \ {'name' : 'CrazyKeys-ToPrevInitNonblankOfLine'} )
+
+"
+
+" NOTE: this is currently unused
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToNextFinalNonblankOfALine'),
+      \ {'name' : 'CrazyKeys-ToNextFinNonblankOfLine'} )
+
+"
+
+" NOTE: this is currently unused
+call mapToSideEffects#SetUpWithCount1(
+      \ function('s:Motion_ToPreviousFinalNonblankOfALine'),
+      \ {'name' : 'CrazyKeys-ToPrevFinNonblankOfLine'} )
 
 "
 
