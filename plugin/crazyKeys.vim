@@ -1320,7 +1320,7 @@ endfunction
 " To End Of This Or Next Line
 function! s:MotionNO_ToEndOfThisOrNextLine(count)
   if a:count
-    execute 'normal!' a:count . '$l'
+    execute 'normal!' (a:count + 1) . '$l'
   else
     normal! $l
   endif
@@ -1331,7 +1331,7 @@ function! s:MotionV_ToEndOfThisOrNextLine(count)
   let [@_, l:l_num, @_, @_] = getpos('.')
   let [@_, l:l_num_oppos, l:c_num_oppos, @_] = getpos('v')
   if a:count
-    let l:l_num += a:count - 1
+    let l:l_num += a:count
     let l:c_num_last_nonblank = len(getline(l:l_num))
     if (l:l_num_oppos < l:l_num) ||
           \ (l:l_num_oppos == l:l_num &&
