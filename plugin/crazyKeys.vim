@@ -907,14 +907,25 @@ function! s:confugure_desired_configurations(keymap)
 
   " Easy buffer navigation
   nnoremap <silent> <F5> :buffers<CR>:buffer<Space>
-  nnoremap <silent> <C-n> :bnext<CR>
-  nnoremap <silent> <C-p> :bprevious<CR>
+  " NOTE: it is better to keep <C-n> and <C-p> in their default and rather
+  "   standard role (the same as in Emacs), while to use simple normal mode
+  "   mappings for screen line motions (`gk` and `gj` in Vim)
+  " nnoremap <silent> <C-n> :bnext<CR>
+  " nnoremap <silent> <C-p> :bprevious<CR>
 
   " Easy window split navigation
   nnoremap <silent> <A-Up> :wincmd k<CR>
   nnoremap <silent> <A-Down> :wincmd j<CR>
   nnoremap <silent> <A-Left> :wincmd h<CR>
   nnoremap <silent> <A-Right> :wincmd l<CR>
+
+  " Keep some standard mappings with modifier keys
+  "
+  " The default role of <C-n> and <C-p> is rather standard and the same as
+  " in Emacs.  Simple Normal mode mappings may be more useful for screen
+  " line motions (`gk` and `gj` in Vim).
+  silent! unmap <C-n>
+  silent! unmap <C-p>
 endfunction
 
 "
