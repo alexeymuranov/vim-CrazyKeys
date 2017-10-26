@@ -2471,9 +2471,9 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///gc<Left><Left><Left>
 "              in the beginning, and move it just after the yanked block
 "              if it is at the end of the selected block
 "  <Space>   - in Visual mode: same as `'a`
-"  [count]A  - in Normal mode: yank [count] lines and jump over them
+"  [count]A  - in Normal mode: yank [count] lines above
 "  A         - in Visual mode: yank and restore the selection (`ygv`)
-"  [count]"A  - in Normal mode: yank [count] lines above
+"  [count]"A - in Normal mode: yank [count] lines and jump over them
 "  [count]aa - in Normal mode: `yy`
 "  [count]'aa - in Normal mode: yank [count] lines above and jump to the
 "              first yanked line
@@ -2538,10 +2538,9 @@ nnoremap <SID>2keyseq_aa yy
 " FIXME: make yank the lines above
 nnoremap <SID>3keyseq_'aa yy'[
 vnoremap <script> <SID>2keyseq_'a ygv<SID>key_<Esc>
-nnoremap <SID>key_A yy']j
 vnoremap <SID>key_A ygv
-" FIXME: make yank the lines above
-nnoremap <SID>2keyseq_'A yy
+nnoremap <expr> <SID>key_A ":-".v:count1."y\<CR>"
+nnoremap <SID>2keyseq_'A yy']j
 " FIXME: make work with [count]
 nnoremap <SID>3keyseq_''A m`^yg_``
 vnoremap <script> <Space>   <SID>2keyseq_'a
