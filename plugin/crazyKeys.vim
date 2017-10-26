@@ -1806,11 +1806,7 @@ noremap <SID>key_<bar> <Nop>
 "              unless in 'readonly' mode (not implemented);
 "              in Normal 'readonly' mode: scroll as <PageUp>
 "              in other modes: return to Normal mode
-"  <C-Space> - return to the normal mode, except when in Normal mode;
-"              in Normal mode go one page forward (`<C-f>` in Vim), like
-"              plain `<Space>` in a read-only buffer
-"  <C-S-Space> - in Normal mode go one page backward (`<C-b>` in Vim),
-"              like `<S-Space>` in a read-only buffer
+"  <C-Space> - duplicate of <Esc>
 "  <Esc>     - in Normal mode: cancel the count, if any (`@_` in Vim),
 "              otherwise clear last search higlighting and everything else;
 "              in Visual mode: cancel the count, if any (`@_` in Vim),
@@ -1867,8 +1863,6 @@ noremap  <script> <C-l> <SID>key_<Esc>
 inoremap <script> <C-l> <SID>key_<Esc>
 noremap  <script> <C-Space> <SID>key_<Esc>
 noremap! <script> <C-Space> <SID>key_<Esc>
-nnoremap          <C-Space>   <C-f>
-nnoremap          <C-S-Space> <C-b>
 " XXX: <S-Space> does not work in terminals
 noremap  <script> <S-Space> <SID>key_<Esc>
 noremap! <script> <S-Space> <SID>key_<Esc>
