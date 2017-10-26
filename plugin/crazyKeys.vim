@@ -2471,10 +2471,10 @@ vnoremap <SID>2keyseq_'% :s/<C-r>///gc<Left><Left><Left>
 "              in the beginning, and move it just after the yanked block
 "              if it is at the end of the selected block
 "  <Space>   - in Visual mode: same as `'a`
-"  [count]aa - in Normal mode: `yy`
 "  [count]A  - in Normal mode: yank [count] lines and jump over them
 "  A         - in Visual mode: yank and restore the selection (`ygv`)
 "  [count]"A  - in Normal mode: yank [count] lines above
+"  [count]aa - in Normal mode: `yy`
 "  [count]'aa - in Normal mode: yank [count] lines above and jump to the
 "              first yanked line
 "  ""A       - in Normal mode: yank the current line without indent, without
