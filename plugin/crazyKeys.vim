@@ -2539,7 +2539,7 @@ nnoremap <SID>2keyseq_aa yy
 nnoremap <SID>3keyseq_'aa yy'[
 vnoremap <script> <SID>2keyseq_'a ygv<SID>key_<Esc>
 vnoremap <SID>key_A ygv
-nnoremap <expr> <SID>key_A ":-".v:count1."y\<CR>"
+nnoremap <expr> <SID>key_A ":\<C-u>-".v:count1.",-1y\<CR>"
 nnoremap <SID>2keyseq_'A yy']j
 " FIXME: make work with [count]
 nnoremap <SID>3keyseq_''A m`^yg_``
