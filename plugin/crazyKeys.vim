@@ -2578,6 +2578,8 @@ vnoremap <SID>3keyseq_``s gP
 "   endif
 " endfunction
 " nnoremap <SID>key_S @=<SID>NMapEReg_PasteBeforeV2()<CR>
+" FIXME: for line-wise pasting, put the cursor to some reasonable position,
+"   like to the first non-blanc charcter...
 nnoremap <SID>key_S P`[
 vnoremap <SID>key_S "_dP`[
 function! s:NMapEReg_PasteAfterV2()
@@ -3041,6 +3043,10 @@ if (has('gui_macvim') && has('gui_running')) || exists('neovim_dot_app')
   inoremap <D-9> <Esc>9gt
 else
   " Map Control-# to switch tabs
+  "
+  " XXX: these do not work on Linux:
+  "
+  "   * https://stackoverflow.com/q/4728644
   noremap  <C-0> 0gt
   inoremap <C-0> <Esc>0gt
   noremap  <C-1> 1gt
