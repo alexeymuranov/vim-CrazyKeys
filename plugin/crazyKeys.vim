@@ -2111,27 +2111,27 @@ noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
 map <SID>key_J <Plug>(CrazyKeys-ToPrevEOL)
-onoremap <script> <SID>key_x <SID>2keyseq_'L
+map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
 
 map <SID>2keyseq_'J <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
-
-map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
-onoremap <script> <SID>key_c <SID>2keyseq_':
 
 nmap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
 vmap <SID>2keyseq_': <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
 omap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-
-" noremap <script> <A-Left>   <SID>2keyseq_'j
-" noremap <script> <S-A-Left> <SID>2keyseq_'J
-" noremap <script> <A-Right>   <SID>2keyseq_';
-" noremap <script> <S-A-Right> <SID>2keyseq_':
 
 map <SID>key_L <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
 map <SID>key_K <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
 
 map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
 map <SID>2keyseq_'K <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+
+onoremap <script> <SID>key_c <SID>2keyseq_':
+onoremap <script> <SID>key_x <SID>2keyseq_'L
+
+" noremap <script> <A-Left>   <SID>2keyseq_'j
+" noremap <script> <S-A-Left> <SID>2keyseq_'J
+" noremap <script> <A-Right>   <SID>2keyseq_';
+" noremap <script> <S-A-Right> <SID>2keyseq_':
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
