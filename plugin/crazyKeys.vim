@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2017-10-26
+" Last Change:  2018-03-01
 " Author:       Alexey Muranov <alexeymuranov@users.noreply.github.com>
 "
 " Vim plug-in with crazy custom key mappings, with possibility
