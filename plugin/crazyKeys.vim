@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2018-03-01
+" Last Change:  2018-03-02
 " Author:       Alexey Muranov <alexeymuranov@users.noreply.github.com>
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -2018,19 +2018,19 @@ noremap <SID>2keyseq_'j j
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
-"  [count1]K - go to the previous end of line
-"  [count]"K - go to or after the last non-blank character of this or line
+"  [count1]: - go to the previous end of line
+"  [count]": - go to or after the last non-blank character of this or line
 "              or [count]'s line above
-"  [count1]L - go to the next end of line
-"  [count]"L - go to the end of this line if no [count] is given, otherwise
+"  [count1]J - go to the next end of line
+"  [count]"J - go to the end of this line if no [count] is given, otherwise
 "              go to the end of [count]'s line below
-"  c         - Operator pending mode: duplicate of `"L`
-"  [count1]: - go to previous initial non-blank of a line
-"  [count1]J - go to next initial non-blank of a line
-"  [count1]":- go to the initial non-blank of this line of [count1]'s line
+"  c         - Operator pending mode: duplicate of `"J`
+"  [count1]K - go to previous initial non-blank of a line
+"  [count1]L - go to next initial non-blank of a line
+"  [count1]"K- go to the initial non-blank of this line of [count1]'s line
 "              above
-"  x         - Operator pending mode: duplicate of `":`
-"  [count1]"J- go to the initial non-blank of this line of [count1]'s line
+"  x         - Operator pending mode: duplicate of `"K`
+"  [count1]"L- go to the initial non-blank of this line of [count1]'s line
 "              below
 "  {         - beginning of the first line of this or previous paragraph
 "  }         - Normal mode: beginning of the first line of the next
@@ -2057,8 +2057,8 @@ noremap <SID>2keyseq_'j j
 "
 "    <A-Left>  - duplicate of `'k`
 "    <A-Right> - duplicate of `'l`
-"    <S-A-Left>  - duplicate of `"K`
-"    <S-A-Right> - duplicate of `"L`
+"    <S-A-Left>  - duplicate of `":`
+"    <S-A-Right> - duplicate of `"J`
 nmap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 omap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 vmap <SID>key_, <Plug>(CrazyKeys-V_ToEndOfWordBackward)
@@ -2110,28 +2110,28 @@ omap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
-map <SID>key_K <Plug>(CrazyKeys-ToPrevEOL)
-map <SID>key_L <Plug>(CrazyKeys-ToNextEOL)
+map <SID>key_: <Plug>(CrazyKeys-ToPrevEOL)
+map <SID>key_J <Plug>(CrazyKeys-ToNextEOL)
 
-map <SID>2keyseq_'K <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
+map <SID>2keyseq_': <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
 
-nmap <SID>2keyseq_'L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-vmap <SID>2keyseq_'L <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
-omap <SID>2keyseq_'L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+nmap <SID>2keyseq_'J <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+vmap <SID>2keyseq_'J <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
+omap <SID>2keyseq_'J <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
 
-map <SID>key_: <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
-map <SID>key_J <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
+map <SID>key_K <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
+map <SID>key_L <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
 
-map <SID>2keyseq_': <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
-map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+map <SID>2keyseq_'K <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
+map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 
-onoremap <script> <SID>key_c <SID>2keyseq_'L
-onoremap <script> <SID>key_x <SID>2keyseq_':
+onoremap <script> <SID>key_c <SID>2keyseq_'J
+onoremap <script> <SID>key_x <SID>2keyseq_'K
 
 " noremap <script> <A-Left>   <SID>2keyseq_'k
-" noremap <script> <S-A-Left> <SID>2keyseq_'K
+" noremap <script> <S-A-Left> <SID>2keyseq_':
 " noremap <script> <A-Right>   <SID>2keyseq_'l
-" noremap <script> <S-A-Right> <SID>2keyseq_'L
+" noremap <script> <S-A-Right> <SID>2keyseq_'J
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
@@ -2318,8 +2318,8 @@ endfunction
 vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 "
 " FIXME: make use [count] as specified
-noremap <script> <SID>2keyseq_'= <SID>key_:
-noremap <script> <SID>2keyseq_0= <SID>key_:
+noremap <script> <SID>2keyseq_'= <SID>key_K
+noremap <script> <SID>2keyseq_0= <SID>key_K
 
 " XXX: this uses an unstable version of "matchit" plugin, see
 "   https://github.com/benjifisher/matchit.zip
