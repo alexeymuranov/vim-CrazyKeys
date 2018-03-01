@@ -467,10 +467,10 @@ let g:CrazyKeysConfigurations['l'] = {
       \ 'e' : 'o',
       \ 'q' : 'p',
       \
-      \ 'j' : 'a',
-      \ 'l' : 's',
-      \ 'k' : 'd',
-      \ ';' : 'f',
+      \ ';' : 'a',
+      \ 'k' : 's',
+      \ 'l' : 'd',
+      \ 'j' : 'f',
       \ 'h' : 'g',
       \ 'g' : 'h',
       \ 'f' : 'j',
@@ -503,10 +503,10 @@ let g:CrazyKeysConfigurations['l'] = {
       \ 'E' : 'O',
       \ 'Q' : 'P',
       \
-      \ 'J' : 'A',
-      \ 'L' : 'S',
-      \ 'K' : 'D',
-      \ ':' : 'F',
+      \ ':' : 'A',
+      \ 'K' : 'S',
+      \ 'L' : 'D',
+      \ 'J' : 'F',
       \ 'H' : 'G',
       \ 'G' : 'H',
       \ 'F' : 'J',
@@ -1970,28 +1970,28 @@ noremap <SID>key_` "
 " #.#.# Small motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  j, <Left>  - left (`h` in Vim)
-"  ;, <Right> - right (`l` in Vim)
-"  l, <Up>    - up on screen (`gk` in Vim)
-"  k, <Down>  - down on screen (`gj` in Vim)
-"  'l         - up in text (`k` in Vim)
-"  'k         - down in text (`j` in Vim)
+"  k, <Left>  - left (`h` in Vim)
+"  l, <Right> - right (`l` in Vim)
+"  ;, <Up>    - up on screen (`gk` in Vim)
+"  j, <Down>  - down on screen (`gj` in Vim)
+"  ';         - up in text (`k` in Vim)
+"  'j         - down in text (`j` in Vim)
 "  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
-noremap <SID>key_j h
-noremap <SID>key_; l
-noremap <SID>key_l gk
-noremap <SID>key_k gj
+noremap <SID>key_k h
+noremap <SID>key_l l
+noremap <SID>key_; gk
+noremap <SID>key_j gj
 onoremap <Space> l
 
-noremap <script> <Left>  <SID>key_j
-noremap <script> <Right> <SID>key_;
-noremap <script> <Up>    <SID>key_l
-noremap <script> <Down>  <SID>key_k
+noremap <script> <Left>  <SID>key_k
+noremap <script> <Right> <SID>key_l
+noremap <script> <Up>    <SID>key_;
+noremap <script> <Down>  <SID>key_j
 
-noremap <SID>2keyseq_'l k
-noremap <SID>2keyseq_'k j
-" noremap <script> <A-Up>   <SID>2keyseq_'l
-" noremap <script> <A-Down> <SID>2keyseq_'k
+noremap <SID>2keyseq_'; k
+noremap <SID>2keyseq_'j j
+" noremap <script> <A-Up>   <SID>2keyseq_';
+" noremap <script> <A-Down> <SID>2keyseq_'j
 
 "
 " #.#.# Big motions
@@ -2009,28 +2009,28 @@ noremap <SID>2keyseq_'k j
 "  .         - Normal mode: after the end of this or next word
 "  >         - Normal mode: after the end of this or next space-delimited
 "              word
-"  [count]'j - go to the first column of the line (like `0` in Vim) if no
+"  [count]'k - go to the first column of the line (like `0` in Vim) if no
 "              count is given, or else to the first column of [count]'s
 "              line above
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
-"  [count1]';- go to or after the last non-blank character of the line
+"  [count1]'l- go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
-"  [count1]J - go to the previous end of line
-"  [count]"J - go to or after the last non-blank character of this or line
+"  [count1]K - go to the previous end of line
+"  [count]"K - go to or after the last non-blank character of this or line
 "              or [count]'s line above
-"  [count1]: - go to the next end of line
-"  [count]": - go to the end of this line if no [count] is given, otherwise
+"  [count1]L - go to the next end of line
+"  [count]"L - go to the end of this line if no [count] is given, otherwise
 "              go to the end of [count]'s line below
-"  c         - Operator pending mode: duplicate of `":`
-"  [count1]L - go to previous initial non-blank of a line
-"  [count1]K - go to next initial non-blank of a line
-"  [count1]"L- go to the initial non-blank of this line of [count1]'s line
+"  c         - Operator pending mode: duplicate of `"L`
+"  [count1]: - go to previous initial non-blank of a line
+"  [count1]J - go to next initial non-blank of a line
+"  [count1]":- go to the initial non-blank of this line of [count1]'s line
 "              above
-"  x         - Operator pending mode: duplicate of `"L`
-"  [count1]"K- go to the initial non-blank of this line of [count1]'s line
+"  x         - Operator pending mode: duplicate of `":`
+"  [count1]"J- go to the initial non-blank of this line of [count1]'s line
 "              below
 "  {         - beginning of the first line of this or previous paragraph
 "  }         - Normal mode: beginning of the first line of the next
@@ -2055,9 +2055,9 @@ noremap <SID>2keyseq_'k j
 "
 "  The following are currently disabled:
 "
-"    <A-Left>  - duplicate of `';`
+"    <A-Left>  - duplicate of `'k`
 "    <A-Right> - duplicate of `'l`
-"    <S-A-Left>  - duplicate of `":`
+"    <S-A-Left>  - duplicate of `"K`
 "    <S-A-Right> - duplicate of `"L`
 nmap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 omap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
@@ -2096,42 +2096,42 @@ vmap <SID>key_O <Plug>(CrazyKeys-V_ToStartOfSpacedWordForward)
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
 
-map <SID>2keyseq_'j <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
+map <SID>2keyseq_'k <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
-nmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+nmap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: include the last non-blank character when moving from the left,
 "   exclude when moving from the right
-vmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+vmap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: same
-omap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+omap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
 
-map <SID>key_J <Plug>(CrazyKeys-ToPrevEOL)
-map <SID>key_: <Plug>(CrazyKeys-ToNextEOL)
+map <SID>key_K <Plug>(CrazyKeys-ToPrevEOL)
+map <SID>key_L <Plug>(CrazyKeys-ToNextEOL)
 
-map <SID>2keyseq_'J <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
+map <SID>2keyseq_'K <Plug>(CrazyKeys-ToLastNonblankThisOrPrev)
 
-nmap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
-vmap <SID>2keyseq_': <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
-omap <SID>2keyseq_': <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+nmap <SID>2keyseq_'L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
+vmap <SID>2keyseq_'L <Plug>(CrazyKeys-V_ToEndOfThisOrNextLine)
+omap <SID>2keyseq_'L <Plug>(CrazyKeys-NO_ToEndOfThisOrNextLine)
 
-map <SID>key_L <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
-map <SID>key_K <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
+map <SID>key_: <Plug>(CrazyKeys-ToPrevInitNonblankOfLine)
+map <SID>key_J <Plug>(CrazyKeys-ToNextInitNonblankOfLine)
 
-map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
-map <SID>2keyseq_'K <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
+map <SID>2keyseq_': <Plug>(CrazyKeys-ToFirstNonblankThisOrPrev)
+map <SID>2keyseq_'J <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 
-onoremap <script> <SID>key_c <SID>2keyseq_':
-onoremap <script> <SID>key_x <SID>2keyseq_'L
+onoremap <script> <SID>key_c <SID>2keyseq_'L
+onoremap <script> <SID>key_x <SID>2keyseq_':
 
-" noremap <script> <A-Left>   <SID>2keyseq_'j
-" noremap <script> <S-A-Left> <SID>2keyseq_'J
-" noremap <script> <A-Right>   <SID>2keyseq_';
-" noremap <script> <S-A-Right> <SID>2keyseq_':
+" noremap <script> <A-Left>   <SID>2keyseq_'k
+" noremap <script> <S-A-Left> <SID>2keyseq_'K
+" noremap <script> <A-Right>   <SID>2keyseq_'l
+" noremap <script> <S-A-Right> <SID>2keyseq_'L
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
@@ -2318,8 +2318,8 @@ endfunction
 vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 "
 " FIXME: make use [count] as specified
-noremap <script> <SID>2keyseq_'= <SID>key_L
-noremap <script> <SID>2keyseq_0= <SID>key_L
+noremap <script> <SID>2keyseq_'= <SID>key_:
+noremap <script> <SID>2keyseq_0= <SID>key_:
 
 " XXX: this uses an unstable version of "matchit" plugin, see
 "   https://github.com/benjifisher/matchit.zip
