@@ -22,7 +22,7 @@
 " * tComment
 " * unimpaired
 " * vim-extended-ft
-" * https://github.com/benjifisher/matchit.zip
+" * matchit
 " * unite
 " * vimFiler
 "
@@ -2321,14 +2321,13 @@ vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
 noremap <script> <SID>2keyseq_'= <SID>key_K
 noremap <script> <SID>2keyseq_0= <SID>key_K
 
-" XXX: this uses an unstable version of "matchit" plugin, see
-"   https://github.com/benjifisher/matchit.zip
-nmap <SID>key_* <Plug>MatchItNormalForward
-vmap <SID>key_* <Plug>MatchItVisualForward
-omap <SID>key_* <Plug>MatchItOperationForward
-nmap <SID>2keyseq_'* <Plug>MatchItNormalBackward
-vmap <SID>2keyseq_'* <Plug>MatchItVisualBackward
-omap <SID>2keyseq_'* <Plug>MatchItOperationBackward
+" XXX: this uses "matchit" plugin
+nmap <SID>key_* <Plug>(MatchitNormalForward)
+vmap <SID>key_* <Plug>(MatchitVisualForward)
+omap <SID>key_* <Plug>(MatchitOperationForward)
+nmap <SID>2keyseq_'* <Plug>(MatchitNormalBackward)
+vmap <SID>2keyseq_'* <Plug>(MatchitVisualBackward)
+omap <SID>2keyseq_'* <Plug>(MatchitOperationBackward)
 
 noremap <C-o>   <C-o>
 noremap <S-Tab> <C-o>
