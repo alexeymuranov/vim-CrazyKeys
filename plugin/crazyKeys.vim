@@ -382,6 +382,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   'zz', 'zZ', '''zz', '''zZ', '''Z', '''''Z',
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
+      \   '--', '==',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?'
@@ -406,6 +407,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   '''''l', '''''k', '''''j',
       \   '[[', ']]', '[]', '][',
       \   '00',
+      \   '--', '==',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?'
@@ -417,6 +419,7 @@ let s:u_s_qwerty_2plus_key_sequences_to_map_in_modes = {
       \   ''',', '''.', '''<', '''>',
       \   '__', '_-', '_=',
       \   '[[', ']]', '[]', '][',
+      \   '--', '==',
       \   '''-', '0-', '''=', '0=',
       \   '''*',
       \   '''/', '''?',
@@ -2276,11 +2279,15 @@ vnoremap <SID>key_# @:
 "  [count]-  - with [count]: go to line number [count] (`gg` in Vim);
 "  -         - without [count]: go to the first non-blank character of the
 "              mark line (`'` in Vim)
+"  --        - go to the first non-blank character of the line of the
+"              backquote mark (`''` in Vim)
+"              mark line (`'` in Vim)
 "  [count]'- - go to line number [count] from the bottom
 "  0-        - go to the last line
 "  [count]=  - with [count]: go to column number [count] in the current
 "              line
 "  =           without [count]: go to the mark (`\(backquote)` in Vim)
+"  ==        - go to the backquote mark (`\(backquote)\(backquote)` in Vim)
 "  [count]'= - go to [count] characters before the end of the line
 "  0=        - go to the end of the line
 "  *         - go to the matching parenthesis-like delimiter (like `%`) or
@@ -2292,10 +2299,12 @@ vnoremap <SID>key_# @:
 "  <C-o>, <S-Tab> - "back", go to the previous position (`<C-o>`)
 "  <C-i>, <Tab>   - return "forward", go to the next position (`<C-i>`)
 noremap <expr> <SID>key_- (v:count?'gg':'''')
+noremap <SID>2keyseq_-- ''
 " FIXME: make use [count] as specified
 noremap <SID>2keyseq_'- G
 noremap <SID>2keyseq_0- G
 noremap <expr> <SID>key_= (v:count?'<bar>':'`')
+noremap <SID>2keyseq_== ``
 
 function! s:VMapExpr_GoToColumn(count)
   let l:l_num = line('.')
