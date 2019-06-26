@@ -2315,7 +2315,7 @@ function! s:VMapExpr_GoToColumn(count)
     return '@_' . l:c_num . '|'
   endif
 endfunction
-vnoremap <expr> <SID>key_= (v:count?s:VMapExpr_GoToColumn(v:count):'`')
+vnoremap <expr> <SID>key_= (v:count?<SID>VMapExpr_GoToColumn(v:count):'`')
 "
 " FIXME: make use [count] as specified
 noremap <script> <SID>2keyseq_'= <SID>key_K
