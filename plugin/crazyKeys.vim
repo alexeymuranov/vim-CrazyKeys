@@ -156,6 +156,14 @@
 "   Maybe `<Alt>` can be used strictly as an alternative of the `<'>`
 "   prefix?
 "
+" * Another thought about the use of `<Ctrl>` vs `<Alt>`: use combinations
+"   with `<Ctrl>` for actions that modify the state (of some buffer) and
+"   combinations with `<Alt>` --  for moving the "focus" between windows,
+"   scrolling up and down without changing cursor position, opening menus,
+"   etc.  Moving the cursor should be cosidered an action that changes the
+"   state of the buffer and not a simple change of focus.  This seems to be
+"   consistent with the traditonal distinction between `<Ctrl>` and `<Alt>`.
+"
 " * Use `<Del>` and/or `<Backspace>` with or without modifiers to delete
 "   without saving to a register.
 "
