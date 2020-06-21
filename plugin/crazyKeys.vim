@@ -2060,13 +2060,6 @@ noremap <SID>2keyseq_'j j
 "  <S-Right> - duplicate of `O`
 "  <S-Up>    - duplicate of `{`
 "  <S-Down>  - duplicate of `}`
-"
-"  The following are currently disabled:
-"
-"    <A-Left>  - duplicate of `'k`
-"    <A-Right> - duplicate of `'l`
-"    <S-A-Left>  - duplicate of `":`
-"    <S-A-Right> - duplicate of `"J`
 nmap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 omap <SID>key_, <Plug>(CrazyKeys-NO_ToEndOfWordBackward)
 vmap <SID>key_, <Plug>(CrazyKeys-V_ToEndOfWordBackward)
@@ -2135,11 +2128,6 @@ map <SID>2keyseq_'L <Plug>(CrazyKeys-ToFirstNonblankThisOrNext)
 
 onoremap <script> <SID>key_c <SID>2keyseq_'J
 onoremap <script> <SID>key_x <SID>2keyseq_'K
-
-" noremap <script> <A-Left>   <SID>2keyseq_'k
-" noremap <script> <S-A-Left> <SID>2keyseq_':
-" noremap <script> <A-Right>   <SID>2keyseq_'l
-" noremap <script> <S-A-Right> <SID>2keyseq_'J
 
 noremap  <SID>key_{ @="k{ ^"<CR>
 onoremap <SID>key_{ {
