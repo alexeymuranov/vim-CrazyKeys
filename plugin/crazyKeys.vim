@@ -475,10 +475,10 @@ let g:CrazyKeysConfigurations['l'] = {
       \ 'e' : 'o',
       \ 'q' : 'p',
       \
-      \ ';' : 'a',
-      \ 'k' : 's',
-      \ 'l' : 'd',
-      \ 'j' : 'f',
+      \ 'j' : 'a',
+      \ 'l' : 's',
+      \ 'k' : 'd',
+      \ ';' : 'f',
       \ 'h' : 'g',
       \ 'g' : 'h',
       \ 'f' : 'j',
@@ -1978,28 +1978,28 @@ noremap <SID>key_` "
 " #.#.# Small motions
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 "
-"  k, <Left>  - left (`h` in Vim)
-"  l, <Right> - right (`l` in Vim)
-"  ;, <Up>    - up on screen (`gk` in Vim)
-"  j, <Down>  - down on screen (`gj` in Vim)
-"  ';         - up in text (`k` in Vim)
-"  'j         - down in text (`j` in Vim)
+"  j, <Left>  - left (`h` in Vim)
+"  ;, <Right> - right (`l` in Vim)
+"  l, <Up>    - up on screen (`gk` in Vim)
+"  k, <Down>  - down on screen (`gj` in Vim)
+"  'l         - up in text (`k` in Vim)
+"  'k         - down in text (`j` in Vim)
 "  <Space>    - in Operator-pending mode: one character right (`l` in Vim)
-noremap <SID>key_k h
-noremap <SID>key_l l
-noremap <SID>key_; gk
-noremap <SID>key_j gj
+noremap <SID>key_j h
+noremap <SID>key_; l
+noremap <SID>key_l gk
+noremap <SID>key_k gj
 onoremap <Space> l
 
-noremap <script> <Left>  <SID>key_k
-noremap <script> <Right> <SID>key_l
-noremap <script> <Up>    <SID>key_;
-noremap <script> <Down>  <SID>key_j
+noremap <script> <Left>  <SID>key_j
+noremap <script> <Right> <SID>key_;
+noremap <script> <Up>    <SID>key_l
+noremap <script> <Down>  <SID>key_k
 
-noremap <SID>2keyseq_'; k
-noremap <SID>2keyseq_'j j
-" noremap <script> <A-Up>   <SID>2keyseq_';
-" noremap <script> <A-Down> <SID>2keyseq_'j
+noremap <SID>2keyseq_'l k
+noremap <SID>2keyseq_'k j
+" noremap <script> <A-Up>   <SID>2keyseq_'l
+" noremap <script> <A-Down> <SID>2keyseq_'k
 
 "
 " #.#.# Big motions
@@ -2017,12 +2017,12 @@ noremap <SID>2keyseq_'j j
 "  .         - Normal mode: after the end of this or next word
 "  >         - Normal mode: after the end of this or next space-delimited
 "              word
-"  [count]'k - go to the first column of the line (like `0` in Vim) if no
+"  [count]'j - go to the first column of the line (like `0` in Vim) if no
 "              count is given, or else to the first column of [count]'s
 "              line above
 "  [count]', - go to the first non-blank of the previous line or
 "              to the first non-blank of [count] line above (like `-`)
-"  [count1]'l- go to or after the last non-blank character of the line
+"  [count1]';- go to or after the last non-blank character of the line
 "              (`g_` or `g_l`)
 "  '.        - Normal mode: go to the first non-blank character of the
 "              following line (`+`)
@@ -2097,16 +2097,16 @@ vmap <SID>key_O <Plug>(CrazyKeys-V_ToStartOfSpacedWordForward)
 noremap <script> <S-Left>  <SID>key_I
 noremap <script> <S-Right> <SID>key_O
 
-map <SID>2keyseq_'k <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
+map <SID>2keyseq_'j <Plug>(CrazyKeys-ToFirstColumnThisOrPrev)
 noremap  <SID>2keyseq_', -
 onoremap <SID>2keyseq_', v-
 
-nmap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+nmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: include the last non-blank character when moving from the left,
 "   exclude when moving from the right
-vmap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+vmap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 " FIXME: same
-omap <SID>2keyseq_'l <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
+omap <SID>2keyseq_'; <Plug>(CrazyKeys-ToLastNonblankThisOrNext)
 
 noremap  <SID>2keyseq_'. +
 onoremap <SID>2keyseq_'. v+
