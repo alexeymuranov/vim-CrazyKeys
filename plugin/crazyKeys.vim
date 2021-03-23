@@ -2,7 +2,7 @@
 "
 " Plugin Name:  Crazy Keys
 " Version:      0.1.0.pre
-" Last Change:  2020-06-21
+" Last Change:  2021-03-23
 " Author:       Alexey Muranov <alexeymuranov@users.noreply.github.com>
 "
 " Vim plug-in with crazy custom key mappings, with possibility
@@ -544,7 +544,7 @@ let g:CrazyKeysLayouts['Qwerty-Ca-Fr'] = {
       \ ']' : 'ç',
       \ '''' : 'è',
       \ '\' : 'à',
-      \ '`' : 'ù',
+      \ '`' : '/',
       \
       \ '<' : '''',
       \ '>' : '"',
@@ -554,7 +554,7 @@ let g:CrazyKeysLayouts['Qwerty-Ca-Fr'] = {
       \ '}' : 'Ç',
       \ '"' : 'È',
       \ '|' : 'À',
-      \ '~' : 'Ù',
+      \ '~' : '\',
       \
       \ '^' : '?'
       \ }
